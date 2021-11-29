@@ -1,6 +1,8 @@
-package PersistenceLayer;
+package ServiceLayer.Facades;
 
-import PresentationLayer.User;
+import DataAccessLayer.Database;
+import DataAccessLayer.Mappers.UserMapper;
+import Entities.User;
 
 public class UserFacade
 {

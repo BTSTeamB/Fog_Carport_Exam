@@ -1,6 +1,7 @@
-package PersistenceLayer;
+package DataAccessLayer.Mappers;
 
-import PresentationLayer.User;
+import DataAccessLayer.Database;
+import Entities.User;
 
 public class UserMapper
 {
@@ -16,22 +17,22 @@ public class UserMapper
         return null;
     }
 
-    protected void createUser(User user)
+    public void createUser(User user)
     {
 
     }
 
-    protected void deleteUser(User user)
+    public void deleteUser(User user)
     {
 
     }
 
-    protected void editUser(User user)
+    public void editUser(User user)
     {
 
     }
 
-    protected User getUser (User user)
+    public User getUser (User user)
     {
 
         return null;
