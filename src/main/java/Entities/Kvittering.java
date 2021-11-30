@@ -1,4 +1,4 @@
-package PresentationLayer;
+package Entities;
 
 public class Kvittering
 {
