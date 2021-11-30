@@ -31,6 +31,7 @@
       <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
     </nav>
 
+    <!-- Login PopUp -->
   <div class="login-popup-overlay"></div>
     <div id="login-popup">
       <div class="form">
@@ -40,6 +41,7 @@
         <div class="header">
           Member login
          </div>
+        <form>
         <div class="login-element">
           <label for="LoginUsername">E-mail</label>
           <input type="email" id="LoginUsername" placeholder="&#xf0e0;  insert email address">
@@ -54,9 +56,11 @@
         <div class="register">
           <h2>Need an account? <a class="register-link" onclick="openRegisterForm()"> Register</a></h2>
         </div>
+        </form>
       </div>
     </div>
 
+    <!-- Register PopUp -->
     <div class="register-popup-overlay"></div>
     <div id="register-popup">
       <div class="form">
@@ -66,25 +70,30 @@
         <div class="header">
           Member register
          </div>
+        <form action="UserController" method="post">
+          <div class="register-element">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="&#xf007;  insert name">
+          </div>
         <div class="register-element">
-          <label for="username">E-mail</label>
-          <input type="email" id="username" placeholder="&#xf0e0;  insert email address">
+          <label for="RegEmail">E-mail</label>
+          <input type="email" name="RegEmail" id="RegEmail" placeholder="&#xf0e0;  insert email address">
         </div>
         <div class="register-element">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="&#xf577; insert password">
+          <label for="RegPassword">Password</label>
+          <input type="password" name="RegPassword" id="RegPassword" placeholder="&#xf577; insert password">
         </div>
         <div class="register-element">
-          <label for="address">Adress</label>
-          <input type="text" id="address" placeholder="&#xf015; insert address">
+          <label for="address">Address</label>
+          <input type="text" name="address" id="address" placeholder="&#xf015; insert address">
         </div>
         <div class="register-element">
           <label for="zip-code">zip-code</label>
-          <input type="number" id="zip-code" placeholder="&#xf276; insert zip-code">
+          <input type="number" name="zip-code" id="zip-code" placeholder="&#xf276; insert zip-code">
         </div>
         <div class="register-element">
           <label for="phone">Phone</label>
-          <input type="number" id="phone" placeholder="&#xf10b; insert phone number">
+          <input type="number" name="phone" id="phone" placeholder="&#xf10b; insert phone number">
         </div>
         <div class="register-element">
           <button>Register &#xf105;</button>
@@ -92,6 +101,7 @@
         <div class="login">
           <h2>Already have an account? <a class="login-link" onclick="openLoginForm()"> Login</a></h2>
         </div>
+        </form>
       </div>
     </div>
 
