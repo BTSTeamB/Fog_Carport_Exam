@@ -20,7 +20,7 @@
   <body>
     <nav>
       <div class="nav-logo">
-        <img class="nav-logo-item logoPicture" src="images/fog-logo.png" alt=""/>
+        <img class="nav-logo-item logoPicture" src="Resources/images/fog-logo.png" alt=""/>
         <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
       </div>
       <ul class="nav-links">
@@ -31,6 +31,7 @@
       <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
     </nav>
 
+    <!-- Login PopUp -->
   <div class="login-popup-overlay"></div>
     <div id="login-popup">
       <div class="form">
@@ -41,12 +42,12 @@
           Member login
          </div>
         <div class="login-element">
-          <label for="username">E-mail</label>
-          <input type="email" id="username" placeholder="&#xf0e0;  insert email address">
+          <label for="LoginUsername">E-mail</label>
+          <input type="email" id="LoginUsername" placeholder="&#xf0e0;  insert email address">
         </div>
         <div class="login-element">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="&#xf577; insert password">
+          <label for="LoginPassword">Password</label>
+          <input type="password" id="LoginPassword" placeholder="&#xf577; insert password">
         </div>
         <div class="login-element">
           <button>Login &#xf105;</button>
@@ -57,6 +58,7 @@
       </div>
     </div>
 
+    <!-- Register PopUp -->
     <div class="register-popup-overlay"></div>
     <div id="register-popup">
       <div class="form">
@@ -108,7 +110,7 @@
         <video class="video" loop autoplay muted preload="auto" src="Resources/videos/v1.mov"></video>
       </div>
       <div class="arrow bounce">
-        <a class="fas fa-chevron-down" href="index.html#second-section"></a>
+        <a class="fas fa-chevron-down" href="index.jsp#second-section"></a>
       </div>
     </section>
 
