@@ -1,13 +1,119 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Resources/css/navbar-style.css" />
+    <link rel="stylesheet" href="Resources/css/index-style.css" />
+    <link rel="stylesheet" href="Resources/css/scrollbar-style.css">
+    <link rel="stylesheet" href="Resources/css/login-popup-style.css">
+    <link rel="stylesheet" href="Resources/css/register-popup-style.css">
+    <link rel="icon" href="Resources/images/fog-logo.png">
+    <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
+    <script defer src="Resources/js/popup.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>Fog trælast og byggecenter</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <img class="nav-logo-item logoPicture" src="images/fog-logo.png" alt=""/>
+        <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
+      </div>
+      <ul class="nav-links">
+        <li><a class="home" href="index.html">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="design.html">Design</a></li>
+      </ul>
+      <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
+    </nav>
+
+  <div class="login-popup-overlay"></div>
+    <div id="login-popup">
+      <div class="form">
+          <div class="login-avatar">
+            <img src="Resources/images/fog-logo.png" alt="">
+        </div>
+        <div class="header">
+          Member login
+         </div>
+        <div class="login-element">
+          <label for="username">E-mail</label>
+          <input type="email" id="username" placeholder="&#xf0e0;  insert email address">
+        </div>
+        <div class="login-element">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="&#xf577; insert password">
+        </div>
+        <div class="login-element">
+          <button>Login &#xf105;</button>
+        </div>
+        <div class="register">
+          <h2>Need an account? <a class="register-link" onclick="openRegisterForm()"> Register</a></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-popup-overlay"></div>
+    <div id="register-popup">
+      <div class="form">
+          <div class="register-avatar">
+            <img src="Resources/images/fog-logo.png" alt="">
+        </div>
+        <div class="header">
+          Member register
+         </div>
+        <div class="register-element">
+          <label for="username">E-mail</label>
+          <input type="email" id="username" placeholder="&#xf0e0;  insert email address">
+        </div>
+        <div class="register-element">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="&#xf577; insert password">
+        </div>
+        <div class="register-element">
+          <label for="address">Adress</label>
+          <input type="text" id="address" placeholder="&#xf015; insert address">
+        </div>
+        <div class="register-element">
+          <label for="zip-code">zip-code</label>
+          <input type="number" id="zip-code" placeholder="&#xf276; insert zip-code">
+        </div>
+        <div class="register-element">
+          <label for="phone">Phone</label>
+          <input type="number" id="phone" placeholder="&#xf10b; insert phone number">
+        </div>
+        <div class="register-element">
+          <button>Register &#xf105;</button>
+        </div>
+        <div class="login">
+          <h2>Already have an account? <a class="login-link" onclick="openLoginForm()"> Login</a></h2>
+        </div>
+      </div>
+    </div>
+
+    <section id="first-section">
+      <div class="text-video-overlay">
+        <h1>FOG Carporte</h1>
+        <h2>Caporte der holder i længden</h2>
+      </div>
+      <div class="button-container">
+          <button class="button-container-item bt1">DESIGN DIN EGEN</button>
+          <button onclick="document.getElementById('second-section').scrollIntoView();" class="button-container-item bt2">KØB FÆRDIGLAVET</button>
+      </div>
+      <div class="video-container">
+        <video class="video" loop autoplay muted preload="auto" src="Resources/videos/v1.mov"></video>
+      </div>
+      <div class="arrow bounce">
+        <a class="fas fa-chevron-down" href="index.html#second-section"></a>
+      </div>
+    </section>
+
+    <section id="second-section">
+
+    </section>
+  </body>
 </html>
