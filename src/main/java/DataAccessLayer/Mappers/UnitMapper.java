@@ -3,32 +3,44 @@ package DataAccessLayer.Mappers;
 import DataAccessLayer.Database;
 import Entities.Unit;
 
-public class UnitMapper
-{
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
+public class UnitMapper {
     private Database database;
 
-    public UnitMapper(Database database)
-    {
+    public UnitMapper(Database database) {
         this.database = database;
     }
 
-    public void createUnit(Unit unit)
-    {
+    public void createUnit(Unit unit) throws Exception {
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO unit(name) values(?)";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setString(1, unit.getName());
+                ps.executeUpdate();
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void deleteUnit(Unit unit)
-    {
+    public void deleteUnit(Unit unit) {
 
     }
 
-    public void editUnit(Unit unit)
-    {
+    public void editUnit(Unit unit) {
 
     }
 
-    public Unit getUnit (Unit unit)
-    {
+    public Unit getUnit(Unit unit) {
 
         return null;
     }

@@ -12,8 +12,8 @@ public class CladdingFacade {
         claddingMapper = new CladdingMapper(database);
     }
 
-    public Cladding creatCladding(Material material) {
-        Cladding cladding = new Cladding(material);
+    public Cladding creatCladding(Material material,int material_id)throws Exception{
+        Cladding cladding = new Cladding(material,material_id);
         claddingMapper.createCladding(cladding);
         return cladding;
     }

@@ -12,9 +12,10 @@ public class UnitFacade
      unitMapper = new UnitMapper(database);
  }
 
- public Unit creatUnit(String name){
+ public Unit creatUnit(String name) throws Exception {
      Unit unit = new Unit(name);
-     unitMapper.createUnit(unit);
+         unitMapper.createUnit(unit);
+
      return unit;
  }
 

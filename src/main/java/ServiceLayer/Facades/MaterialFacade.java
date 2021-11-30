@@ -12,8 +12,8 @@ public class MaterialFacade {
         materialMapper = new MaterialMapper(database);
     }
 
-    public Material creatMaterial(String name, String description, double price, Unit unit, Double length, Double height, Double width) {
-        Material material = new Material(name, description, price, unit, length, height, width);
+    public Material creatMaterial(String name, String description, double price, int unit_id, Double length, Double height, Double width) throws Exception {
+        Material material = new Material(name, description, price, unit_id, length, height, width);
         materialMapper.createMaterial(material);
         return material;
 

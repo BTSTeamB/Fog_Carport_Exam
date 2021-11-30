@@ -12,10 +12,10 @@ public class RoofingFacade
     public RoofingFacade(Database database){
         roofingMapper = new RoofingMapper(database);
     }
-    public Roofing createRoofing(Material material)
-    {
-        Roofing roofing = new Roofing(material);
-        roofingMapper.createRoofing(roofing);
+    public Roofing createRoofing(Material material,int material_id) throws Exception {
+        Roofing roofing = new Roofing(material,material_id);
+            roofingMapper.createRoofing(roofing);
+
         return roofing;
     }
 }
