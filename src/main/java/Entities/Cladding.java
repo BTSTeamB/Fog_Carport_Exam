@@ -10,4 +10,8 @@ public class Cladding
         this.cladding_id = cladding_id;
         this.material = material;
     }
+    public Cladding(Material material){
+        this.material = material;
+
+    }
 }

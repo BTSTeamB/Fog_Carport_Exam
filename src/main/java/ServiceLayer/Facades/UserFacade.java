@@ -10,7 +10,7 @@ public class UserFacade
 
     public UserFacade(Database database)
     {
-        super();
+
         userMapper = new UserMapper(database);
     }
 

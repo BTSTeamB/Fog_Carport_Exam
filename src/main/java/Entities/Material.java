@@ -37,6 +37,15 @@ public class Material
         this.width = width;
         this.time_created = time_created;
     }
+    public Material(String name, String description, double price, Unit unit, Double length, Double height, Double width){
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.unit = unit;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+    }
 
     //TODO: Get currentId, hvor man henter id fra database og sætter et nyt objekts id til det.
 }
