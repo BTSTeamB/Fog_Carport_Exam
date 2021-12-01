@@ -25,18 +25,19 @@ public class UserController extends HttpServlet
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         String zipCode = request.getParameter("zip-code");
-        String phoneNumber = request.getParameter("number");
+        String phoneNumber = request.getParameter("phone");
         String email = request.getParameter("RegEmail");
         String password = request.getParameter("RegPassword");
 
         user = new User(name, address, zipCode, phoneNumber, email, password, false);
 
         //FOOBAR
-        System.out.println(user.getName());
-        System.out.println(user.getEmail());
-        System.out.println(user.getPassword());
-        System.out.println(user.getPhoneNumber());
-        System.out.println(user.getAddress());
-        System.out.println(user.getZipCode());
+        System.out.println("REGISTERED TEST USER:");
+        System.out.println("Name: " + user.getName());
+        System.out.println("Email: "+ user.getEmail());
+        System.out.println("Password: "+ user.getPassword());
+        System.out.println("PhoneNumber: " + user.getPhoneNumber());
+        System.out.println("Address: " + user.getAddress());
+        System.out.println("Zip-Code: " + user.getZipCode());
     }
 }
