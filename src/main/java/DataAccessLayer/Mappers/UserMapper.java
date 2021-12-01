@@ -78,9 +78,43 @@ public class UserMapper {
 
     }
 
-    public User getUser (User user){
+    public User getUser (String email, String password) throws Exception
+    {
+        User tmpUser = null;
+        try(Connection connection = database.connect())
+        {
+            String sql = " SELECT * FROM user WHERE email='"+email+"' AND password=MD5('"+password+"')";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next())
+                {
+                    int user_id = rs.getInt("user_id");
+                    int is_admin = rs.getInt("isAdmin");
+                    String userName = rs.getString("name");
+                    String userAddress = rs.getString("address");
+                    String userZipCode = rs.getString("zip_code");
+                    String userPhoneNumber = rs.getString("phone_no");
+                    String userEmail = rs.getString("email");
+                    String userPassword = rs.getString("password");
 
-        return null;
+                    System.out.println(userName);
+                    System.out.println(userAddress);
+                    System.out.println(userZipCode);
+                    System.out.println(userPhoneNumber);
+                    System.out.println(userEmail);
+                    System.out.println(userPassword);
+
+                    tmpUser = new User(user_id, is_admin, userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
+                }
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tmpUser;
     }
 
 }

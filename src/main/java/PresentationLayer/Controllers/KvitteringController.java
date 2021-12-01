@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "KvitteringController", value = "/KvitteringController")
-public class KvitteringController extends HttpServlet implements ControllerUtil
+public class KvitteringController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -22,21 +22,4 @@ public class KvitteringController extends HttpServlet implements ControllerUtil
 
     }
 
-    @Override
-    public String buttonChecker(String buttonName, HttpServletRequest request)
-    {
-        return null;
-    }
-
-    @Override
-    public void loginChecker(User user, HttpSession session)
-    {
-
-    }
-
-    @Override
-    public void adminChecker(User user, HttpSession session)
-    {
-
-    }
 }

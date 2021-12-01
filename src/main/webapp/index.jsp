@@ -41,14 +41,14 @@
         <div class="header">
             Member login
         </div>
-        <form>
+        <form action="LoginController" method="post">
             <div class="login-element">
                 <label for="LoginUsername">E-mail</label>
-                <input type="email" id="LoginUsername" placeholder="&#xf0e0;  insert email address">
+                <input type="email" name="LoginUsername" id="LoginUsername" placeholder="&#xf0e0;  insert email address">
             </div>
             <div class="login-element">
                 <label for="LoginPassword">Password</label>
-                <input type="password" id="LoginPassword" placeholder="&#xf577; insert password">
+                <input type="password" name="LoginPassword" id="LoginPassword" placeholder="&#xf577; insert password">
             </div>
             <div class="login-element">
                 <button>Login &#xf105;</button>
@@ -70,16 +70,17 @@
         <div class="header">
             Member register
         </div>
-        <form action="UserController" method="post">
+        <form action="RegisterController" method="post">
             <div class="register-element">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="&#xf007;  insert name">
 
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" placeholder="&#xf015; insert address">
+
                 <label for="zip-code">zip-code</label>
                 <input type="number" name="zip-code" id="zip-code" placeholder="&#xf276; insert zip-code">
 
-                <label for="phone">Phone</label>
-                <input type="number" name="phone" id="phone" placeholder="&#xf10b; insert phone number">
             </div>
             <div class="register-element">
                 <label for="RegEmail">E-mail</label>
@@ -88,8 +89,8 @@
                 <label for="RegPassword">Password</label>
                 <input type="password" name="RegPassword" id="RegPassword" placeholder="&#xf577; insert password">
 
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address" placeholder="&#xf015; insert address">
+                <label for="phone">Phone</label>
+                <input type="number" name="phone" id="phone" placeholder="&#xf10b; insert phone number">
             </div>
 
             <div class="register-element">

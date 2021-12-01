@@ -13,12 +13,19 @@ public class UserFacade {
     }
 
     public User login(String email, String password) {
-        // return userMapper.login(email, password);
+        User user;
         return null;
     }
 
-    public void createUser(String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception {
-        User user = new User(name, address, zipCode, phoneNumber, email, password);
+    public User getUser(String email, String password) throws Exception
+    {
+        User user = null;
+        user = userMapper.getUser(email, password);
+        return user;
+    }
+
+    public void createUser(String name, String address, String zipCode, String email, String password, String phoneNumber) throws Exception {
+        User user = new User(name, address, zipCode, email, password, phoneNumber);
         userMapper.createUser(user);
 
     }

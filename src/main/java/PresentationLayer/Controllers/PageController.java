@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "PageController", value = "/PageController")
-public class PageController extends HttpServlet implements ControllerUtil
+public class PageController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -18,24 +18,6 @@ public class PageController extends HttpServlet implements ControllerUtil
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-
-    }
-
-    @Override
-    public String buttonChecker(String buttonName, HttpServletRequest request)
-    {
-        return null;
-    }
-
-    @Override
-    public void loginChecker(User user, HttpSession session)
-    {
-
-    }
-
-    @Override
-    public void adminChecker(User user, HttpSession session)
     {
 
     }

@@ -11,7 +11,8 @@ public class User
     private int is_admin;
     private int user_id;
 
-    public User(String name, String address, String zipCode, String phoneNumber, String email, String password)
+    //Database inserter Constructor
+    public User(String name, String address, String zipCode, String email, String password, String phoneNumber)
     {
         this.name = name;
         this.address = address;
@@ -23,7 +24,7 @@ public class User
     }
 
     //Database retriever Constructor
-    public User( int user_id, int is_admin,String name, String address, String zipCode, String phoneNumber, String email, String password)
+    public User( int user_id, int is_admin, String name, String address, String zipCode, String email, String password, String phoneNumber)
     {
         this.name = name;
         this.address = address;
