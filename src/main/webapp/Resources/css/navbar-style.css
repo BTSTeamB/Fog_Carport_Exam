@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+:root{
+    --main-nav-color: #181818;
+    --main-nav-links-color: #696969;
+}
+
+body {
+  scroll-behavior: smooth;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8vh;
+  background-color: var(--main-nav-color);
+  font-family: "Poppins";
+}
+
+.nav-logo {
+  color: rgb(226, 226, 226);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.25rem;
+  display: flex;
+}
+
+.logoPicture {
+  height: 50px;
+  width: 50px;
+  margin: auto;
+  display: block;
+}
+
+.logoHeader {
+  margin-left: 1em;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  z-index: 2;
+  float: left;
+}
+
+.nav-links li {
+  list-style: none;
+  z-index: 2;
+}
+
+.nav-links a {
+  color: var(--main-nav-links-color);
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sign-in {
+  margin-left: 1vw;
+  color: var(--main-nav-links-color);
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+a:hover {
+  color: white;
+}
+
+@media screen and (max-width: 1025px) {
+  .nav-links {
+    width: 50%;
+  }
+  .sign-in {
+    width: 15%;
+  }
+
+  .logoHeader {
+    font-size: 0.9375rem;
+  }
+}

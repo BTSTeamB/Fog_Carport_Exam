@@ -4,6 +4,7 @@ import DataAccessLayer.Database;
 import Entities.User;
 import ServiceLayer.Facades.UserFacade;
 
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -52,5 +53,14 @@ public class UserController extends HttpServlet implements ControllerUtil
     public void adminChecker(User user, HttpSession session)
     {
 
+
+        //FOOBAR
+        System.out.println("REGISTERED TEST USER:");
+        System.out.println("Name: " + user.getName());
+        System.out.println("Email: "+ user.getEmail());
+        System.out.println("Password: "+ user.getPassword());
+        System.out.println("PhoneNumber: " + user.getPhoneNumber());
+        System.out.println("Address: " + user.getAddress());
+        System.out.println("Zip-Code: " + user.getZipCode());
     }
 }
