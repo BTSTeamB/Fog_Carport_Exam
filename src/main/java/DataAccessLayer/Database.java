@@ -11,7 +11,7 @@ public class Database
     private final String PASSWORD;
     private final String URL;
 
-    public Database(String user, String password, String url) throws ClassNotFoundException
+    public Database() throws ClassNotFoundException
     {
             USER = "mikkel";
             PASSWORD = "Mikkel405!";
