@@ -38,12 +38,24 @@ public class LoginController extends HttpServlet
         {
             if(userUtility.loginUser(logEmail, logPassword, httpSession) == null)
             {
+                String loginFailMessage = "Wrong email or password, try again!";
+                request.setAttribute("loginFailMessage", loginFailMessage);
                 view.forwardToJsp("errorPage.jsp", request, response);
             }
             else
             {
                 userUtility.loginUser(logEmail, logPassword, httpSession);
-                view.forwardToJsp("loginTest.jsp", request, response);
+                String changeSignInButton = "style='display: none;'";
+                String changeDropDownButton = "display: block;";
+                String changeDropDownMenu = "<div class=\"dropdown-content\">\n" +
+                        "            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->\n" +
+                        "            <a href=\"account.jsp\">Account</a>\n" +
+                        "            <a href=\"foobar\">Sign-out</a>\n" +
+                        "        </div>";
+                changeButton("changeSignInButton", changeSignInButton, request);
+                changeButton("changeDropDownButton", changeDropDownButton, request);
+                changeButton("changeDropDownMenu", changeDropDownMenu, request);
+                view.forwardToJsp("index.jsp", request, response);
             }
         } catch (Exception e)
         {
@@ -51,4 +63,11 @@ public class LoginController extends HttpServlet
         }
 
     }
+
+    public void changeButton(String attributeCaller, String attribute, HttpServletRequest request)
+    {
+        request.setAttribute(attributeCaller, attribute);
+    }
 }
+
+

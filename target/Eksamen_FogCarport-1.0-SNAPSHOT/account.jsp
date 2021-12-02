@@ -11,68 +11,79 @@
     <title>Account</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-logo">
-          <img class="nav-logo-item logoPicture" src="Resources/images/fog-logo.png" alt=""/>
-          <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
-        </div>
-        <ul class="nav-links">
-          <li><a href="index.jsp">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="#">Orders</a></li>
-        </ul>
-        <div class="dropdown">
-          <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-          <button class="dropbtn">&#xf007; Username
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a href="account.jsp">Account</a>
-            <a href="UserController">Sign-out</a>
-          </div>
-        </div>
-      </nav>
-
-      <div class="container">
-        <div class="sidenav">
-          <div class="sidenav-container">
-          <img class="logo-image" src="Resources/images/fog-logo.png" alt="picture of fog logo">
-          <h1>Account details</h1>
-
-      <form action="RegisterController" method="post"></form>
-        <div class="edit-element">
-          <label for="editName">Name</label>
-          <input type="text" name="editName" id="editName" placeholder="skal have brugerens navn">
-
-          <label for="editAddress">Adress</label>
-          <input type="text" name="editAddress" id="editAddress" placeholder="skal have brugerens adresse">
-
-          <label for="editZip-code">zip-code</label>
-          <input type="number" name="editZip-code" id="editZip-code" placeholder="skal have brugerens zip-code">
-        </div>
-
-        <div class="edit-element up">
-          <label for="editEmail">E-mail</label>
-          <input type="email" name="editEmail" id="editEmail" placeholder="skal have brugers email">
-
-          <label for="editPassword">Password</label>
-          <input type="password" name="editPassword" id="editPassword" placeholder="********">
-
-          <label for="editPhone">Phone</label>
-          <input type="number" name="editPhone" id="editPhone" placeholder="skal have brugerens nummer">
-        </div>
-
-        <div class="edit-element">
-          <button class="discard">Discard changes</button>
-          <button class="save">Save changes</button>
-        </div>
-      </form>
+<nav>
+    <div class="nav-logo">
+        <img class="nav-logo-item logoPicture" src="Resources/images/fog-logo.png" alt=""/>
+        <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
     </div>
-  </div>
-        <div class="bgrnd">
-          <div class="color-overlay"></div>
-          <img class="background-image" src="Resources/images/accountBackground.jpeg" alt="picture of a car inside car">
+    <ul class="nav-links">
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="OrderController">About</a></li>
+        <li><a href="#">Orders</a></li>
+    </ul>
+    <div class="dropdown">
+        <a class="sign-in" onclick="openLoginForm()" style="display: none;">SIGN-IN</a>
+        <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+        <button class="dropbtn" style='display: block;'>&#xf007; username
+            <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->
+            <a href="account.jsp">Account</a>
+            <a href="foobar">Sign-out</a>\
         </div>
-      </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="sidenav">
+        <div class="sidenav-container">
+            <img class="logo-image" src="Resources/images/fog-logo.png" alt="picture of fog logo">
+            <h1>Account details</h1>
+
+            <form action="RegisterController" method="post"></form>
+            <div class="edit-element">
+                <label for="editName">Name</label>
+                <input type="text" name="editName" id="editName" placeholder="${sessionScope.user.getName()}"
+                value="${sessionScope.user.getName()}">
+
+                <label for="editAddress">Adress</label>
+                <input type="text" name="editAddress" id="editAddress" placeholder="${sessionScope.user.getAddress()}"
+                value="${sessionScope.user.getAddress()}">
+
+                <label for="editZip-code">zip-code</label>
+                <input type="text" name="editZip-code" id="editZip-code"
+                       placeholder="${sessionScope.user.getZipCode()}"
+                value="${sessionScope.user.getZipCode()}">
+            </div>
+
+            <div class="edit-element up">
+                <label for="editEmail">E-mail</label>
+                <input type="email" name="editEmail" id="editEmail" placeholder="${sessionScope.user.getEmail()}"
+                value="${sessionScope.user.getEmail()}">
+
+                <label for="editPassword">Password</label>
+                <input type="password" name="editPassword" id="editPassword" placeholder="********">
+
+                <label for="editPhone">Phone</label>
+                <input type="text" name="editPhone" id="editPhone" placeholder="${sessionScope.user.getPhoneNumber()}"
+                value="${sessionScope.user.getPhoneNumber()}">
+            </div>
+
+            <div class="edit-element">
+                <form action="UserController" method="get" style="display: inline;">
+                    <button class="discard" type="reset">Discard changes</button>
+                </form>
+                <button class="save" type="submit">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="bgrnd">
+        <div class="color-overlay"></div>
+        <img class="background-image" src="Resources/images/accountBackground.jpeg" alt="picture of a car inside car">
+    </div>
+</div>
 </body>
 </html>

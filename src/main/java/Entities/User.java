@@ -23,6 +23,19 @@ public class User
 
     }
 
+    public User(int user_id, String name, String address, String zipCode, String email, String password, String phoneNumber)
+    {
+        this.user_id = user_id;
+        this.name = name;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+    }
+
+
+
     //Database retriever Constructor
     public User( int user_id, int is_admin, String name, String address, String zipCode, String email, String password, String phoneNumber)
     {

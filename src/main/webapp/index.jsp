@@ -31,14 +31,13 @@
         <li><a href="#">Design</a></li>
     </ul>
     <div class="dropdown">
-        <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-        <button class="dropbtn">&#xf007; Username
+        <a class="sign-in" onclick="openLoginForm()" ${requestScope.changeSignInButton}>SIGN-IN</a>
+        <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+        <button class="dropbtn" style='display: none; ${requestScope.changeDropDownButton}'>&#xf007; ${sessionScope.user.getName()}
+            <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content">
-            <a href="account.jsp">Account</a>
-            <a href="foobar">Sign-out</a>
-        </div>
+        ${requestScope.changeDropDownMenu}
     </div>
 </nav>
 
