@@ -1,7 +1,6 @@
 package Entities;
 
-public class User
-{
+public class User {
     private String name;
     private String address;
     private String zipCode;
@@ -11,8 +10,7 @@ public class User
     private int is_admin;
     private int user_id;
 
-    public User(String name, String address, String zipCode, String phoneNumber, String email, String password)
-    {
+    public User(String name, String address, String zipCode, String phoneNumber, String email, String password) {
         this.name = name;
         this.address = address;
         this.zipCode = zipCode;
@@ -23,8 +21,7 @@ public class User
     }
 
     //Database retriever Constructor
-    public User( int user_id, int is_admin,String name, String address, String zipCode, String phoneNumber, String email, String password)
-    {
+    public User(int user_id, int is_admin, String name, String address, String zipCode, String phoneNumber, String email, String password) {
         this.name = name;
         this.address = address;
         this.zipCode = zipCode;
@@ -33,7 +30,19 @@ public class User
         this.password = password;
         this.is_admin = is_admin;
         this.user_id = user_id;
+
     }
+
+    public User(int user_id, String name, String address, String zipCode, String phoneNumber, String email, String password) {
+        this.user_id = user_id;
+        this.name = name;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+    }
+
 
     public String getName() {
         return name;

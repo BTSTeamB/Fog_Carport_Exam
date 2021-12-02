@@ -62,6 +62,11 @@ public class Facades {
 
         return unit;
     }
+    public Unit deleteUnit(String name){
+        Unit unit = new Unit(name);
+        unitMapper.deleteUnit(unit);
+        return unit;
+    }
 
     public User login(String email, String password) {
         // return userMapper.login(email, password);
@@ -71,6 +76,10 @@ public class Facades {
     public void createUser(String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception {
         User user = new User(name, address, zipCode, phoneNumber, email, password);
         userMapper.createUser(user);
+    }
 
+    public void editUser(int user_id,String name, String address, String zipCode, String phoneNumber, String email, String password){
+        User user = new User(user_id,name,address,zipCode,phoneNumber,email,password);
+        userMapper.editUser(user);
     }
 }

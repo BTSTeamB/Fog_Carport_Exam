@@ -47,41 +47,54 @@ public class UserMapper {
     }
 
 
+    public void createUser(User user) throws Exception {
+        try (Connection connection = database.connect()) {
+            String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,MD5(?))";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        public void createUser (User user) throws Exception {
-            try (Connection connection = database.connect()) {
-                String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,MD5(?))";
-                try (PreparedStatement ps = connection.prepareStatement(sql)) {
-
-                    ps.setString(1, user.getName());
-                    ps.setString(2, user.getAddress());
-                    ps.setString(3, user.getZipCode());
-                    ps.setString(4, user.getPhoneNumber());
-                    ps.setString(5, user.getEmail());
-                    ps.setString(6, user.getPassword());
-                    ps.executeUpdate();
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    throw new Exception();
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
+                ps.setString(1, user.getName());
+                ps.setString(2, user.getAddress());
+                ps.setString(3, user.getZipCode());
+                ps.setString(4, user.getPhoneNumber());
+                ps.setString(5, user.getEmail());
+                ps.setString(6, user.getPassword());
+                ps.executeUpdate();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
 
 
-        public void deleteUser (User user){
-
-        }
-
-        public void editUser (User user){
-
-        }
-
-        public User getUser (User user){
-
-            return null;
-        }
+    public void deleteUser(User user) {
 
     }
+
+    public void editUser(User user) {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE user SET name=?, address=?,zip_code=?,phone_no=?, email=?, password=MD5(?) WHERE user_id="+user.getUser_id();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setString(1, user.getName());
+                ps.setString(2, user.getAddress());
+                ps.setString(3, user.getZipCode());
+                ps.setString(4, user.getPhoneNumber());
+                ps.setString(5, user.getEmail());
+                ps.setString(6, user.getPassword());
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public User getUser(User user) {
+
+        return null;
+    }
+
+}
 

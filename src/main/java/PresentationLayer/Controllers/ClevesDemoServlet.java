@@ -40,8 +40,9 @@ public class ClevesDemoServlet extends HttpServlet {
         }
 
         try {
-
+            facades.deleteUnit("Bære stolpe");
             facades.createCladding(4);
+            facades.editUser(1,"christian","nyuholmasalle","2610","20202020","christian@gmail.com","1234");
 
         } catch (Exception e) {
             e.printStackTrace();

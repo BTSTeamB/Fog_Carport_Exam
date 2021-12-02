@@ -33,7 +33,15 @@ public class UnitMapper {
     }
 
     public void deleteUnit(Unit unit) {
-
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM unit WHERE name = ? ";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, unit.getName());
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void editUnit(Unit unit) {
