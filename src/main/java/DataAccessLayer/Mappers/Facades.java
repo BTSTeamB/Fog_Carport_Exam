@@ -102,6 +102,10 @@ public class Facades {
         PredefinedShed predefinedShed = new PredefinedShed(id);
         predefinedShedMapper.deletePredefinedShed(predefinedShed);
     }
+    public void eceviePredefinedShed(int id)throws Exception{
+        PredefinedShed predefinedShed = new PredefinedShed(id);
+        predefinedShedMapper.receviePredefinedShed(predefinedShed);
+    }
 
 
     public void createPredefinedCarport(int width, int length) throws Exception {
@@ -118,4 +122,10 @@ public class Facades {
         PredefinedCarport predefinedCarport = new PredefinedCarport(id);
         predefinedCarportMapper.deletePredefinedCarport(predefinedCarport);
     }
+
+    public void receviePredefinedCarport(int id) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(id);
+        predefinedCarportMapper.receviePredefinedCarport(predefinedCarport);
+    }
 }
+

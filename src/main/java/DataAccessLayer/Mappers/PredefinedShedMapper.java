@@ -7,6 +7,7 @@ import Entities.Unit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PredefinedShedMapper {
@@ -53,6 +54,23 @@ public class PredefinedShedMapper {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    public void receviePredefinedShed(PredefinedShed predefinedShed)throws Exception {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT width,length FROM predefined_shed WHERE id="+predefinedShed.getId();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next()){
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+                    System.out.println(width + "," + length);
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
         }
     }
 }

@@ -30,7 +30,7 @@ public class PredefinedCarportMapper {
         }
     }
 
-    public void editPredefinedCarport(PredefinedCarport predefinedCarport)throws Exception {
+    public void editPredefinedCarport(PredefinedCarport predefinedCarport) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE predefined_carport SET width=?,length=? WHERE id=" + predefinedCarport.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -44,16 +44,35 @@ public class PredefinedCarportMapper {
             e.printStackTrace();
         }
     }
-        public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
-            try (Connection connection = database.connect()) {
-                String sql = "DELETE FROM predefined_shed WHERE id=? ";
-                try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                    ps.setInt(1, predefinedCarport.getId());
-                    ps.executeUpdate();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+
+    public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM predefined_carport WHERE id=? ";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, predefinedCarport.getId());
+                ps.executeUpdate();
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+
+    public void receviePredefinedCarport(PredefinedCarport predefinedCarport)throws Exception {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT width,length FROM predefined_carport WHERE id="+predefinedCarport.getId();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next()){
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+                    System.out.println(width + "," + length);
+                }
+
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
 

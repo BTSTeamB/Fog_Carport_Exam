@@ -43,9 +43,11 @@ public class ClevesDemoServlet extends HttpServlet {
             // facades.deleteUnit("Bære stolpe");
             //facades.createCladding(4);
             //facades.editUser(1,"christian","nyuholmasalle","2610","20202020","christian@gmail.com","1234");
-          //facades.createPredefinedCarport(200,200);
-//facades.editPredefinedCarport(1,300,300);
-facades.deletePredefinedCarport(1);
+            //facades.createPredefinedCarport(200,200);
+            //facades.editPredefinedCarport(1,300,300);
+            // facades.deletePredefinedCarport(1);
+            //facades.createPredefinedCarport(200,300);
+            facades.receviePredefinedCarport(3);
         } catch (Exception e) {
             e.printStackTrace();
         }
