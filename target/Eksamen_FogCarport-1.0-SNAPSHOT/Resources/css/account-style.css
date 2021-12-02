@@ -3,7 +3,7 @@ body{
     scroll-behavior: smooth;
     margin: 0px;
     padding: 0px;
-    font-family: "poppins", FontAwesome,sans-serif;
+    font-family: "poppins", sans-serif;
 }
 
 .container{
