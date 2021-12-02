@@ -1,20 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-
-:root{
-  --first-section-color: #1f1f1f;
-  --second-section-color: #242424;
-}
-
-
 html{
   scroll-behavior: smooth;
 }
-
-body
-{
-  margin: 0px;
-  padding: 0px;
-  font-family: "poppins", sans-serif;
+  
+.sign-in{
+  cursor: pointer;
 }
 
 section {
@@ -26,7 +16,7 @@ section {
 {
   position: relative;
   justify-content: center;
-  background-color: #1f1f1f; 
+  background-color: var(--first-section-color); 
 }
 
 .text-video-overlay{
@@ -95,13 +85,13 @@ section {
 
 .arrow{
   position: absolute;
-  left: 50%;
+  left: 49%;
   top: 86%;
   font-size: 2em;
 }
 
 .arrow a{
-  color: rgb(226, 226, 226);
+  color: var(--better-white-color);
   text-decoration: none;
 }
 
@@ -128,12 +118,44 @@ section {
 }
 
 #second-section {
-  background-color: #242424;
+  background-color: var(--second-third-section-color);
+  position: relative;
+  padding-top: 10px;
 }
 
-.sign-in{
-  cursor: pointer;
+.background-wrap{
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
 }
 
+.background-wrap .header{
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  color: var(--better-white-color);
+  font-size: 2rem;
+}
+
+.background-wrap .second-header{
+  left: 50%;
+}
+
+
+#third-section{
+  background-color: var(--second-third-section-color);
+  position: relative;
+  padding-top: 10px;
+}
+
+.background-wrap .background{
+  max-width: 100%;
+  opacity: 0.05;
+}
 
 

@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-    body {
-    font-family:"poppins";
-    }
-  
   .login-popup-overlay {
     position:fixed;
     top:0px;
@@ -48,7 +44,7 @@
     text-align:center;
     font-size:20px;
     font-weight:600;
-    color:rgb(226, 226, 226);;
+    color:var(--better-white-color);
     margin:20px 0px;
   }
   #login-popup .form .login-element {
@@ -58,7 +54,7 @@
     display:block;
     font-size:14px;
     margin-left: 1em;
-    color:rgb(226, 226, 226);
+    color:var(--better-white-color); 
     margin-bottom:5px;
   }
   #login-popup .form .login-element input {
@@ -70,7 +66,7 @@
     width: 30em;
     margin: 1em;
     font-family: 'Helvetica', FontAwesome, sans-serif;
-    color: white;
+    color: var(--better-white-color);
     text-indent: 15px;
     outline: none;
   }
@@ -81,10 +77,10 @@
     height: 3em;
     width: 8em;
     border: none;
-    background-color: rgb(0, 61, 118);
+    background-color: var(--fog-firm-color);
     border-radius: 10px;
     font-family: 'Helvetica', FontAwesome, sans-serif;
-    color: rgb(226, 226, 226);
+    color: var(--better-white-color);
     cursor: pointer;
   }
 
@@ -95,11 +91,11 @@
  } 
 
 h2{
-    color: rgb(226, 226, 226);;
+    color: var(--better-white-color);
 }
 
 .register-link{
-    color: rgb(0, 61, 118);
+    color: var(--fog-firm-color);
     text-decoration: none;
     margin-left: 2px;
     cursor: pointer;

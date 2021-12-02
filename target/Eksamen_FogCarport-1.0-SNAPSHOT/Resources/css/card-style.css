@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+.cards{
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #242424;
+    vertical-align: top;
+    width: 30%;
+    max-height: 90%;
+}
+
+
+.image img{
+    width: 100%;
+    height: 10em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.title{
+    text-align: center;
+    color: var(--better-white-color);
+    font-size: 1rem;
+}
+
+.des{
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 4px;
+    color: var(--better-white-color);
+    margin: 1em;
+}
+
+.button-cards{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    height: 3em;
+    width: 8em;
+    border: none;
+    background-color: var(--fog-firm-color);
+    border-radius: 10px;
+    font-family: 'Helvetica', FontAwesome, sans-serif;
+    color: var(--better-white-color);
+    cursor: pointer;
+}
+
+.carousel {
+    top: 15%;
+    left: 8%;
+    position: absolute;
+    align-items: center;
+    width: 85%;
+    height: 70%;
+    margin: 0 auto 0 auto;
+}
+
+.carousel__item {
+    margin-top: 3em;
+    width: 100%;
+    height: 590px;
+    font-size: 2em;
+    display: none;
+    text-align: center;
+}
+
+.carousel__item--selected {
+    display: block;
+}
+
+
+.carousel__nav {
+    width: 100%;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+
+.carousel__button {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.carousel__button--selected {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+.prev, .next{
+    cursor: pointer;
+    position:absolute;
+    top: 50%;
+    margin-top:-22px;
+    padding: 16px;
+    width: auto;
+    color: var(--better-white-color);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 3px 0 0 3px;
+    user-select: none;
+}
+
+.next{
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,61,118,0.8);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 3px;
+    margin-top: 48em;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
