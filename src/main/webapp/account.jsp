@@ -45,30 +45,25 @@
             <form action="RegisterController" method="post"></form>
             <div class="edit-element">
                 <label for="editName">Name</label>
-                <input type="text" name="editName" id="editName" placeholder="${sessionScope.user.getName()}"
-                value="${sessionScope.user.getName()}">
+                <input type="text" name="editName" id="editName" placeholder="${sessionScope.user.getName()}">
 
                 <label for="editAddress">Adress</label>
-                <input type="text" name="editAddress" id="editAddress" placeholder="${sessionScope.user.getAddress()}"
-                value="${sessionScope.user.getAddress()}">
+                <input type="text" name="editAddress" id="editAddress" placeholder="${sessionScope.user.getAddress()}">
 
                 <label for="editZip-code">zip-code</label>
                 <input type="text" name="editZip-code" id="editZip-code"
-                       placeholder="${sessionScope.user.getZipCode()}"
-                value="${sessionScope.user.getZipCode()}">
+                       placeholder="${sessionScope.user.getZipCode()}">
             </div>
 
             <div class="edit-element up">
                 <label for="editEmail">E-mail</label>
-                <input type="email" name="editEmail" id="editEmail" placeholder="${sessionScope.user.getEmail()}"
-                value="${sessionScope.user.getEmail()}">
+                <input type="email" name="editEmail" id="editEmail" placeholder="${sessionScope.user.getEmail()}">
 
                 <label for="editPassword">Password</label>
                 <input type="password" name="editPassword" id="editPassword" placeholder="********">
 
                 <label for="editPhone">Phone</label>
-                <input type="text" name="editPhone" id="editPhone" placeholder="${sessionScope.user.getPhoneNumber()}"
-                value="${sessionScope.user.getPhoneNumber()}">
+                <input type="text" name="editPhone" id="editPhone" placeholder="${sessionScope.user.getPhoneNumber()}">
             </div>
 
             <div class="edit-element">
