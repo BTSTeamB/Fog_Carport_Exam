@@ -3,6 +3,7 @@ package DataAccessLayer.Mappers;
 import DataAccessLayer.Database;
 import Entities.PredefinedCarport;
 import Entities.PredefinedShed;
+import Entities.Unit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,6 +40,17 @@ public class PredefinedShedMapper {
             }
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deletePredefinedShed(PredefinedShed predefinedShed) {
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM predefined_shed WHERE id=?, ";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, predefinedShed.getId());
+                ps.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

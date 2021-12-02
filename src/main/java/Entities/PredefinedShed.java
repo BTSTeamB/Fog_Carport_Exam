@@ -19,6 +19,9 @@ public class PredefinedShed {
         this.width = width;
         this.length = length;
     }
+    public PredefinedShed(int id){
+        this.id=id;
+    }
 
     public int getWidth() {
         return width;

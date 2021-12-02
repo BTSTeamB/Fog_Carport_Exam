@@ -2,6 +2,7 @@ package DataAccessLayer.Mappers;
 
 import DataAccessLayer.Database;
 import Entities.PredefinedCarport;
+import Entities.PredefinedShed;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,18 +30,30 @@ public class PredefinedCarportMapper {
         }
     }
 
-    public void editPredefinedCarport(PredefinedCarport predefinedCarport)throws Exception{
-        try(Connection connection = database.connect()){
-            String sql = "UPDATE predefiend_carport SET width=?,length=? WHERE id="+predefinedCarport.getId();
-        try (PreparedStatement ps = connection.prepareStatement(sql)){
-           ps.setInt(1,predefinedCarport.getWidth());
-           ps.setInt(2,predefinedCarport.getLength());
-           ps.executeUpdate();
+    public void editPredefinedCarport(PredefinedCarport predefinedCarport)throws Exception {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE predefiend_carport SET width=?,length=? WHERE id=" + predefinedCarport.getId();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, predefinedCarport.getWidth());
+                ps.setInt(2, predefinedCarport.getLength());
+                ps.executeUpdate();
             }
 
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-}
+        public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
+            try (Connection connection = database.connect()) {
+                String sql = "DELETE FROM predefined_shed WHERE id=?, ";
+                try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                    ps.setInt(1, predefinedCarport.getId());
+                    ps.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+

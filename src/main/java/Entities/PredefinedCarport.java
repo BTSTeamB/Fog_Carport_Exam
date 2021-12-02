@@ -10,6 +10,9 @@ public class PredefinedCarport {
         this.width = width;
         this.length = length;
     }
+    public PredefinedCarport(int id){
+        this.id = id;
+    }
 
     public int getWidth() {
         return width;
