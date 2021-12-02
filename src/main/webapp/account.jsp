@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@
             <img class="logo-image" src="Resources/images/fog-logo.png" alt="picture of fog logo">
             <h1>Account details</h1>
 
-            <form action="RegisterController" method="post"></form>
+            <form action="UserController" method="post">
             <div class="edit-element">
                 <label for="editName">Name</label>
                 <input type="text" name="editName" id="editName" placeholder="${sessionScope.user.getName()}">
@@ -50,8 +51,8 @@
                 <label for="editAddress">Adress</label>
                 <input type="text" name="editAddress" id="editAddress" placeholder="${sessionScope.user.getAddress()}">
 
-                <label for="editZip-code">zip-code</label>
-                <input type="text" name="editZip-code" id="editZip-code"
+                <label for="editZip-Code">zip-code</label>
+                <input type="text" name="editZip-Code" id="editZip-Code"
                        placeholder="${sessionScope.user.getZipCode()}">
             </div>
 

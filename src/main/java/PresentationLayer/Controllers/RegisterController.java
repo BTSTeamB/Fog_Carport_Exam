@@ -47,7 +47,7 @@ public class RegisterController extends HttpServlet
             e.printStackTrace();
             String errorMsg = "Whoops something went wrong!";
             request.setAttribute("errorMsg", errorMsg);
-            view.forwardToJsp("index.jsp", request, response);
+            view.forwardToJsp("errorPage.jsp", request, response);
         }
 
         //Debug Prints
@@ -70,7 +70,7 @@ public class RegisterController extends HttpServlet
             else
             {
             userUtility.loginUser(userEmail, userPassword, httpSession);
-            view.forwardToJsp("loginTest.jsp", request, response);
+            view.forwardToJsp("index.jsp", request, response);
             }
         } catch (Exception e)
         {

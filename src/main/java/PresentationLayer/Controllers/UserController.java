@@ -38,8 +38,14 @@ public class UserController extends HttpServlet
     {
         HttpSession httpSession = request.getSession();
 
-        userUtility.editUser(request, httpSession);
 
+        try
+        {
+            userUtility.editUser(request, httpSession);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         view.forwardToJsp("account.jsp", request, response);
     }

@@ -12,42 +12,6 @@ public class UserMapper {
         this.database = database;
     }
 
-    public User login(String email, String password) throws Exception {
-        try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM user WHERE email=? AND password=?";
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setString(1, email);
-                ps.setString(2, password);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    int user_id = rs.getInt("user_id");
-                    int is_admin = rs.getInt("isAdmin");
-                    String name = rs.getString("name");
-                    String address = rs.getString("address");
-                    String zipCode = rs.getString("zip_code");
-                    String phoneNumber = rs.getString("phone_no");
-                    String eMail = rs.getString("email");
-                    String passwordUser = rs.getString("password");
-                    User user = new User(user_id, is_admin, name, address, zipCode, phoneNumber, eMail, passwordUser);
-                    user.setUser_id(user_id);
-                    return user;
-                } else {
-                    throw new Exception("Du er sus");
-
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-
     public void createUser (User user) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,MD5(?))";
@@ -91,6 +55,50 @@ public class UserMapper {
             e.printStackTrace();
         }
     }
+
+    public User getUserByID (int search_id) throws Exception
+    {
+        User tmpUser = null;
+        try(Connection connection = database.connect())
+        {
+
+            String sql = " SELECT * FROM user WHERE user_id='"+search_id+"'";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next())
+                {
+                    int user_id = rs.getInt("user_id");
+                    int is_admin = rs.getInt("isAdmin");
+                    String userName = rs.getString("name");
+                    String userAddress = rs.getString("address");
+                    String userZipCode = rs.getString("zip_code");
+                    String userPhoneNumber = rs.getString("phone_no");
+                    String userEmail = rs.getString("email");
+                    String userPassword = rs.getString("password");
+
+                    System.out.println(userName);
+                    System.out.println(userAddress);
+                    System.out.println(userZipCode);
+                    System.out.println(userPhoneNumber);
+                    System.out.println(userEmail);
+                    System.out.println(userPassword);
+
+                    tmpUser = new User(user_id, is_admin, userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
+                }
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tmpUser;
+    }
+
+
+
+
 
     public User getUser (String email, String password) throws Exception
     {

@@ -18,7 +18,7 @@ public class UserUtility
         this.facade = new Facade(database);
     }
 
-    public void editUser(HttpServletRequest request, HttpSession httpSession)
+    public void editUser(HttpServletRequest request, HttpSession httpSession) throws Exception
     {
         User tmpUser = (User) httpSession.getAttribute("user");
         int find_id = tmpUser.getUser_id();
@@ -29,33 +29,35 @@ public class UserUtility
         String newPassword = request.getParameter("editPassword");
         String newPhoneNumber = request.getParameter("editPhone");
 
-        if(newName.isEmpty())
+        if(newName.isEmpty() || newName == null)
         {
             newName = tmpUser.getName();
         }
-        if(newAddress.isEmpty())
+        if(newAddress.isEmpty() || newAddress == null)
         {
             newAddress = tmpUser.getAddress();
         }
-        if(newZipCode.isEmpty())
+        if(newZipCode.isEmpty() || newZipCode == null)
         {
             newZipCode = tmpUser.getZipCode();
         }
-        if(newEmail.isEmpty())
+        if(newEmail.isEmpty() || newEmail == null)
         {
             newEmail = tmpUser.getEmail();
         }
-        if(newPassword.isEmpty())
+        if(newPassword.isEmpty() || newPassword == null)
         {
             newPassword = tmpUser.getPassword();
         }
-        if(newPhoneNumber.isEmpty())
+        if(newPhoneNumber.isEmpty() || newPhoneNumber == null)
         {
             newPhoneNumber = tmpUser.getPhoneNumber();
         }
 
 
         facade.editUser(find_id, newName, newAddress, newZipCode, newEmail, newPassword, newPhoneNumber);
+        User newUser = facade.getUserById(find_id);
+        httpSession.setAttribute("user", newUser);
     }
 
     public void registerUser(String name, String address, String zipCode, String email, String password, String phoneNumber) throws Exception

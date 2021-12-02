@@ -50,11 +50,11 @@ public class LoginController extends HttpServlet
                 String changeDropDownMenu = "<div class=\"dropdown-content\">\n" +
                         "            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->\n" +
                         "            <a href=\"account.jsp\">Account</a>\n" +
-                        "            <a href=\"foobar\">Sign-out</a>\n" +
+                        "            <a href=\"LogoutController\">Sign-out</a>\n" +
                         "        </div>";
-                changeButton("changeSignInButton", changeSignInButton, request);
-                changeButton("changeDropDownButton", changeDropDownButton, request);
-                changeButton("changeDropDownMenu", changeDropDownMenu, request);
+                changeButton("changeSignInButton", changeSignInButton, httpSession);
+                changeButton("changeDropDownButton", changeDropDownButton, httpSession);
+                changeButton("changeDropDownMenu", changeDropDownMenu, httpSession);
                 view.forwardToJsp("index.jsp", request, response);
             }
         } catch (Exception e)
@@ -64,9 +64,9 @@ public class LoginController extends HttpServlet
 
     }
 
-    public void changeButton(String attributeCaller, String attribute, HttpServletRequest request)
+    public void changeButton(String attributeCaller, String attribute, HttpSession session)
     {
-        request.setAttribute(attributeCaller, attribute);
+        session.setAttribute(attributeCaller, attribute);
     }
 }
 

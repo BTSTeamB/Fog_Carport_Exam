@@ -46,7 +46,7 @@ public class PredefinedCarportMapper {
     }
     public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM predefined_shed WHERE id=? ";
+            String sql = "DELETE FROM predefined_carport WHERE id=? ";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, predefinedCarport.getId());
                 ps.executeUpdate();

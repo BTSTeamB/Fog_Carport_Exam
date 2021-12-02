@@ -32,7 +32,7 @@ public class PredefinedShedMapper {
 
     public void editPredefinedShed(PredefinedShed predefinedShed) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE predefiend_carport SET width=?,length=? WHERE id=" + predefinedShed.getId();
+            String sql = "UPDATE predefiend_shed SET width=?,length=? WHERE id=" + predefinedShed.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, predefinedShed.getWidth());
                 ps.setInt(2, predefinedShed.getLength());

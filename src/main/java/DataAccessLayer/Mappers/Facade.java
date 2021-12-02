@@ -82,6 +82,11 @@ public class Facade {
         userMapper.editUser(user);
     }
 
+    public User getUserById(int search_id) throws Exception
+    {
+        return userMapper.getUserByID(search_id);
+    }
+
     public void createPredefinedShed(int width, int length) throws Exception {
         PredefinedShed predefinedShed = new PredefinedShed(width, length);
         predefinedShedMapper.createPredefinedShed(predefinedShed);
@@ -112,5 +117,4 @@ public class Facade {
         PredefinedCarport predefinedCarport = new PredefinedCarport(id);
         predefinedCarportMapper.deletePredefinedCarport(predefinedCarport);
     }
-
 }
