@@ -11,8 +11,7 @@ public class Cladding
         this.cladding_id = cladding_id;
         this.material = material;
     }
-    public Cladding(Material material,int material_id){
-        this.material = material;
+    public Cladding(int material_id){
         this.material_id=material_id;
 
 

@@ -12,8 +12,7 @@ public class Roofing
         this.material = material;
 
     }
-    public Roofing(Material material,int material_id){
-        this.material = material;
+    public Roofing(int material_id){
         this.material_id = material_id;
     }
 

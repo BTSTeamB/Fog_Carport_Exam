@@ -21,14 +21,13 @@ public class CladdingMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, cladding.getMaterial_id());
                 ps.executeUpdate();
-            } catch (SQLIntegrityConstraintViolationException e) {
-                throw new Exception();
+
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
     }
 
     public void deleteCladding(Cladding cladding) {

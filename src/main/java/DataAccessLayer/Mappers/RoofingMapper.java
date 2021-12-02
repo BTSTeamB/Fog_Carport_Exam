@@ -24,14 +24,12 @@ public class RoofingMapper {
                 ps.setInt(1, roofing.getMaterial_id());
                 ps.executeUpdate();
 
-            } catch (SQLIntegrityConstraintViolationException e) {
-                throw new Exception();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
     }
 
     public void deleteRoofing(Roofing roofing) {

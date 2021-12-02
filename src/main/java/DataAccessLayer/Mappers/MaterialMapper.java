@@ -17,7 +17,7 @@ public class MaterialMapper {
 
     public void createMaterial(Material material) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO material(name,description,price,unit_id,length,height,width) value(?,?,?,?,?,?,?)";
+            String sql = "insert into material(name,description,price,unit_id,length,height,width) value(?,?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, material.getName());
                 ps.setString(2, material.getDescription());
@@ -27,12 +27,10 @@ public class MaterialMapper {
                 ps.setDouble(6, material.getHeight());
                 ps.setDouble(7, material.getWidth());
                 ps.executeUpdate();
-            } catch (SQLIntegrityConstraintViolationException e) {
-                throw new Exception();
+            } catch (SQLException e) {
+               e.printStackTrace();
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }

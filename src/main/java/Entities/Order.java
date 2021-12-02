@@ -1,5 +1,7 @@
 package Entities;
 
+import java.sql.Timestamp;
+
 public class Order {
     private int order_id;
     private int user_id;
@@ -49,6 +51,7 @@ public class Order {
         this.roofing_id = roofing_id;
         this.shed_width = shed_width;
         this.shed_length = shed_length;
+
 
     }
 
