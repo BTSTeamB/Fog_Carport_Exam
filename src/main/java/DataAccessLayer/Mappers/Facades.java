@@ -82,4 +82,8 @@ public class Facades {
         User user = new User(user_id,name,address,zipCode,phoneNumber,email,password);
         userMapper.editUser(user);
     }
+
+    public void createPredefinedShed(int width,int length){
+
+    }
 }
