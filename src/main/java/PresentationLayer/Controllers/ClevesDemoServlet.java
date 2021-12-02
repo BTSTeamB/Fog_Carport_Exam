@@ -32,7 +32,7 @@ public class ClevesDemoServlet extends HttpServlet {
 
         try {
 
-           facades = new Facades(new Database());
+            facades = new Facades(new Database());
 
 
         } catch (ClassNotFoundException e) {
@@ -40,10 +40,12 @@ public class ClevesDemoServlet extends HttpServlet {
         }
 
         try {
-            facades.deleteUnit("Bære stolpe");
-            facades.createCladding(4);
-            facades.editUser(1,"christian","nyuholmasalle","2610","20202020","christian@gmail.com","1234");
-
+            // facades.deleteUnit("Bære stolpe");
+            //facades.createCladding(4);
+            //facades.editUser(1,"christian","nyuholmasalle","2610","20202020","christian@gmail.com","1234");
+          //facades.createPredefinedCarport(200,200);
+//facades.editPredefinedCarport(1,300,300);
+facades.deletePredefinedCarport(1);
         } catch (Exception e) {
             e.printStackTrace();
         }

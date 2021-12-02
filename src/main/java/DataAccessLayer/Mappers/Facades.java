@@ -14,6 +14,8 @@ public class Facades {
     UnitMapper unitMapper;
     OrderMapper orderMapper;
     UserMapper userMapper;
+    PredefinedShedMapper predefinedShedMapper;
+    PredefinedCarportMapper predefinedCarportMapper;
 
     public Facades(Database database) throws ClassNotFoundException {
         claddingMapper = new CladdingMapper(database);
@@ -22,6 +24,8 @@ public class Facades {
         unitMapper = new UnitMapper(database);
         orderMapper = new OrderMapper(database);
         userMapper = new UserMapper(database);
+        predefinedShedMapper = new PredefinedShedMapper(database);
+        predefinedCarportMapper = new PredefinedCarportMapper(database);
 
     }
 
@@ -62,7 +66,8 @@ public class Facades {
 
         return unit;
     }
-    public Unit deleteUnit(String name){
+
+    public Unit deleteUnit(String name) {
         Unit unit = new Unit(name);
         unitMapper.deleteUnit(unit);
         return unit;
@@ -78,12 +83,39 @@ public class Facades {
         userMapper.createUser(user);
     }
 
-    public void editUser(int user_id,String name, String address, String zipCode, String phoneNumber, String email, String password){
-        User user = new User(user_id,name,address,zipCode,phoneNumber,email,password);
+    public void editUser(int user_id, String name, String address, String zipCode, String phoneNumber, String email, String password) {
+        User user = new User(user_id, name, address, zipCode, phoneNumber, email, password);
         userMapper.editUser(user);
     }
 
-    public void createPredefinedShed(int width,int length){
+    public void createPredefinedShed(int width, int length) throws Exception {
+        PredefinedShed predefinedShed = new PredefinedShed(width, length);
+        predefinedShedMapper.createPredefinedShed(predefinedShed);
+    }
 
+    public void editPredefinedShed(int id, int width, int length) throws Exception {
+        PredefinedShed predefinedShed = new PredefinedShed(id, width, length);
+        predefinedShedMapper.editPredefinedShed(predefinedShed);
+    }
+
+    public void deletePredefinedShed(int id) {
+        PredefinedShed predefinedShed = new PredefinedShed(id);
+        predefinedShedMapper.deletePredefinedShed(predefinedShed);
+    }
+
+
+    public void createPredefinedCarport(int width, int length) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(width, length);
+        predefinedCarportMapper.createPredefinedCarport(predefinedCarport);
+    }
+
+    public void editPredefinedCarport(int id, int width, int length) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(id, width, length);
+        predefinedCarportMapper.editPredefinedCarport(predefinedCarport);
+    }
+
+    public void deletePredefinedCarport(int id) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(id);
+        predefinedCarportMapper.deletePredefinedCarport(predefinedCarport);
     }
 }

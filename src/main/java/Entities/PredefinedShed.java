@@ -21,6 +21,13 @@ public class PredefinedShed {
     }
     public PredefinedShed(int id){
         this.id=id;
+
+    }
+
+    public PredefinedShed(int width, int length, int id) {
+        this.width = width;
+        this.length = length;
+        this.id = id;
     }
 
     public int getWidth() {

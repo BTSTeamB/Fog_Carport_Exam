@@ -18,7 +18,7 @@ public class PredefinedShedMapper {
 
     public void createPredefinedShed(PredefinedShed predefinedShed) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO predefiend_shed(width,length) values(?,?)";
+            String sql = "INSERT INTO predefined_shed(width,length) values(?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, predefinedShed.getWidth());
                 ps.setInt(2, predefinedShed.getLength());
@@ -46,7 +46,7 @@ public class PredefinedShedMapper {
     }
     public void deletePredefinedShed(PredefinedShed predefinedShed) {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM predefined_shed WHERE id=?, ";
+            String sql = "DELETE FROM predefined_shed WHERE id=?";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, predefinedShed.getId());
                 ps.executeUpdate();
