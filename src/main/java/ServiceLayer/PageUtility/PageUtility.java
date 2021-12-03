@@ -60,7 +60,6 @@ public class PageUtility
 
 
         session.setAttribute("listOfLists", listOfLists);
-
     }
 
 

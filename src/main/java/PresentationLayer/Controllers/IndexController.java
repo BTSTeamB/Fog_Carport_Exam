@@ -46,18 +46,10 @@ public class IndexController extends HttpServlet
             e.printStackTrace();
         }
 
-        //Skal erstattes med ListListerne som attribut
-        session.setAttribute("pdCarports", pdCarports);
-        session.setAttribute("pdSheds", pdSheds);
+        //TODO: Make a method inside this method that generates HTML code.
+        // Cus it wont work normally in the html page with foreach by JSTL
+        pageUtility.generateCarouselPages(pdCarports, session);
 
-
-//        //CARPORT: Carousel Page Creator if thers is less than 3 elements in Predefined Carports
-//        if(pdCarports.size() > 3)
-//        {
-//
-//
-//        }
-//
         view.forwardToJsp("index.jsp", request, response);
     }
 
