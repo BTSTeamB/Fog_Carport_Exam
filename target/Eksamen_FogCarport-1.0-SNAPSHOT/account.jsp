@@ -32,7 +32,7 @@
         <div class="dropdown-content">
             <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->
             <a href="account.jsp">Account</a>
-            <a href="foobar">Sign-out</a>\
+            <a href="LogoutController">Sign-out</a>\
         </div>
     </div>
 </nav>
@@ -68,7 +68,9 @@
             </div>
 
             <div class="edit-element">
+                <form action="UserController" method="get" style="display: inline;">
                     <button class="discard" type="reset">Discard changes</button>
+                </form>
                 <button class="save" type="submit">Save changes</button>
             </div>
             </form>

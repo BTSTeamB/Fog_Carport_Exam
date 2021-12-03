@@ -60,6 +60,7 @@ public class UserUtility
         httpSession.setAttribute("user", newUser);
     }
 
+
     public void registerUser(String name, String address, String zipCode, String email, String password, String phoneNumber) throws Exception
     {
         facade.createUser(name, address, zipCode, email, password, phoneNumber);
@@ -72,10 +73,20 @@ public class UserUtility
         loggedInUser = facade.getUser(email, password);
         if(loggedInUser != null)
         {
+            String changeSignInButton = "style='display: none;'";
+            String changeDropDownButton = "display: block;";
+            String changeDropDownMenu = "<div class=\"dropdown-content\">\n" +
+                    "            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->\n" +
+                    "            <a href=\"account.jsp\">Account</a>\n" +
+                    "            <a href=\"LogoutController\">Sign-out</a>\n" +
+                    "        </div>";
+            session.setAttribute("changeSignInButton", changeSignInButton);
+            session.setAttribute("changeDropDownButton", changeDropDownButton);
+            session.setAttribute("changeDropDownMenu", changeDropDownMenu);
             session.setAttribute("user", loggedInUser);
             return loggedInUser;
         }
-        if(loggedInUser == null)
+        else if(loggedInUser == null)
         {
             return loggedInUser;
         }

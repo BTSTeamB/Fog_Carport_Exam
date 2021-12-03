@@ -39,10 +39,6 @@ public class RegisterController extends HttpServlet
         String userPassword = request.getParameter("RegPassword");
         String userPhoneNum = request.getParameter("phone");
 
-        if (userPassword == null)
-        {
-
-        }
 
         try
         {
@@ -65,6 +61,7 @@ public class RegisterController extends HttpServlet
         System.out.println("Email: " + userEmail);
         System.out.println("Pass: " + userPassword);
         System.out.println("PhoneNum: " + userPhoneNum);
+
 
         try
         {
