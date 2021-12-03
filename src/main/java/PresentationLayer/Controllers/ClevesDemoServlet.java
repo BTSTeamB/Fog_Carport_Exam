@@ -47,7 +47,12 @@ public class ClevesDemoServlet extends HttpServlet {
             //facades.editPredefinedCarport(1,300,300);
             // facades.deletePredefinedCarport(1);
             //facades.createPredefinedCarport(200,300);
-            facades.receviePredefinedCarport(3);
+            //facades.receviePredefinedCarport(3);
+            //facades.recevieUnit(1);
+            //facades.recevieRoofing(2, );
+            //facades.creatMaterial("")
+            facades.recevieMaterial(4);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

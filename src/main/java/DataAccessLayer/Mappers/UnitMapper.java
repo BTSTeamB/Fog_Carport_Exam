@@ -3,10 +3,7 @@ package DataAccessLayer.Mappers;
 import DataAccessLayer.Database;
 import Entities.Unit;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 
 public class UnitMapper {
     private Database database;
@@ -45,11 +42,33 @@ public class UnitMapper {
     }
 
     public void editUnit(Unit unit) {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE unit SET name=?, WHERE id" + unit.getUnit_id();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, unit.getName());
+                ps.executeUpdate();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public Unit getUnit(Unit unit) {
+    public Unit recevieUnit(Unit unit) {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT name FROM unit WHERE unit_id="+unit.getUnit_id();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next()) {
+                    String name = rs.getString("name");
+                    System.out.println(name);
+                }
+            }
 
-        return null;
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return unit;
     }
 }

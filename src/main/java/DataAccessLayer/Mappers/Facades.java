@@ -43,6 +43,11 @@ public class Facades {
 
         return roofing;
     }
+    public Roofing recevieRoofing(int roofing_id,Material material)throws Exception{
+        Roofing roofing = new Roofing(roofing_id, material);
+        roofingMapper.recevieRoofing(roofing);
+    return roofing;
+    }
 
 
     public Material creatMaterial(String name, String description, double price, int unit_id, Double length, Double height, Double width) throws Exception {
@@ -50,6 +55,12 @@ public class Facades {
         materialMapper.createMaterial(material);
         return material;
 
+    }
+
+    public Material recevieMaterial(int material_id)throws Exception{
+        Material material = new Material(material_id);
+        materialMapper.recevieMaterial(material);
+    return material;
     }
 
 
@@ -63,6 +74,12 @@ public class Facades {
     public Unit creatUnit(String name) throws Exception {
         Unit unit = new Unit(name);
         unitMapper.createUnit(unit);
+
+        return unit;
+    }
+    public Unit recevieUnit(int id)throws Exception{
+        Unit unit = new Unit(id);
+        unitMapper.recevieUnit(unit);
 
         return unit;
     }

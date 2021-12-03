@@ -1,7 +1,6 @@
 package Entities;
 
-public class Material
-{
+public class Material {
     int material_id;
     String name;
     String description;
@@ -13,8 +12,7 @@ public class Material
     Double width;
     String time_created;
 
-    public Material(String name, String description, double price, Unit unit, Double length, Double height, Double width, String time_created)
-    {
+    public Material(String name, String description, double price, Unit unit, Double length, Double height, Double width, String time_created) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -26,8 +24,7 @@ public class Material
     }
 
     //Database retriever Constructor
-    public Material(int material_id, String name, String description, double price, Unit unit, Double length, Double height, Double width, String time_created)
-    {
+    public Material(int material_id, String name, String description, double price, Unit unit, Double length, Double height, Double width, String time_created) {
         this.material_id = material_id;
         this.name = name;
         this.description = description;
@@ -38,7 +35,8 @@ public class Material
         this.width = width;
         this.time_created = time_created;
     }
-    public Material(String name, String description, double price,int unit_id, Double length, Double height, Double width){
+
+    public Material(String name, String description, double price, int unit_id, Double length, Double height, Double width) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -46,6 +44,10 @@ public class Material
         this.length = length;
         this.height = height;
         this.width = width;
+    }
+
+    public Material(int material_id) {
+        this.material_id = material_id;
     }
 
     public int getMaterial_id() {

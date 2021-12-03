@@ -13,6 +13,10 @@ public class Unit {
         this.name = name;
     }
 
+    public Unit(int unit_id) {
+        this.unit_id = unit_id;
+    }
+
     public int getUnit_id() {
         return unit_id;
     }
