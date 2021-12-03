@@ -39,6 +39,11 @@ public class RegisterController extends HttpServlet
         String userPassword = request.getParameter("RegPassword");
         String userPhoneNum = request.getParameter("phone");
 
+        if (userPassword == null)
+        {
+
+        }
+
         try
         {
             userUtility.registerUser(userName,userAddress, userZipCode, userEmail, userPassword, userPhoneNum);

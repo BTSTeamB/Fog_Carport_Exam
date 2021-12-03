@@ -48,7 +48,7 @@
                 <label for="editName">Name</label>
                 <input type="text" name="editName" id="editName" placeholder="${sessionScope.user.getName()}">
 
-                <label for="editAddress">Adress</label>
+                <label for="editAddress">Address</label>
                 <input type="text" name="editAddress" id="editAddress" placeholder="${sessionScope.user.getAddress()}">
 
                 <label for="editZip-Code">zip-code</label>
