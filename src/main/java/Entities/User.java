@@ -9,6 +9,7 @@ public class User
     private String email;
     private String password;
     private int is_admin;
+    private int is_guest;
     private int user_id;
 
     //Database inserter Constructor
@@ -37,7 +38,7 @@ public class User
 
 
     //Database retriever Constructor
-    public User( int user_id, int is_admin, String name, String address, String zipCode, String email, String password, String phoneNumber)
+    public User( int user_id, int is_admin, int is_guest, String name, String address, String zipCode, String email, String password, String phoneNumber)
     {
         this.name = name;
         this.address = address;
@@ -47,6 +48,7 @@ public class User
         this.password = password;
         this.is_admin = is_admin;
         this.user_id = user_id;
+        this.is_guest = is_guest;
     }
 
     public String getName() {

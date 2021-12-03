@@ -14,7 +14,7 @@ public class UserMapper {
 
     public void createUser (User user) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,MD5(?))";
+            String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
                 ps.setString(1, user.getName());
@@ -40,7 +40,7 @@ public class UserMapper {
 
     public void editUser(User user) {
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE user SET name=?, address=?,zip_code=?,phone_no=?, email=?, password=MD5(?) WHERE user_id="+user.getUser_id();
+            String sql = "UPDATE user SET name=?, address=?,zip_code=?,phone_no=?, email=?, password=? WHERE user_id="+user.getUser_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
                 ps.setString(1, user.getName());
@@ -69,6 +69,7 @@ public class UserMapper {
                 {
                     int user_id = rs.getInt("user_id");
                     int is_admin = rs.getInt("isAdmin");
+                    int is_guest = rs.getInt("isGuest");
                     String userName = rs.getString("name");
                     String userAddress = rs.getString("address");
                     String userZipCode = rs.getString("zip_code");
@@ -83,7 +84,7 @@ public class UserMapper {
                     System.out.println(userEmail);
                     System.out.println(userPassword);
 
-                    tmpUser = new User(user_id, is_admin, userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
+                    tmpUser = new User(user_id, is_admin, is_guest ,userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
                 }
 
             } catch (SQLIntegrityConstraintViolationException e) {
@@ -105,13 +106,14 @@ public class UserMapper {
         User tmpUser = null;
         try(Connection connection = database.connect())
         {
-            String sql = " SELECT * FROM user WHERE email='"+email+"' AND password=MD5('"+password+"')";
+            String sql = " SELECT * FROM user WHERE email='"+email+"' AND password='"+password+"'";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next())
                 {
                     int user_id = rs.getInt("user_id");
                     int is_admin = rs.getInt("isAdmin");
+                    int is_guest = rs.getInt("isGuest");
                     String userName = rs.getString("name");
                     String userAddress = rs.getString("address");
                     String userZipCode = rs.getString("zip_code");
@@ -126,7 +128,7 @@ public class UserMapper {
                     System.out.println(userEmail);
                     System.out.println(userPassword);
 
-                    tmpUser = new User(user_id, is_admin, userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
+                    tmpUser = new User(user_id, is_admin, is_guest,userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
                 }
 
             } catch (SQLIntegrityConstraintViolationException e) {
