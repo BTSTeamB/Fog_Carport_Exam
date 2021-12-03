@@ -141,24 +141,21 @@
             <h1>Prepared carport</h1>
         </div>
         <div class="carousel">
-            ${sessionScope.carouselPageStart}
+            <div class="carousel__item">
 
-                <c:forEach var="pdCarport" items="${sessionScope.pdCarports}">
                 <div class="cards">
                     <div class="image">
-                        <img src="${pdCarport.imgUrl}" alt="picture of carport">
+                        <img src="Resources/images/carport1.png" alt="picture of carport">
                     </div>
                     <div class="title">
-                        <h1>${pdCarport.price}</h1>
+                        <h1>DKK 16.498,00</h1>
                     </div>
                     <div class="des">
-                        <p>${pdCarport.length}cm</p>
-                        <p>${pdCarport.width}cm</p>
+                        <p>CARPORT DOBBELT 6,00X4,80 M CAR01DU UDEN MIDTERSTOLPE FLADT TAG</p>
                         <form action="OrderController" method="get">
                             <button class="button-cards">Purchase</button>
                         </form>
                     </div>
-                    </c:forEach>
                 </div>
 
                 <div class="cards">
@@ -188,7 +185,7 @@
                         </form>
                     </div>
                 </div>
-            ${sessionScope.carouselPageEnd}
+            </div>
 
             <div class="carousel__item">
                 <div class="cards">

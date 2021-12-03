@@ -64,24 +64,7 @@ public class IndexController extends HttpServlet
 //            }
 //
 //        }
-//        else
-//        {
-//            //CARPORT: Carousel Page Creator if there is more than 3
-//            if (pdCarports.size() < 3)
-//            {
-//                while ((pdCarports.size() % 3 == 0))
-//                {
-//                    everyThirdCounter++;
-//                    for (int i = 0; i < everyThirdCounter; i++)
-//                    {
-//                        String carouselPageStart = "<div class=\"carousel__item\">";
-//                        String carouselPageEnd = "</div>";
-//                        session.setAttribute("carouselPageStart" + everyThirdCounter + "", carouselPageStart);
-//                        session.setAttribute("carouselPageEnd" + everyThirdCounter + "", carouselPageEnd);
-//                    }
 //
-//                }
-//            }
         view.forwardToJsp("index.jsp", request, response);
     }
 
@@ -92,28 +75,5 @@ public class IndexController extends HttpServlet
 
     }
 
-    public void generateCarportCarouselPages(List<PredefinedCarport> carports, HttpSession session)
-    {
-        List<List<PredefinedCarport>> pdCarportCarouselList = new ArrayList<>();
-        if (carports.size() > 3)
-        {
-            for (int i = 0; i < carports.size(); i++)
-            {
-                while((i % 3) == 0)
-                {
-                    List<PredefinedCarport> pdCarports = new ArrayList<>();
-                    for (int j = 1; j <= 3; j++)
-                    {
-                        pdCarports.add(carports.get(i+j));
-                    }
-                }
-                // To be continued
-            }
-        }
-    }
 
-    public void generateShedCarouselListPages(int numOfPages)
-    {
-        List<List<PredefinedShed>> pdShedCarouselList = new ArrayList<>();
-    }
 }

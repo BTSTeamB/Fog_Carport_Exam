@@ -1,51 +1,39 @@
 package ServiceLayer.PageUtility;
 
-import DataAccessLayer.Database;
-import DataAccessLayer.Mappers.Facade;
-import Entities.PredefinedCarport;
-import Entities.PredefinedShed;
+import org.junit.jupiter.api.Test;
 
-import javax.servlet.http.HttpSession;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageUtility
+import static org.junit.jupiter.api.Assertions.*;
+
+class PageUtilityTest
 {
-    private Database database;
-    private Facade facade;
 
-    public PageUtility() throws ClassNotFoundException
+
+
+    @Test
+    void generateShedCarouselListPages()
     {
-        this.database = new Database();
-        this.facade = new Facade(database);
-    }
-
-    public List<PredefinedShed> getAllPDSheds() throws Exception
-    {
-        List<PredefinedShed> pdSheds = new ArrayList<>();
-        pdSheds = facade.getAllPredefinedShed();
-        return pdSheds;
-    }
-
-    public List<PredefinedCarport> getAllPDCarports() throws Exception
-    {
-        List<PredefinedCarport> pdCarportList = new ArrayList<>();
-        pdCarportList = facade.getAllPredefinedCarport();
-        return pdCarportList;
-    }
-
-    public void generateCarouselPages(int numOfPages, int numOfSlides, List<PredefinedCarport> list)
-    {
-        ArrayList<List<PredefinedCarport>> listOfLists = new ArrayList<>();
-        listOfLists = splitArrayLists(numOfPages, numOfSlides, list);
-
-
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        numbers.add(7);
+        numbers.add(8);
+        numbers.add(9);
+//        splitLists(4, 3, numbers);
+        splitArrayLists(3, 3, numbers);
 
     }
 
-    public ArrayList<List<PredefinedCarport>> splitArrayLists (int numOfLists, int subListSize,List<PredefinedCarport> list)
+    public ArrayList<List<Integer>> splitArrayLists (int numOfLists, int subListSize,List<Integer> list)
     {
-        ArrayList<List<PredefinedCarport>> listOfLists = new ArrayList<>();
+        ArrayList<List<Integer>> listOfLists = new ArrayList<>();
 
         //Dividend
         int bigListSize = list.size();
@@ -68,7 +56,7 @@ public class PageUtility
                 //Loop that only will work if the rest value is 0
                 if ((bigListSize % i) == 0)
                 {
-                    ArrayList<PredefinedCarport> subList = new ArrayList<>();
+                    ArrayList<Integer> subList = new ArrayList<>();
                     //Nested loop that retrieves elements in the parameter list.
                     //Its max is equal to the size you define.
                     for (int j = 0; j < subListSize; j++)
@@ -107,4 +95,5 @@ public class PageUtility
         }
         return listOfLists;
     }
+
 }
