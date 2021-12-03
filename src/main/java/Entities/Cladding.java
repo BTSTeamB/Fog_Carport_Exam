@@ -14,8 +14,14 @@ public class Cladding
     public Cladding(int material_id){
         this.material_id=material_id;
 
-
     }
+
+    public Cladding(int cladding_id,  int material_id) {
+        this.cladding_id = cladding_id;
+        this.material_id = material_id;
+    }
+
+
 
     public int getCladding_id() {
         return cladding_id;

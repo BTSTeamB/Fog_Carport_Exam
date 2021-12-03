@@ -30,54 +30,14 @@ public class Facades {
     }
 
 
-    public Cladding createCladding(int material_id) throws Exception {
-        Cladding cladding = new Cladding(material_id);
-        claddingMapper.createCladding(cladding);
-        return cladding;
-    }
-
-
-    public Roofing createRoofing(int material_id) throws Exception {
-        Roofing roofing = new Roofing(material_id);
-        roofingMapper.createRoofing(roofing);
-
-        return roofing;
-    }
-    public Roofing recevieRoofing(int roofing_id,Material material)throws Exception{
-        Roofing roofing = new Roofing(roofing_id, material);
-        roofingMapper.recevieRoofing(roofing);
-    return roofing;
-    }
-
-
-    public Material creatMaterial(String name, String description, double price, int unit_id, Double length, Double height, Double width) throws Exception {
-        Material material = new Material(name, description, price, unit_id, length, height, width);
-        materialMapper.createMaterial(material);
-        return material;
-
-    }
-
-    public Material recevieMaterial(int material_id)throws Exception{
-        Material material = new Material(material_id);
-        materialMapper.recevieMaterial(material);
-    return material;
-    }
-
-
-    public Order createOrder(int user_id, double price, int carport_length, int carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) throws Exception {
-        Order order = new Order(user_id, price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length);
-        orderMapper.createOrder(order);
-        return order;
-
-    }
-
     public Unit creatUnit(String name) throws Exception {
         Unit unit = new Unit(name);
         unitMapper.createUnit(unit);
 
         return unit;
     }
-    public Unit recevieUnit(int id)throws Exception{
+
+    public Unit recevieUnit(int id) throws Exception {
         Unit unit = new Unit(id);
         unitMapper.recevieUnit(unit);
 
@@ -89,6 +49,113 @@ public class Facades {
         unitMapper.deleteUnit(unit);
         return unit;
     }
+
+
+    public Material creatMaterial(String name, String description, double price, int unit_id, double length, double height, double width) throws Exception {
+        Material material = new Material(name, description, price, unit_id, length, height, width);
+        materialMapper.createMaterial(material);
+        return material;
+
+    }
+
+    public Material deleteMaterial(int material_id) throws Exception {
+        Material material = new Material(material_id);
+        materialMapper.createMaterial(material);
+        return material;
+    }
+
+    public Material editMaterial(String name, String description, double price, int unit_id, double length, double height, double width) throws Exception {
+        Material material = new Material(name, description, price, unit_id, length, height, width);
+        materialMapper.createMaterial(material);
+        return material;
+    }
+
+    public Material recevieMaterial(int material_id) throws Exception {
+        Material material = new Material(material_id);
+        materialMapper.recevieMaterial(material);
+        return material;
+    }
+
+
+    public Cladding createCladding(int material_id) throws Exception {
+        Cladding cladding = new Cladding(material_id);
+        claddingMapper.createCladding(cladding);
+        return cladding;
+    }
+
+    public void deleteCladding(int cladding_id) {
+        Cladding cladding = new Cladding(cladding_id);
+        claddingMapper.deleteCladding(cladding);
+    }
+
+    public Cladding editCladding(int cladding_id, int material_id) {
+        Cladding cladding = new Cladding(cladding_id, material_id);
+        claddingMapper.editCladding(cladding);
+        return cladding;
+    }
+
+    public Cladding recevieCladding(int cladding_id) {
+        Cladding cladding = new Cladding(cladding_id);
+        claddingMapper.recevieCladding(cladding);
+        return cladding;
+    }
+
+
+    public Roofing createRoofing(int material_id) throws Exception {
+        Roofing roofing = new Roofing(material_id);
+        roofingMapper.createRoofing(roofing);
+
+        return roofing;
+    }
+
+    public void deleteRoofing(int roofing_id) {
+        Roofing roofing = new Roofing(roofing_id);
+        roofingMapper.deleteRoofing(roofing);
+    }
+
+    public Roofing editRoofing(int roofing_id) {
+        Roofing roofing = new Roofing(roofing_id);
+        roofingMapper.editRoofing(roofing);
+        return roofing;
+    }
+
+    public Roofing recevieRoofing(int roofing_id, Material material) throws Exception {
+        Roofing roofing = new Roofing(roofing_id, material);
+        roofingMapper.recevieRoofing(roofing);
+        return roofing;
+    }
+
+
+    public Order createOrder(int user_id, double price, int carport_length, int carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) throws Exception {
+        Order order = new Order(user_id, price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length);
+        orderMapper.createOrder(order);
+        return order;
+
+    }
+
+    public void deleteOrder(int order_id) {
+        Order order = new Order(order_id);
+        orderMapper.deleteOrder(order);
+    }
+
+    public Order editOrder(int order_id, int user_id, double price, int carport_length, int carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) {
+        Order order = new Order(order_id, user_id, price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length);
+        orderMapper.editOrder(order);
+        return order;
+    }
+
+    public Order recevieOrder(int order_id) {
+        Order order = new Order(order_id);
+        orderMapper.recevieOrder(order);
+        return order;
+    }
+
+
+
+
+
+
+
 
     public User login(String email, String password) {
         // return userMapper.login(email, password);
@@ -105,6 +172,12 @@ public class Facades {
         userMapper.editUser(user);
     }
 
+
+
+
+
+
+
     public void createPredefinedShed(int width, int length) throws Exception {
         PredefinedShed predefinedShed = new PredefinedShed(width, length);
         predefinedShedMapper.createPredefinedShed(predefinedShed);
@@ -119,7 +192,8 @@ public class Facades {
         PredefinedShed predefinedShed = new PredefinedShed(id);
         predefinedShedMapper.deletePredefinedShed(predefinedShed);
     }
-    public void eceviePredefinedShed(int id)throws Exception{
+
+    public void receviePredefinedShed(int id) throws Exception {
         PredefinedShed predefinedShed = new PredefinedShed(id);
         predefinedShedMapper.receviePredefinedShed(predefinedShed);
     }

@@ -2,11 +2,9 @@ package DataAccessLayer.Mappers;
 
 import DataAccessLayer.Database;
 import Entities.Cladding;
+import Entities.Roofing;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 
 public class CladdingMapper {
     private Database database;
@@ -31,16 +29,48 @@ public class CladdingMapper {
     }
 
     public void deleteCladding(Cladding cladding) {
-
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM cladding WHERE cladding_id=?" + cladding.getCladding_id();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, cladding.getCladding_id());
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void editCladding(Cladding cladding) {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE cladding SET material_id = ? WHERE cladding_id="+cladding.getCladding_id();
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, cladding.getMaterial_id());
+                ps.executeUpdate();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public Cladding getCladding(Cladding cladding) {
+    public Cladding recevieCladding(Cladding cladding) {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT material_id FROM cladding WHERE cladding_id=" + cladding.getCladding_id();
 
-        return null;
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next()) {
+                    int material_id = rs.getInt("material_id");
+
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cladding;
     }
 
 }

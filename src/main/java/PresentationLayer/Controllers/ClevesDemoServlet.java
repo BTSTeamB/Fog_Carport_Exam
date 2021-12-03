@@ -2,6 +2,7 @@ package PresentationLayer.Controllers;
 
 import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facades;
+import Entities.Material;
 
 
 import javax.servlet.*;
@@ -49,9 +50,11 @@ public class ClevesDemoServlet extends HttpServlet {
             //facades.createPredefinedCarport(200,300);
             //facades.receviePredefinedCarport(3);
             //facades.recevieUnit(1);
-            //facades.recevieRoofing(2, );
+           // facades.recevieRoofing(2, facades.recevieMaterial(4));
             //facades.creatMaterial("")
-            facades.recevieMaterial(4);
+           // facades.editCladding(2,4);
+            facades.recevieOrder(1);
+
 
         } catch (Exception e) {
             e.printStackTrace();
