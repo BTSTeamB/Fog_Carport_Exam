@@ -67,6 +67,7 @@ public class UserUtility
     public User loginUser(String email, String password, HttpSession session) throws Exception
     {
         // TODO: Få den her metode til at tage imod en HttpServletRequest istedet for session
+        // til at skrive fejl besked og smide i request scope
         User loggedInUser;
         loggedInUser = facade.getUser(email, password);
         if(loggedInUser != null)
