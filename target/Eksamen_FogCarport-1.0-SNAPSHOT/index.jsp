@@ -178,7 +178,9 @@
                     </div>
                     <div class="des">
                         <p>CARPORT CP01DUR 6,00 x 7,80 mtr. incl. 2,10 x 5,10 mtr. redskabsrum</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -193,7 +195,9 @@
                     </div>
                     <div class="des">
                         <p>CARPORT ENKELT 3,60X8,10M CARL01HR MED REDSKABSRUM 3,05X3,20M</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
 
@@ -206,7 +210,9 @@
                     </div>
                     <div class="des">
                         <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
 
@@ -219,7 +225,9 @@
                     </div>
                     <div class="des">
                         <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -234,7 +242,9 @@
                     </div>
                     <div class="des">
                         <p>CARPORT CP01DUR 6,00 x 7,80 mtr. incl. 2,10 x 5,10 mtr. redskabsrum</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </div>

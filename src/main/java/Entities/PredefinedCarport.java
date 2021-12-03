@@ -3,21 +3,47 @@ package Entities;
 public class PredefinedCarport {
     int width;
     int length;
+    double price;
+    String imgUrl;
     int id;
 
-
-    public PredefinedCarport(int width,int length){
+    //Database create constructor
+    public PredefinedCarport(int width,int length, double price, String imgUrl){
         this.width = width;
         this.length = length;
     }
+
+    //Database edit constructor
+    public PredefinedCarport(int id, int width, int length, double price, String imgUrl) {
+        this.id = id;
+        this.width = width;
+        this.length = length;
+        this.price = price;
+        this.imgUrl = imgUrl;
+    }
+
+    //Database delete/receiver constructor
     public PredefinedCarport(int id){
         this.id = id;
     }
+    public double getPrice()
+    {
+        return price;
+    }
 
-    public PredefinedCarport(int width, int length, int id) {
-        this.width = width;
-        this.length = length;
-        this.id = id;
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+
+    public String getImgUrl()
+    {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl)
+    {
+        this.imgUrl = imgUrl;
     }
 
     public int getWidth() {

@@ -7,6 +7,9 @@ import DataAccessLayer.Mappers.OrderMapper;
 import DataAccessLayer.Mappers.RoofingMapper;
 import Entities.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Facade {
     CladdingMapper claddingMapper;
     RoofingMapper roofingMapper;
@@ -87,13 +90,20 @@ public class Facade {
         return userMapper.getUserByID(search_id);
     }
 
-    public void createPredefinedShed(int width, int length) throws Exception {
-        PredefinedShed predefinedShed = new PredefinedShed(width, length);
+    public void createPredefinedShed(int width, int length, double price, String imgUrl) throws Exception {
+        PredefinedShed predefinedShed = new PredefinedShed(width, length, price, imgUrl);
         predefinedShedMapper.createPredefinedShed(predefinedShed);
     }
 
-    public void editPredefinedShed(int id, int width, int length) throws Exception {
-        PredefinedShed predefinedShed = new PredefinedShed(id, width, length);
+    public List<PredefinedShed> getAllPredefinedShed() throws Exception
+    {
+        List<PredefinedShed> pdSheds = new ArrayList<>();
+        pdSheds = predefinedShedMapper.receiveAllPredefinedShed();
+        return pdSheds;
+    }
+
+    public void editPredefinedShed(int id, int width, int length, double price, String imgUrl) throws Exception {
+        PredefinedShed predefinedShed = new PredefinedShed(id, width, length, price, imgUrl);
         predefinedShedMapper.editPredefinedShed(predefinedShed);
     }
 
@@ -103,13 +113,20 @@ public class Facade {
     }
 
 
-    public void createPredefinedCarport(int width, int length) throws Exception {
-        PredefinedCarport predefinedCarport = new PredefinedCarport(width, length);
+    public void createPredefinedCarport(int width, int length, double price, String imgUrl) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(width, length, price, imgUrl);
         predefinedCarportMapper.createPredefinedCarport(predefinedCarport);
     }
 
-    public void editPredefinedCarport(int id, int width, int length) throws Exception {
-        PredefinedCarport predefinedCarport = new PredefinedCarport(id, width, length);
+    public List<PredefinedCarport> getAllPredefinedCarport() throws Exception
+    {
+        List<PredefinedCarport> pdCarports = new ArrayList<>();
+        pdCarports = predefinedCarportMapper.receiveAllPredefinedCarport();
+        return pdCarports;
+    }
+
+    public void editPredefinedCarport(int id, int width, int length, double price, String imgUrl) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(id, width, length, price, imgUrl);
         predefinedCarportMapper.editPredefinedCarport(predefinedCarport);
     }
 

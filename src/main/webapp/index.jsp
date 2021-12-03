@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <% %>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,21 +141,24 @@
             <h1>Prepared carport</h1>
         </div>
         <div class="carousel">
-            <div class="carousel__item">
+            ${sessionScope.carouselPageStart}
 
+                <c:forEach var="pdCarport" items="${sessionScope.pdCarports}">
                 <div class="cards">
                     <div class="image">
-                        <img src="Resources/images/carport1.png" alt="picture of carport">
+                        <img src="${pdCarport.imgUrl}" alt="picture of carport">
                     </div>
                     <div class="title">
-                        <h1>DKK 16.498,00</h1>
+                        <h1>${pdCarport.price}</h1>
                     </div>
                     <div class="des">
-                        <p>CARPORT DOBBELT 6,00X4,80 M CAR01DU UDEN MIDTERSTOLPE FLADT TAG</p>
+                        <p>${pdCarport.length}cm</p>
+                        <p>${pdCarport.width}cm</p>
                         <form action="OrderController" method="get">
                             <button class="button-cards">Purchase</button>
                         </form>
                     </div>
+                    </c:forEach>
                 </div>
 
                 <div class="cards">
@@ -178,10 +183,12 @@
                     </div>
                     <div class="des">
                         <p>CARPORT CP01DUR 6,00 x 7,80 mtr. incl. 2,10 x 5,10 mtr. redskabsrum</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
-            </div>
+            ${sessionScope.carouselPageEnd}
 
             <div class="carousel__item">
                 <div class="cards">
@@ -193,7 +200,9 @@
                     </div>
                     <div class="des">
                         <p>CARPORT ENKELT 3,60X8,10M CARL01HR MED REDSKABSRUM 3,05X3,20M</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
 
@@ -206,7 +215,9 @@
                     </div>
                     <div class="des">
                         <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
 
@@ -219,7 +230,9 @@
                     </div>
                     <div class="des">
                         <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -234,7 +247,9 @@
                     </div>
                     <div class="des">
                         <p>CARPORT CP01DUR 6,00 x 7,80 mtr. incl. 2,10 x 5,10 mtr. redskabsrum</p>
-                        <button class="button-cards">Purchase</button>
+                        <form action="OrderController" method="get">
+                            <button class="button-cards">Purchase</button>
+                        </form>
                     </div>
                 </div>
             </div>
