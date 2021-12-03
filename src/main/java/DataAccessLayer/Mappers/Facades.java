@@ -29,7 +29,7 @@ public class Facades {
 
     }
 
-
+//Units
     public Unit creatUnit(String name) throws Exception {
         Unit unit = new Unit(name);
         unitMapper.createUnit(unit);
@@ -51,6 +51,9 @@ public class Facades {
     }
 
 
+
+
+    //Material
     public Material creatMaterial(String name, String description, double price, int unit_id, double length, double height, double width) throws Exception {
         Material material = new Material(name, description, price, unit_id, length, height, width);
         materialMapper.createMaterial(material);
@@ -77,6 +80,9 @@ public class Facades {
     }
 
 
+
+
+    //Cladding
     public Cladding createCladding(int material_id) throws Exception {
         Cladding cladding = new Cladding(material_id);
         claddingMapper.createCladding(cladding);
@@ -101,6 +107,10 @@ public class Facades {
     }
 
 
+
+
+
+    //Roofing
     public Roofing createRoofing(int material_id) throws Exception {
         Roofing roofing = new Roofing(material_id);
         roofingMapper.createRoofing(roofing);
@@ -126,6 +136,11 @@ public class Facades {
     }
 
 
+
+
+
+
+    //Order
     public Order createOrder(int user_id, double price, int carport_length, int carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) throws Exception {
         Order order = new Order(user_id, price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length);
         orderMapper.createOrder(order);
@@ -154,9 +169,7 @@ public class Facades {
 
 
 
-
-
-
+    //User
     public User login(String email, String password) {
         // return userMapper.login(email, password);
         return null;
@@ -177,7 +190,7 @@ public class Facades {
 
 
 
-
+//PredefinedShed
     public void createPredefinedShed(int width, int length) throws Exception {
         PredefinedShed predefinedShed = new PredefinedShed(width, length);
         predefinedShedMapper.createPredefinedShed(predefinedShed);
@@ -199,6 +212,10 @@ public class Facades {
     }
 
 
+
+
+
+    //PredefinedCarport
     public void createPredefinedCarport(int width, int length) throws Exception {
         PredefinedCarport predefinedCarport = new PredefinedCarport(width, length);
         predefinedCarportMapper.createPredefinedCarport(predefinedCarport);
