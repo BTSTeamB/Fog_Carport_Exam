@@ -27,8 +27,81 @@ class PageUtilityTest
         numbers.add(8);
         numbers.add(9);
 //        splitLists(4, 3, numbers);
-        splitArrayLists(3, 3, numbers);
+        List<Integer> first = numbers.subList(0,3);
+        List<Integer> second = numbers.subList(3,6);
+        List<Integer> third = numbers.subList(6,9);
 
+        List<List<Integer>> listOfLists = new ArrayList<>();
+        listOfLists.add(first);
+        listOfLists.add(second);
+        listOfLists.add(third);
+
+        System.out.println("Print from List of Lists!");
+        for (int i = 0; i < listOfLists.size(); i++)
+        {
+            System.out.println("Printing from list on: "+i+" index");
+            for (int j = 0; j < listOfLists.get(i).size(); j++)
+            {
+                System.out.println(listOfLists.get(i).get(j));
+            }
+        }
+
+
+    }
+
+
+    //keeping it in here for bad memories
+    public ArrayList<List<Integer>> splitArrayListsOffset (int numOfLists, int subListSize,List<Integer> list)
+    {
+        ArrayList<List<Integer>> listOfLists = new ArrayList<>();
+
+        //Dividend
+        int bigListSize = list.size();
+
+        //Divider
+        int numOfSubLists = numOfLists;
+
+        //Modulo
+        int modulo = bigListSize % numOfSubLists;
+
+        //Checks if list that needs to be split can be split.
+        if (list.size() > 2)
+        {
+            System.out.println("List can be split!");
+            System.out.println("List will be split into: "+numOfLists+" sub-lists");
+            System.out.println("Sub Lists size will be max: "+subListSize);
+
+            for (int i = 0; i < numOfSubLists; i++)
+            {
+                listOfLists.add(new ArrayList<>());
+            }
+            for (int i = 0; i < list.size(); i++)
+            {
+                for (int j = 0; j <= subListSize; j++)
+                {
+                   listOfLists.get(i).add(list.get(j));
+                   list.remove(Integer.valueOf(j));
+                }
+            }
+        }
+        else
+        {
+            System.out.println("List cant be split!");
+        }
+
+
+        System.out.println("Data on our lists");
+        System.out.println("Size of super list: "+listOfLists.size());
+
+        for (int i = 0; i < listOfLists.size(); i++)
+        {
+            for (int j = 0; j < listOfLists.get(i).size(); j++)
+            {
+                System.out.println("From sublist: "+i);
+                System.out.println(listOfLists.get(i).get(j));
+            }
+        }
+        return listOfLists;
     }
 
     public ArrayList<List<Integer>> splitArrayLists (int numOfLists, int subListSize,List<Integer> list)
@@ -45,7 +118,7 @@ class PageUtilityTest
         int modulo = bigListSize % numOfSubLists;
 
         //Checks if list that needs to be split can be split.
-        if (list.size() >= 2)
+        if (list.size() > 2)
         {
             System.out.println("List can be split!");
             System.out.println("List will be split into: "+numOfLists+" sub-lists");
@@ -53,6 +126,7 @@ class PageUtilityTest
 
             for (int i = 1; i <= list.size(); i++)
             {
+
                 //Loop that only will work if the rest value is 0
                 if ((bigListSize % i) == 0)
                 {
@@ -61,9 +135,11 @@ class PageUtilityTest
                     //Its max is equal to the size you define.
                     for (int j = 0; j < subListSize; j++)
                     {
-                        subList.add(list.get(j));
+                        subList.add(list.get(i-1));
 
                         //To empty parameter list.
+//                        System.out.println("REMOVED: "+list.get(Integer.valueOf(i)));
+//                        list.remove(Integer.valueOf(i));
                     }
                     //Adds said list into super list.
                     listOfLists.add(subList);
@@ -74,7 +150,6 @@ class PageUtilityTest
                     break;
                 }
             }
-
         }
         else
         {

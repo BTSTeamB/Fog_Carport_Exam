@@ -54,14 +54,7 @@ public class IndexController extends HttpServlet
 //        //CARPORT: Carousel Page Creator if thers is less than 3 elements in Predefined Carports
 //        if(pdCarports.size() > 3)
 //        {
-//            for (int i = 0; i <3; i++)
-//            {
-//                String carouselPageStart = "<div class=\"carousel__item\">";
-//                String carouselPageEnd = "</div>";
-//                session.setAttribute("carouselPageStart"+everyThirdCounter+"", carouselPageStart);
-//                session.setAttribute("carouselPageEnd"+everyThirdCounter+"", carouselPageEnd);
-//                view.forwardToJsp("index.jsp", request, response);
-//            }
+//
 //
 //        }
 //
