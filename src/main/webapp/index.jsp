@@ -142,119 +142,27 @@
             <h1>Prepared carport</h1>
         </div>
         <div class="carousel">
-            <c:forEach var="listOfLists" items="${sessionScope.listOfLists}">
+            <c:forEach var="i" begin="0" end="${sessionScope.listOfLists.size()}">
             <div class="carousel__item">
 
-                <div class="cards">
-                    <div class="image">
-                        <img src="${listOfLists.get(0).imgUrl}" alt="picture of carport">
+                <c:forEach var="j" begin="0" end="${sessionScope.listOfLists.get(i).size()}">
+                    <div class="cards">
+                        <div class="image">
+                            <img src="${sessionScope.listOfLists.get(i).get(j).imgUrl}" alt="picture of carport">
+                        </div>
+                        <div class="title">
+                            <h1>${sessionScope.listOfLists.get(i).get(j).price}</h1>
+                        </div>
+                        <div class="des">
+                            <p>- - ${sessionScope.listOfLists.get(i).get(j).length} - - ${sessionScope.listOfLists.get(i).get(j).width} - -</p>
+                            <form action="OrderController" method="get">
+                                <button class="button-cards">Purchase</button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="title">
-                        <h1>${listOfLists.get(0).price}</h1>
-                    </div>
-                    <div class="des">
-                        <p>- - ${listOfLists.get(0).length} - - DESCRIPTION - - ${listOfLists.get(0).width} - -</p>
-                        <form action="OrderController" method="get">
-                            <button class="button-cards">Purchase</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="cards">
-                    <div class="image">
-                        <img src="${listOfLists.get(1).imgUrl}" alt="picture of carport">
-                    </div>
-                    <div class="title">
-                        <h1>${listOfLists.get(1).price}</h1>
-                    </div>
-                    <div class="des">
-                        <p>- - ${listOfLists.get(1).length} - - DESCRIPTION - - ${listOfLists.get(1).width} - -</p>
-                        <form action="OrderController" method="get">
-                            <button class="button-cards">Purchase</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="cards">
-                    <div class="image">
-                        <img src="${listOfLists.get(2).imgUrl}" alt="picture of carport">
-                    </div>
-                    <div class="title">
-                        <h1>${listOfLists.get(2).price}</h1>
-                    </div>
-                    <div class="des">
-                        <p>- - ${listOfLists.get(2).length} - - DESCRIPTION - - ${listOfLists.get(2).width} - -</p>
-                        <form action="OrderController" method="get">
-                            <button class="button-cards">Purchase</button>
-                        </form>
-                    </div>
-                </div>
+                </c:forEach>
                 </c:forEach>
 
-
-                <div class="carousel__item">
-                    <div class="cards">
-                        <div class="image">
-                            <img src="Resources/images/carport4.png" alt="picture of carport">
-                        </div>
-                        <div class="title">
-                            <h1>DKK 6.498,00</h1>
-                        </div>
-                        <div class="des">
-                            <p>CARPORT ENKELT 3,60X8,10M CARL01HR MED REDSKABSRUM 3,05X3,20M</p>
-                            <form action="OrderController" method="get">
-                                <button class="button-cards">Purchase</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="cards">
-                        <div class="image">
-                            <img src="Resources/images/carport5.png" alt="picture of carport">
-                        </div>
-                        <div class="title">
-                            <h1>DKK 46.395,00</h1>
-                        </div>
-                        <div class="des">
-                            <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                            <form action="OrderController" method="get">
-                                <button class="button-cards">Purchase</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="cards">
-                        <div class="image">
-                            <img src="Resources/images/carport6.png" alt="picture of carport">
-                        </div>
-                        <div class="title">
-                            <h1>DKK 55.998,00</h1>
-                        </div>
-                        <div class="des">
-                            <p>Dobbelt carport i galvaniseret stål HORIZONTAL Træfarve</p>
-                            <form action="OrderController" method="get">
-                                <button class="button-cards">Purchase</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel__item">
-                    <div class="cards">
-                        <div class="image">
-                            <img src="Resources/images/carport3.png" alt="picture of carport">
-                        </div>
-                        <div class="title">
-                            <h1>Title Name</h1>
-                        </div>
-                        <div class="des">
-                            <p>CARPORT CP01DUR 6,00 x 7,80 mtr. incl. 2,10 x 5,10 mtr. redskabsrum</p>
-                            <form action="OrderController" method="get">
-                                <button class="button-cards">Purchase</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
 
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>

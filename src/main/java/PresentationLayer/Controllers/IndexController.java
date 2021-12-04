@@ -40,6 +40,12 @@ public class IndexController extends HttpServlet
         try
         {
             pdCarports = pageUtility.getAllPDCarports();
+            System.out.println(pdCarports.get(0).getId());
+            System.out.println(pdCarports.get(1).getId());
+            System.out.println(pdCarports.get(2).getId());
+            System.out.println(pdCarports.get(3).getId());
+            System.out.println(pdCarports.get(4).getId());
+            System.out.println(pdCarports.get(5).getId());
             pdSheds = pageUtility.getAllPDSheds();
         } catch (Exception e)
         {
@@ -48,7 +54,7 @@ public class IndexController extends HttpServlet
 
         //TODO: Make a method inside this method that generates HTML code.
         // Cus it wont work normally in the html page with foreach by JSTL
-        pageUtility.generateCarouselPages(pdCarports, session);
+        pageUtility.splitPredefinedCarportList(pdCarports, session);
 
         view.forwardToJsp("index.jsp", request, response);
     }
@@ -59,6 +65,5 @@ public class IndexController extends HttpServlet
     {
 
     }
-
 
 }

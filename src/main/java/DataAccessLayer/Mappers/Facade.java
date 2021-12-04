@@ -27,6 +27,8 @@ public class Facade {
         unitMapper = new UnitMapper(database);
         orderMapper = new OrderMapper(database);
         userMapper = new UserMapper(database);
+        predefinedCarportMapper = new PredefinedCarportMapper(database);
+        predefinedShedMapper = new PredefinedShedMapper(database);
 
     }
 
@@ -120,7 +122,7 @@ public class Facade {
 
     public List<PredefinedCarport> getAllPredefinedCarport() throws Exception
     {
-        List<PredefinedCarport> pdCarports = new ArrayList<>();
+        List<PredefinedCarport> pdCarports;
         pdCarports = predefinedCarportMapper.receiveAllPredefinedCarport();
         return pdCarports;
     }

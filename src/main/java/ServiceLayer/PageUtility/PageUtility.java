@@ -29,12 +29,13 @@ public class PageUtility
 
     public List<PredefinedCarport> getAllPDCarports() throws Exception
     {
-        List<PredefinedCarport> pdCarportList = new ArrayList<>();
+        List<PredefinedCarport> pdCarportList;
         pdCarportList = facade.getAllPredefinedCarport();
         return pdCarportList;
     }
 
-    public void generateCarouselPages(List<PredefinedCarport> list, HttpSession session)
+
+    public void splitPredefinedCarportList(List<PredefinedCarport> list, HttpSession session)
     {
         List<List<PredefinedCarport>> listOfLists = new ArrayList<>();
         if(list.size() <= 3)

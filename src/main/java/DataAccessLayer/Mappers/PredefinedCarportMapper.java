@@ -51,7 +51,7 @@ public class PredefinedCarportMapper {
     }
 
     public List<PredefinedCarport> receiveAllPredefinedCarport()throws Exception {
-        PredefinedCarport pdCarport = null;
+        PredefinedCarport pdCarport;
         List<PredefinedCarport> pdCarportList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM predefined_carport";
