@@ -153,7 +153,7 @@
                                 <h1>${preDefinedCarport.price}</h1>
                             </div>
                             <div class="des">
-                                <p>- - ${preDefinedCarport.length} - - ${preDefinedCarport.width} - -</p>
+                                <p>- - Length: ${preDefinedCarport.length}cm - - Width: ${preDefinedCarport.width}cm - -</p>
                                 <form action="OrderController" method="get">
                                     <button class="button-cards">Purchase</button>
                                 </form>
@@ -162,7 +162,6 @@
                     </c:forEach>
                 </div>
             </c:forEach>
-
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -185,5 +184,7 @@
         </div>
     </div>
 </section>
+
+
 </body>
 </html>

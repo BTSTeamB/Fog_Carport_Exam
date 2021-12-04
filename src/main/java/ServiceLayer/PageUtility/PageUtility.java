@@ -48,15 +48,15 @@ public class PageUtility
         }
         if(list.size() > 3 && list.size() <= 6)
         {
-            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
+            List<PredefinedCarport> firstSlide = list.subList(0,3);
             List<PredefinedCarport> secondSlide = list.subList(3,list.size());
             listOfLists.add(firstSlide);
             listOfLists.add(secondSlide);
         }
         if(list.size() > 6 && list.size() <= 9)
         {
-            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
-            List<PredefinedCarport> secondSlide = list.subList(3,list.size());
+            List<PredefinedCarport> firstSlide = list.subList(0,3);
+            List<PredefinedCarport> secondSlide = list.subList(3,6);
             List<PredefinedCarport> thirdSlide = list.subList(6,list.size());
             listOfLists.add(firstSlide);
             listOfLists.add(secondSlide);
@@ -64,16 +64,21 @@ public class PageUtility
         }
         if(list.size() > 9 && list.size() <= 12)
         {
-            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
-            List<PredefinedCarport> secondSlide = list.subList(3,list.size());
-            List<PredefinedCarport> thirdSlide = list.subList(6,list.size());
+            List<PredefinedCarport> firstSlide = list.subList(0,3);
+            List<PredefinedCarport> secondSlide = list.subList(3,6);
+            List<PredefinedCarport> thirdSlide = list.subList(6,9);
             List<PredefinedCarport> fourthSlide = list.subList(9,list.size());
             listOfLists.add(firstSlide);
             listOfLists.add(secondSlide);
             listOfLists.add(thirdSlide);
             listOfLists.add(fourthSlide);
         }
-
+        System.out.println("Size of list number 1:");
+        System.out.println(listOfLists.get(0).size());
+        System.out.println("Size of list number 2:");
+        System.out.println(listOfLists.get(1).size());
+        System.out.println("Size of list number 3:");
+        System.out.println(listOfLists.get(2).size());
         session.setAttribute("listOfLists", listOfLists);
     }
 
