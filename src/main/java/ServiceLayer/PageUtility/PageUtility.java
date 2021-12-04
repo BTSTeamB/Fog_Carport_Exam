@@ -38,6 +38,9 @@ public class PageUtility
     public void splitPredefinedCarportList(List<PredefinedCarport> list, HttpSession session)
     {
         List<List<PredefinedCarport>> listOfLists = new ArrayList<>();
+
+        System.out.println("list size in method");
+        System.out.println(list.size());
         if(list.size() <= 3)
         {
             List<PredefinedCarport> firstSlide = list.subList(0,list.size());
@@ -45,20 +48,31 @@ public class PageUtility
         }
         if(list.size() > 3 && list.size() <= 6)
         {
+            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
             List<PredefinedCarport> secondSlide = list.subList(3,list.size());
+            listOfLists.add(firstSlide);
             listOfLists.add(secondSlide);
         }
         if(list.size() > 6 && list.size() <= 9)
         {
+            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
+            List<PredefinedCarport> secondSlide = list.subList(3,list.size());
             List<PredefinedCarport> thirdSlide = list.subList(6,list.size());
+            listOfLists.add(firstSlide);
+            listOfLists.add(secondSlide);
             listOfLists.add(thirdSlide);
         }
         if(list.size() > 9 && list.size() <= 12)
         {
+            List<PredefinedCarport> firstSlide = list.subList(0,list.size());
+            List<PredefinedCarport> secondSlide = list.subList(3,list.size());
+            List<PredefinedCarport> thirdSlide = list.subList(6,list.size());
             List<PredefinedCarport> fourthSlide = list.subList(9,list.size());
+            listOfLists.add(firstSlide);
+            listOfLists.add(secondSlide);
+            listOfLists.add(thirdSlide);
             listOfLists.add(fourthSlide);
         }
-
 
         session.setAttribute("listOfLists", listOfLists);
     }

@@ -144,7 +144,6 @@
         <div class="carousel">
             <c:forEach var="subLists" items="${sessionScope.listOfLists}">
             <div class="carousel__item">
-
                 <c:forEach var="preDefinedCarport" items="${subLists}">
                     <div class="cards">
                         <div class="image">
@@ -169,9 +168,10 @@
             </div>
 
             <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
+                <c:forEach begin="1" end="${sessionScope.listOfLists.size()}" var="i">
+                <span class="dot" onclick="currentSlide(i)"></span>
+                </c:forEach>
+
             </div>
         </div>
     </div>

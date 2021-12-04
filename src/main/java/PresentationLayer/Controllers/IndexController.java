@@ -23,26 +23,28 @@ public class IndexController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        List<PredefinedCarport> pdCarports = null;
-        List<PredefinedShed> pdSheds = null;
+        List<PredefinedCarport> pdCarports = new ArrayList<>();
+        List<PredefinedShed> pdSheds = new ArrayList<>();
 
         try
         {
             pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
+            System.out.println("List size in Controller");
             System.out.println(pdCarports.size());
-            System.out.println(pdCarports.get(0).getId());
-            System.out.println(pdCarports.get(1).getId());
-            System.out.println(pdCarports.get(2).getId());
-            System.out.println(pdCarports.get(3).getId());
-            System.out.println(pdCarports.get(4).getId());
-            System.out.println(pdCarports.get(5).getId());
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-
+        System.out.println("List size outside of try");
+        System.out.println(pdCarports.size());
         pageUtility.splitPredefinedCarportList(pdCarports, session);
+
+        List<PredefinedCarport> tmpPDC = new ArrayList<>();
+        tmpPDC = (List<PredefinedCarport>) session.getAttribute("listOfLists");
+
+        System.out.println("list size after method");
+        System.out.println(tmpPDC.size());
 
         view.forwardToJsp("index.jsp", request, response);
     }
