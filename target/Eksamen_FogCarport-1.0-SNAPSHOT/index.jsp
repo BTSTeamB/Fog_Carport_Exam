@@ -166,7 +166,7 @@
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <div style="text-align:center">
+        <div style="text-align:center" style="margin-bottom: 2em;">
             <c:forEach begin="1" end="${sessionScope.listOfLists.size()}" var="i">
                 <span class="dot" onclick="currentSlide(i)"></span>
             </c:forEach>
