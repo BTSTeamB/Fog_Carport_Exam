@@ -143,35 +143,35 @@
         </div>
         <div class="carousel">
             <c:forEach var="subLists" items="${sessionScope.listOfLists}">
-            <div class="carousel__item">
-                <c:forEach var="preDefinedCarport" items="${subLists}">
-                    <div class="cards">
-                        <div class="image">
-                            <img src="${preDefinedCarport.imgUrl}" alt="picture of carport">
+                <div class="carousel__item">
+                    <c:forEach var="preDefinedCarport" items="${subLists}">
+                        <div class="cards">
+                            <div class="image">
+                                <img src="${preDefinedCarport.imgUrl}" alt="picture of carport">
+                            </div>
+                            <div class="title">
+                                <h1>${preDefinedCarport.price}</h1>
+                            </div>
+                            <div class="des">
+                                <p>- - ${preDefinedCarport.length} - - ${preDefinedCarport.width} - -</p>
+                                <form action="OrderController" method="get">
+                                    <button class="button-cards">Purchase</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="title">
-                            <h1>${preDefinedCarport.price}</h1>
-                        </div>
-                        <div class="des">
-                            <p>- - ${preDefinedCarport.length} - - ${preDefinedCarport.width} - -</p>
-                            <form action="OrderController" method="get">
-                                <button class="button-cards">Purchase</button>
-                            </form>
-                        </div>
-                    </div>
                     </c:forEach>
-                </c:forEach>
+                </div>
+            </c:forEach>
 
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-
-            <div style="text-align:center">
-                <c:forEach begin="1" end="${sessionScope.listOfLists.size()}" var="i">
-                <span class="dot" onclick="currentSlide(i)"></span>
-                </c:forEach>
-            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
+        <div style="text-align:center">
+            <c:forEach begin="1" end="${sessionScope.listOfLists.size()}" var="i">
+                <span class="dot" onclick="currentSlide(i)"></span>
+            </c:forEach>
+        </div>
+    </div>
     </div>
 </section>
 
