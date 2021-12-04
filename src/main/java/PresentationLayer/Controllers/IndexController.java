@@ -30,21 +30,12 @@ public class IndexController extends HttpServlet
         {
             pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
-            System.out.println("List size in Controller");
-            System.out.println(pdCarports.size());
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-        System.out.println("List size outside of try");
-        System.out.println(pdCarports.size());
+
         pageUtility.splitPredefinedCarportList(pdCarports, session);
-
-        List<PredefinedCarport> tmpPDC = new ArrayList<>();
-        tmpPDC = (List<PredefinedCarport>) session.getAttribute("listOfLists");
-
-        System.out.println("list size after method");
-        System.out.println(tmpPDC.size());
 
         view.forwardToJsp("index.jsp", request, response);
     }
