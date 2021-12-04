@@ -26,34 +26,22 @@ public class IndexController extends HttpServlet
         List<PredefinedCarport> pdCarports = null;
         List<PredefinedShed> pdSheds = null;
 
-        int everyThirdCounter = 0;
-        String carouselPageNum = "CarouselPageNum" + everyThirdCounter + "";
-
         try
         {
             pageUtility = new PageUtility();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
-        try
-        {
             pdCarports = pageUtility.getAllPDCarports();
+            System.out.println(pdCarports.size());
             System.out.println(pdCarports.get(0).getId());
             System.out.println(pdCarports.get(1).getId());
             System.out.println(pdCarports.get(2).getId());
             System.out.println(pdCarports.get(3).getId());
             System.out.println(pdCarports.get(4).getId());
             System.out.println(pdCarports.get(5).getId());
-            pdSheds = pageUtility.getAllPDSheds();
         } catch (Exception e)
         {
             e.printStackTrace();
         }
 
-        //TODO: Make a method inside this method that generates HTML code.
-        // Cus it wont work normally in the html page with foreach by JSTL
         pageUtility.splitPredefinedCarportList(pdCarports, session);
 
         view.forwardToJsp("index.jsp", request, response);

@@ -142,25 +142,24 @@
             <h1>Prepared carport</h1>
         </div>
         <div class="carousel">
-            <c:forEach var="i" begin="0" end="${sessionScope.listOfLists.size()}">
+            <c:forEach var="subLists" items="${sessionScope.listOfLists}">
             <div class="carousel__item">
-
-                <c:forEach var="j" begin="0" end="${sessionScope.listOfLists.get(i).size()}">
+                <c:forEach var="preDefinedCarport" items="${subLists}">
                     <div class="cards">
                         <div class="image">
-                            <img src="${sessionScope.listOfLists.get(i).get(j).imgUrl}" alt="picture of carport">
+                            <img src="${preDefinedCarport.imgUrl}" alt="picture of carport">
                         </div>
                         <div class="title">
-                            <h1>${sessionScope.listOfLists.get(i).get(j).price}</h1>
+                            <h1>${preDefinedCarport.price}</h1>
                         </div>
                         <div class="des">
-                            <p>- - ${sessionScope.listOfLists.get(i).get(j).length} - - ${sessionScope.listOfLists.get(i).get(j).width} - -</p>
+                            <p>- - ${preDefinedCarport.length} - - ${preDefinedCarport.width} - -</p>
                             <form action="OrderController" method="get">
                                 <button class="button-cards">Purchase</button>
                             </form>
                         </div>
                     </div>
-                </c:forEach>
+                    </c:forEach>
                 </c:forEach>
 
 
