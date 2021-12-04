@@ -11,11 +11,19 @@ public class Cladding
         this.cladding_id = cladding_id;
         this.material = material;
     }
+    public Cladding(int cladding_id, int material_id)
+    {
+        this.cladding_id = cladding_id;
+        this.material_id = material_id;
+    }
 
     public Cladding(int material_id){
         this.material_id=material_id;
+    }
 
-
+    //FOOBAR
+    public Cladding(Material material){
+        this.material = material;
     }
 
     public int getCladding_id() {

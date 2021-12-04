@@ -2,8 +2,7 @@ package ServiceLayer.PageUtility;
 
 import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facade;
-import Entities.PredefinedCarport;
-import Entities.PredefinedShed;
+import Entities.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -20,12 +19,6 @@ public class PageUtility
         this.facade = new Facade(database);
     }
 
-    public List<PredefinedShed> getAllPDSheds() throws Exception
-    {
-        List<PredefinedShed> pdSheds = new ArrayList<>();
-        pdSheds = facade.getAllPredefinedShed();
-        return pdSheds;
-    }
 
     public List<PredefinedCarport> getAllPDCarports() throws Exception
     {
@@ -75,13 +68,74 @@ public class PageUtility
         }
         System.out.println("Size of list number 1:");
         System.out.println(listOfLists.get(0).size());
+        System.out.println("IDs inside this list");
+        System.out.println(listOfLists.get(0).get(0).getId());
+        System.out.println(listOfLists.get(0).get(1).getId());
+        System.out.println(listOfLists.get(0).get(2).getId());
         System.out.println("Size of list number 2:");
         System.out.println(listOfLists.get(1).size());
+        System.out.println("IDs inside this list");
+        System.out.println(listOfLists.get(1).get(0).getId());
+        System.out.println(listOfLists.get(1).get(1).getId());
+        System.out.println(listOfLists.get(1).get(2).getId());
         System.out.println("Size of list number 3:");
         System.out.println(listOfLists.get(2).size());
+        System.out.println("IDs inside this list");
+        System.out.println(listOfLists.get(2).get(0).getId());
+        System.out.println(listOfLists.get(2).get(1).getId());
+        System.out.println(listOfLists.get(2).get(2).getId());
+
         session.setAttribute("listOfLists", listOfLists);
     }
 
 
+    public List<PredefinedShed> getAllPDSheds() throws Exception
+    {
+        List<PredefinedShed> pdSheds = new ArrayList<>();
+        pdSheds = facade.getAllPredefinedShed();
+        return pdSheds;
+    }
+
+    public Cladding getCladdingByObject(Cladding cladding)
+    {
+        Cladding tmpCladding = facade.receiveCladdingByObject(cladding);
+        return tmpCladding;
+    }
+
+    public Cladding getCladdingByID(int claddingId)
+    {
+        Cladding cladding = facade.receiveCladdingById(claddingId);
+        return cladding;
+    }
+
+    public List<Cladding> getAllCladdings()
+    {
+        List<Cladding> claddingList = facade.receiveAllCladding();
+        return claddingList;
+    }
+
+    public Roofing getRoofingByObject(Roofing roofing) throws Exception
+    {
+        Roofing tmpRoofing = facade.receiveRoofingByObject(roofing);
+        return tmpRoofing;
+    }
+
+    public Roofing getRoofingByID(int roofingId) throws Exception
+    {
+        Roofing roofing = facade.receiveRoofingById(roofingId);
+        return roofing;
+    }
+
+    public List<Roofing> getAllRoofings()
+    {
+        List<Roofing> roofingList = facade.receiveAllRoofing();
+        return roofingList;
+    }
+
+    public Material getMaterialById(int material_id) throws Exception
+    {
+        Material tmpMaterial = facade.getMaterialById(material_id);
+        return tmpMaterial;
+    }
 
 }

@@ -30,6 +30,7 @@ public class IndexController extends HttpServlet
         {
             pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
+            session.setAttribute("AllPDCarports", pdCarports);
         } catch (Exception e)
         {
             e.printStackTrace();

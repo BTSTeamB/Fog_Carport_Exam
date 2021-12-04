@@ -153,9 +153,9 @@
                                 <h1>${preDefinedCarport.price}</h1>
                             </div>
                             <div class="des">
-                                <p>- - Length: ${preDefinedCarport.length}cm - - Width: ${preDefinedCarport.width}cm - -</p>
+                                <p>Length: ${preDefinedCarport.length}cm - - Width: ${preDefinedCarport.width}cm</p>
                                 <form action="OrderController" method="get">
-                                    <button class="button-cards">Purchase</button>
+                                    <button class="button-cards" name="act" value="${preDefinedCarport.id}" >Read More</button>
                                 </form>
                             </div>
                         </div>

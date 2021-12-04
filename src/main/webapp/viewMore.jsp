@@ -1,17 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
   User: oliverrasoli
-  Date: 02/12/2021
-  Time: 20.48
+  Date: 04/12/2021
+  Time: 20.52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
-    <title>Title</title>
+    <title>viewMore</title>
 </head>
 <body>
+
 <div class="image">
     <img src="${sessionScope.viewMoreCarport.imgUrl}" alt="picture of carport">
 </div>
@@ -21,17 +23,21 @@
 <div class="des">
     <p>Length: ${sessionScope.viewMoreCarport.length}cm - - Width: ${sessionScope.viewMoreCarport.width}cm</p>
 
-    <label>Cladding of your choice:</label>
-    <div>
-        <p>${requestScope.chosenCladding.material.name}</p>
-    </div>
+    <label for="cladding">Choose cladding:</label>
 
-    <br>
 
-    <label>Roofing of your choice:</label>
-    <div>
-        <p>${requestScope.chosenRoofing.material.name}</p>
-    </div>
+    <select name="cladding" id="cladding">
+    <c:forEach var="cladding" items="${requestScope.claddingList}">
+        <option value="${cladding.cladding_id}">${cladding.material.name}</option>
+        </c:forEach>
+    </select>
+
+    <label for="roofing">Choose Roofing:</label>
+    <select name="roofing" id="roofing">
+        <c:forEach var="roofing" items="${requestScope.roofingList}">
+            <option value="${roofing.roofing_id}">${roofing.material.name}</option>
+        </c:forEach>
+    </select>
 
     <form action="OrderController" method="post">
         <button class="button-cards" name="act" value="${sessionScope.viewMoreCarport.id}">Read More</button>

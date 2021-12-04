@@ -16,6 +16,17 @@ public class Roofing
         this.material_id = material_id;
     }
 
+    public Roofing(int roofing_id, int material_id){
+        this.roofing_id = roofing_id;
+        this.material_id = material_id;
+    }
+
+    //FOOBAR
+    public Roofing(Material roofingMat)
+    {
+        this.material = roofingMat;
+    }
+
     public int getRoofing_id() {
         return roofing_id;
 
