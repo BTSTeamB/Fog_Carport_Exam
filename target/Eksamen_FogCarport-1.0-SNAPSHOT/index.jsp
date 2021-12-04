@@ -29,8 +29,8 @@
     </div>
     <ul class="nav-links">
         <li><a class="home" href="index.jsp">Home</a></li>
-        <li><a href="">About</a></li>
         <li><a href="#">Design</a></li>
+        <li><a href="#">Orders</a></li>
     </ul>
     <div class="dropdown">
         <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
@@ -166,7 +166,7 @@
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
-        <div style="text-align:center" style="margin-bottom: 2em;">
+        <div style="text-align:center">
             <c:forEach begin="1" end="${sessionScope.listOfLists.size()}" var="i">
                 <span class="dot" onclick="currentSlide(i)"></span>
             </c:forEach>

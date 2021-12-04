@@ -19,8 +19,8 @@
     </div>
     <ul class="nav-links">
         <li><a href="index.jsp">Home</a></li>
-        <li><a href="OrderController">About</a></li>
-        <li><a href="#">Orders</a></li>
+        <li><a href="#">Design</a></li>
+        <li><a href="OrderController">Orders</a></li>
     </ul>
     <div class="dropdown">
         <a class="sign-in" onclick="openLoginForm()" style="display: none;">SIGN-IN</a>
