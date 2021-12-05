@@ -23,18 +23,18 @@
 
     <label>Cladding of your choice:</label>
     <div>
-        <p>${requestScope.chosenCladding.material.name}</p>
+        <p>${sessionScope.chosenCladding.material.name}</p>
     </div>
 
     <br>
 
     <label>Roofing of your choice:</label>
     <div>
-        <p>${requestScope.chosenRoofing.material.name}</p>
+        <p>${sessionScope.chosenRoofing.material.name}</p>
     </div>
 
-    <form action="OrderController" method="post">
-        <button class="button-cards" name="act" value="${sessionScope.viewMoreCarport.id}">Read More</button>
+    <form action="CheckOutController" method="get">
+        <button class="button-cards" name="act">Bestil</button>
     </form>
 </div>
 

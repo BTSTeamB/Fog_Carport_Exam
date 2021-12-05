@@ -60,6 +60,10 @@ public class UserUtility
         httpSession.setAttribute("user", newUser);
     }
 
+    public void registerGuestUser(User user) throws Exception
+    {
+        facade.createUser(user.getName(), user.getAddress(), user.getZipCode(), user.getPhoneNumber(), user.getEmail(), user.getPassword());
+    }
 
     public void registerUser(String name, String address, String zipCode, String email, String password, String phoneNumber) throws Exception
     {

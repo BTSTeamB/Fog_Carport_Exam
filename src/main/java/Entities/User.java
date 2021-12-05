@@ -51,6 +51,19 @@ public class User
         this.is_guest = is_guest;
     }
 
+
+    //Guest constructor
+    public User(String name, String address, String zipCode, String email, String phoneNumber)
+    {
+        this.name = name;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = "0000";
+        this.is_admin = 0;
+    }
+
     public String getName() {
         return name;
     }

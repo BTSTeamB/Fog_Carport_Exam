@@ -51,8 +51,15 @@ public class Order {
         this.roofing_id = roofing_id;
         this.shed_width = shed_width;
         this.shed_length = shed_length;
+    }
 
-
+    public Order(int user_id,double price, int carport_length, int carport_width, int cladding_id, int roofing_id) {
+        this.user_id = user_id;
+        this.price = price;
+        this.carport_length = carport_length;
+        this.carport_width = carport_width;
+        this.cladding_id = cladding_id;
+        this.roofing_id = roofing_id;
     }
 
     public int getOrder_id() {

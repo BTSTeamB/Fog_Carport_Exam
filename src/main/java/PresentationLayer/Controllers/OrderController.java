@@ -103,7 +103,7 @@ public class OrderController extends HttpServlet
         }
         else if(claddingMat.getMaterial_id() == 2)
         {
-            claddingMat.setName("Glas Beklædning?");
+            claddingMat.setName("Glas Beklædning");
             claddingMat.setDescription("Hvad er en glas carport lol");
             claddingMat.setPrice(10000.0);
             claddingMat.setLength(69.2);
@@ -159,8 +159,8 @@ public class OrderController extends HttpServlet
         System.out.println(roofing.getMaterial().getPrice());
         System.out.println("- - - - - - - - - - - - - - - - - - -");
 
-        request.setAttribute("chosenCladding", cladding);
-        request.setAttribute("chosenRoofing", roofing);
+        session.setAttribute("chosenCladding", cladding);
+        session.setAttribute("chosenRoofing", roofing);
 
 
         // DYNAMIC METHODS
