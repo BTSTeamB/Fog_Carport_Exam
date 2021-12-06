@@ -30,6 +30,11 @@ public class IndexController extends HttpServlet
         {
             pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
+            //Makes sure to cap the list at 15
+            if(pdCarports.size() > 15)
+            {
+                pdCarports = pdCarports.subList(0,15);
+            }
             session.setAttribute("AllPDCarports", pdCarports);
         } catch (Exception e)
         {

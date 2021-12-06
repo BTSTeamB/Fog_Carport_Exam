@@ -64,6 +64,7 @@ public class GuestController extends HttpServlet
         try
         {
             user = userUtility.getUserByLogin(user.getEmail(), user.getPassword());
+            System.out.println(user.getUser_id());
         } catch (Exception e)
         {
             e.printStackTrace();

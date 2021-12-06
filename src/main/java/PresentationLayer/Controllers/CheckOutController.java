@@ -17,6 +17,7 @@ public class CheckOutController extends HttpServlet
     {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        System.out.println(user.getUser_id());
         OrderUtility orderUtility = null;
         View view = new View();
 

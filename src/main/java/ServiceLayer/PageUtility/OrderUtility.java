@@ -23,6 +23,7 @@ public class OrderUtility
     {
         PredefinedCarport pdCarport = (PredefinedCarport) session.getAttribute("viewMoreCarport");
         User user = (User) session.getAttribute("user");
+        System.out.println(user.getUser_id());
         Cladding cladding = (Cladding) session.getAttribute("chosenCladding");
         Roofing roofing = (Roofing) session.getAttribute("chosenRoofing");
         double totalPrice = pdCarport.getPrice() + cladding.getMaterial().getPrice() + roofing.getMaterial().getPrice();
