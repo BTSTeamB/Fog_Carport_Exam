@@ -39,7 +39,10 @@ public class GuestController extends HttpServlet
         String email = request.getParameter("guestEmail");
         String phoneNumber = request.getParameter("guestPhoneNum");
 
-        User user = new User(name, address, zipCode ,email ,phoneNumber);
+
+
+
+        User user = new User(name, address, zipCode ,phoneNumber, email);
 
         try
         {
@@ -57,6 +60,14 @@ public class GuestController extends HttpServlet
         System.out.println(user.getEmail());
         System.out.println(user.getPassword());
         System.out.println(user.getPhoneNumber());
+
+        try
+        {
+            user = userUtility.getUserByLogin(user.getEmail(), user.getPassword());
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         session.setAttribute("user", user);
 

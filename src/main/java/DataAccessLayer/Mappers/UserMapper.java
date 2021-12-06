@@ -14,7 +14,7 @@ public class UserMapper {
 
     public void createUser (User user) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = " insert into user(name,address, zip_code,phone_no,email,password) values(?,?,?,?,?,?)";
+            String sql = " insert into user(name,address,zip_code,phone_no,email,password) values(?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
                 ps.setString(1, user.getName());

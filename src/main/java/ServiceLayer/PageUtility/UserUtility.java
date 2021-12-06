@@ -65,9 +65,9 @@ public class UserUtility
         facade.createUser(user.getName(), user.getAddress(), user.getZipCode(), user.getPhoneNumber(), user.getEmail(), user.getPassword());
     }
 
-    public void registerUser(String name, String address, String zipCode, String email, String password, String phoneNumber) throws Exception
+    public void registerUser(String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception
     {
-        facade.createUser(name, address, zipCode, email, password, phoneNumber);
+        facade.createUser(name, address, zipCode,  phoneNumber,email, password);
     }
     public User loginUser(String email, String password, HttpSession session) throws Exception
     {
@@ -95,6 +95,12 @@ public class UserUtility
             return loggedInUser;
         }
         return null;
+    }
+
+    public User getUserByLogin(String email, String password) throws Exception
+    {
+        User tmpUser;
+        return tmpUser = facade.getUser(email, password);
     }
 
 

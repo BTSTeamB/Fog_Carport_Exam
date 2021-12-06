@@ -42,7 +42,7 @@ public class RegisterController extends HttpServlet
 
         try
         {
-            userUtility.registerUser(userName,userAddress, userZipCode, userEmail, userPassword, userPhoneNum);
+            userUtility.registerUser(userName,userAddress, userZipCode, userPhoneNum, userEmail, userPassword);
         } catch (Exception e)
         {
             e.printStackTrace();

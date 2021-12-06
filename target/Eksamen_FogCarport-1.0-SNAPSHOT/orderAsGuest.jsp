@@ -20,10 +20,11 @@
     <br>
     <input type="text" name="guestZipCode" id="guestZipCode">
     <br>
-    <input type="text" name="guestEmail" id="guestEmail">
-    <br>
     <input type="text" name="guestPhoneNum" id="guestPhoneNum">
     <br>
+    <input type="text" name="guestEmail" id="guestEmail">
+    <br>
+
     <button type="subtmit">Submit guest data</button>
 </form>
 

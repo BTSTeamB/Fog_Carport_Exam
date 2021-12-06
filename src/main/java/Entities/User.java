@@ -13,7 +13,7 @@ public class User
     private int user_id;
 
     //Database inserter Constructor
-    public User(String name, String address, String zipCode, String email, String password, String phoneNumber)
+    public User(String name, String address, String zipCode, String phoneNumber, String email, String password)
     {
         this.name = name;
         this.address = address;
@@ -21,7 +21,6 @@ public class User
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-
     }
 
     public User(int user_id, String name, String address, String zipCode, String email, String password, String phoneNumber)
@@ -53,15 +52,16 @@ public class User
 
 
     //Guest constructor
-    public User(String name, String address, String zipCode, String email, String phoneNumber)
+    public User(String name, String address, String zipCode, String phoneNumber, String email)
     {
         this.name = name;
         this.address = address;
         this.zipCode = zipCode;
-        this.email = email;
         this.phoneNumber = phoneNumber;
+        this.email = email;
         this.password = "0000";
         this.is_admin = 0;
+        this.is_guest = 1;
     }
 
     public String getName() {

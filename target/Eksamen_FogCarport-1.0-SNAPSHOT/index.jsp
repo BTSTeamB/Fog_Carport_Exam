@@ -150,7 +150,7 @@
                                 <img src="${preDefinedCarport.imgUrl}" alt="picture of carport">
                             </div>
                             <div class="title">
-                                <h1>${preDefinedCarport.price}</h1>
+                                <h1>${preDefinedCarport.price} DKK,-</h1>
                             </div>
                             <div class="des">
                                 <p>Length: ${preDefinedCarport.length}cm - - Width: ${preDefinedCarport.width}cm</p>
