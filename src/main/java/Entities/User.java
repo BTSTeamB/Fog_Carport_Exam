@@ -124,8 +124,17 @@ public class User
         this.is_admin = is_admin;
     }
 
-
     public int getIs_admin() {
         return is_admin;
+    }
+
+    public int getIs_guest()
+    {
+        return is_guest;
+    }
+
+    public void setIs_guest(int is_guest)
+    {
+        this.is_guest = 1;
     }
 }

@@ -26,7 +26,7 @@ public class RoofingMapper
             String sql = "INSERT INTO roofing(material_id) value(?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-                ps.setInt(1, roofing.getMaterial_id());
+                ps.setString(1, roofing.getType());
                 ps.executeUpdate();
 
 
@@ -51,9 +51,9 @@ public class RoofingMapper
 
     public void editRoofing(Roofing roofing) {
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE roofing SET material_id = ? WHERE roof_id" + roofing.getMaterial_id();
+            String sql = "UPDATE roofing SET material_id="+roofing.getType()+" WHERE roof_id="+ roofing.getRoofing_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, roofing.getMaterial_id());
+                ps.setString(1, roofing.getType());
                 ps.executeUpdate();
 
             }
@@ -72,15 +72,14 @@ public class RoofingMapper
                 ResultSet rs = ps.executeQuery(sql);
                 while (rs.next()) {
                     int id = rs.getInt("roof_id");
-                    int material_id = rs.getInt("material_id");
-                    Roofing tmpRoofing = new Roofing(id, material_id);
-                    roofingList.add(new Roofing(id, tmpRoofing.getMaterial()));
+                    String type = rs.getString("type");
+                    Roofing tmpRoofing = new Roofing(id, type);
+                    roofingList.add(new Roofing(id, tmpRoofing.getType()));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return roofingList;
     }
 
@@ -88,13 +87,13 @@ public class RoofingMapper
     public Roofing receiveRoofingByObject(Roofing paraRoofing) {
         Roofing tmpRoofing = null;
         try (Connection connection = database.connect()) {
-            String sql = "SELECT material_id FROM roofing WHERE roof_id=" + paraRoofing.getRoofing_id();
+            String sql = "SELECT type FROM roofing WHERE roof_id=" + paraRoofing.getRoofing_id();
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next()) {
-                    int material_id = rs.getInt("material_id");
-                    tmpRoofing = new Roofing(paraRoofing.getRoofing_id(), material_id);
+                    String type = rs.getString("type");
+                    tmpRoofing = new Roofing(paraRoofing.getRoofing_id(), type);
                 }
 
             }
@@ -114,8 +113,8 @@ public class RoofingMapper
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next()) {
                     int id = rs.getInt("roof_id");
-                    int material_id = rs.getInt("material_id");
-                    roofing = new Roofing(id,material_id);
+                    String type = rs.getString("type");
+                    roofing = new Roofing(id,type);
                 }
 
             }

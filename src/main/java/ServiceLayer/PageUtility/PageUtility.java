@@ -139,4 +139,26 @@ public class PageUtility
         return tmpMaterial;
     }
 
+    //CladdingMaterialLine
+    public void createCML(int claddingId, int materialId) throws Exception
+    {
+        facade.createCML(claddingId, materialId);
+    }
+
+    public List<CladdingMaterialLine> getAllCMLBySpecificId(int id)
+    {
+        return facade.getAllCMLBySpecificId(id);
+    }
+
+    //RoofingMaterialLine
+    public void createRML(int roofingId, int materialId) throws Exception
+    {
+        facade.createRML(roofingId, materialId);
+    }
+
+    public List<RoofingMaterialLine> getAllRMLBySpecificId(int id)
+    {
+        return facade.getAllRMLBySpecificId(id);
+    }
+
 }

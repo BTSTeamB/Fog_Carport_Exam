@@ -79,7 +79,7 @@ public class MaterialMapper
     public Material receiveMaterialById(int material_id) {
         Material material = null;
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM material WHERE material_id=" + material_id;
+            String sql = "SELECT * FROM material WHERE material_id="+material_id;
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next()) {

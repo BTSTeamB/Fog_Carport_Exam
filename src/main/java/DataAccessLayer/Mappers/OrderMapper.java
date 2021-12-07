@@ -24,8 +24,8 @@ public class OrderMapper
 
                 ps.setInt(1, order.getUser_id());
                 ps.setDouble(2, order.getPrice());
-                ps.setInt(3, order.getCarport_length());
-                ps.setInt(4, order.getCarport_width());
+                ps.setDouble(3, order.getCarport_length());
+                ps.setDouble(4, order.getCarport_width());
                 ps.setInt(5, order.getCladding_id());
                 ps.setInt(6, order.getRoofing_id());
                 ps.setInt(7, order.getShed_width());
@@ -57,8 +57,8 @@ public class OrderMapper
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, order.getUser_id());
                 ps.setDouble(2, order.getPrice());
-                ps.setInt(3, order.getCarport_length());
-                ps.setInt(4, order.getCarport_width());
+                ps.setDouble(3, order.getCarport_length());
+                ps.setDouble(4, order.getCarport_width());
                 ps.setInt(5, order.getCladding_id());
                 ps.setInt(6, order.getRoofing_id());
                 ps.setInt(7, order.getShed_width());

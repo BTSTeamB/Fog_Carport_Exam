@@ -3,28 +3,23 @@ package Entities;
 public class Cladding
 {
     int cladding_id;
-    Material material;
-    int material_id;
+    String type;
 
-    public Cladding(int cladding_id, Material material)
+    public Cladding(int cladding_id, String type)
     {
         this.cladding_id = cladding_id;
-        this.material = material;
+        this.type = type;
     }
-    public Cladding(int cladding_id, int material_id)
+
+    public Cladding(String type){
+        this.type=type;
+    }
+
+    public Cladding(int cladding_id)
     {
         this.cladding_id = cladding_id;
-        this.material_id = material_id;
     }
 
-    public Cladding(int material_id){
-        this.material_id=material_id;
-    }
-
-    //FOOBAR
-    public Cladding(Material material){
-        this.material = material;
-    }
 
     public int getCladding_id() {
         return cladding_id;
@@ -34,20 +29,12 @@ public class Cladding
         this.cladding_id = cladding_id;
     }
 
-    public Material getMaterial() {
-        return material;
+    public String getType() {
+        return type;
     }
 
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    public int getMaterial_id() {
-        return material_id;
-    }
-
-    public void setMaterial_id(int material_id) {
-        this.material_id = material_id;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

@@ -15,6 +15,8 @@ public class Facade {
     UserMapper userMapper;
     PredefinedShedMapper predefinedShedMapper;
     PredefinedCarportMapper predefinedCarportMapper;
+    CML_Mapper cml_mapper;
+    RML_Mapper rml_mapper;
 
     public Facade(Database database) throws ClassNotFoundException {
         claddingMapper = new CladdingMapper(database);
@@ -25,13 +27,15 @@ public class Facade {
         userMapper = new UserMapper(database);
         predefinedCarportMapper = new PredefinedCarportMapper(database);
         predefinedShedMapper = new PredefinedShedMapper(database);
+        cml_mapper = new CML_Mapper(database);
+        rml_mapper = new RML_Mapper(database);
 
     }
 
 
     //Cladding
-    public Cladding createCladding(int material_id) throws Exception {
-        Cladding cladding = new Cladding(material_id);
+    public Cladding createCladding(String type) throws Exception {
+        Cladding cladding = new Cladding(type);
         claddingMapper.createCladding(cladding);
         return cladding;
     }
@@ -41,8 +45,8 @@ public class Facade {
         claddingMapper.deleteCladding(cladding);
     }
 
-    public Cladding editCladding(int cladding_id, int material_id) {
-        Cladding cladding = new Cladding(cladding_id, material_id);
+    public Cladding editCladding(int cladding_id, String type) {
+        Cladding cladding = new Cladding(cladding_id, type);
         claddingMapper.editCladding(cladding);
         return cladding;
     }
@@ -62,6 +66,19 @@ public class Facade {
     {
         List<Cladding> claddingList = claddingMapper.getAllCladding();
         return claddingList;
+    }
+
+    public void createCML(int claddingId, int materialId) throws Exception
+    {
+        CladdingMaterialLine cml = new CladdingMaterialLine(claddingId, materialId);
+        cml_mapper.createLine(cml);
+    }
+
+    public List<CladdingMaterialLine> getAllCMLBySpecificId(int id)
+    {
+        List<CladdingMaterialLine> cmlList = new ArrayList<>();
+        cmlList = cml_mapper.getAllCMLBySpecificId(id);
+        return cmlList;
     }
 
 
@@ -98,6 +115,19 @@ public class Facade {
     {
         List<Roofing> roofingList = roofingMapper.getAllRoofing();
         return roofingList;
+    }
+
+    public void createRML(int roofId, int materialId) throws Exception
+    {
+        RoofingMaterialLine rml = new RoofingMaterialLine(roofId, materialId);
+        rml_mapper.createLine(rml);
+    }
+
+    public List<RoofingMaterialLine> getAllRMLBySpecificId(int id)
+    {
+        List<RoofingMaterialLine> rmlList = new ArrayList<>();
+        rmlList = rml_mapper.getAllRMLBySpecificId(id);
+        return rmlList;
     }
 
 
@@ -145,6 +175,13 @@ public class Facade {
     public void createUser(String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception {
         User user = new User(name, address, zipCode, phoneNumber, email, password);
         userMapper.createUser(user);
+    }
+
+    public void createGuestUser(int isGuest, String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception
+    {
+        User user = new User(name, address, zipCode, phoneNumber, email, password);
+        userMapper.createGuestUser(user);
+
     }
 
     public User getUser(String email, String password) throws Exception

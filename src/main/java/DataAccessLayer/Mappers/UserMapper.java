@@ -33,6 +33,29 @@ public class UserMapper {
         }
     }
 
+    public void createGuestUser(User user) throws Exception
+    {
+        try (Connection connection = database.connect()) {
+            String sql = " insert into user(isGuest,name,address,zip_code,phone_no,email,password) values(?,?,?,?,?,?,?)";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ps.setInt(1, user.getIs_guest());
+                ps.setString(2, user.getName());
+                ps.setString(3, user.getAddress());
+                ps.setString(4, user.getZipCode());
+                ps.setString(5, user.getPhoneNumber());
+                ps.setString(6, user.getEmail());
+                ps.setString(7, user.getPassword());
+                ps.executeUpdate();
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void deleteUser (User user){
 
@@ -140,5 +163,6 @@ public class UserMapper {
         }
         return tmpUser;
     }
+
 
 }

@@ -17,7 +17,6 @@ public class CheckOutController extends HttpServlet
     {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        System.out.println(user.getUser_id());
         OrderUtility orderUtility = null;
         View view = new View();
 
@@ -38,7 +37,7 @@ public class CheckOutController extends HttpServlet
         {
             try
             {
-                orderUtility.generateOrder(session);
+                orderUtility.createPDOrder(session);
             } catch (Exception e)
             {
                 e.printStackTrace();

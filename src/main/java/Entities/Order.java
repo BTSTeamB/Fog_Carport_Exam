@@ -6,8 +6,8 @@ public class Order {
     private int order_id;
     private int user_id;
     private double price;
-    private int carport_length;
-    private int carport_width;
+    private double carport_length;
+    private double carport_width;
     private Cladding cladding;
     private Roofing roofing;
     private int shed_width;
@@ -16,7 +16,7 @@ public class Order {
     private int cladding_id;
     private int roofing_id;
 
-    public Order(int user_id, double price, int carport_length, int carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
+    public Order(int user_id, double price, double carport_length, double carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
         this.user_id = user_id;
         this.price = price;
         this.carport_length = carport_length;
@@ -29,7 +29,7 @@ public class Order {
     }
 
     //Database retriever Constructor
-    public Order(int order_id, int user_id, double price, int carport_length, int carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
+    public Order(int order_id, int user_id, double price, double carport_length, double carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
         this.order_id = order_id;
         this.user_id = user_id;
         this.price = price;
@@ -42,7 +42,7 @@ public class Order {
         this.time_created = time_created;
     }
 
-    public Order(int user_id,double price, int carport_length, int carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) {
+    public Order(int user_id,double price, double carport_length, double carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) {
         this.user_id = user_id;
         this.price = price;
         this.carport_length = carport_length;
@@ -53,7 +53,7 @@ public class Order {
         this.shed_length = shed_length;
     }
 
-    public Order(int user_id,double price, int carport_length, int carport_width, int cladding_id, int roofing_id) {
+    public Order(int user_id,double price, double carport_length, double carport_width, int cladding_id, int roofing_id) {
         this.user_id = user_id;
         this.price = price;
         this.carport_length = carport_length;
@@ -86,7 +86,7 @@ public class Order {
         this.price = price;
     }
 
-    public int getCarport_length() {
+    public double getCarport_length() {
         return carport_length;
     }
 
@@ -94,7 +94,7 @@ public class Order {
         this.carport_length = carport_length;
     }
 
-    public int getCarport_width() {
+    public double getCarport_width() {
         return carport_width;
     }
 

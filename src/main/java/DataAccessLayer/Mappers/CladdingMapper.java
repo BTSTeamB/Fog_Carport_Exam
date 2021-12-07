@@ -21,9 +21,9 @@ public class CladdingMapper
 
     public void createCladding(Cladding cladding) throws Exception {
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO cladding(material_id) value(?)";
+            String sql = "INSERT INTO cladding(type) value(?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, cladding.getMaterial_id());
+                ps.setString(1, cladding.getType());
                 ps.executeUpdate();
 
 
@@ -36,7 +36,7 @@ public class CladdingMapper
 
     public void deleteCladding(Cladding cladding) {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM cladding WHERE cladding_id=?" + cladding.getCladding_id();
+            String sql = "DELETE FROM cladding WHERE cladding_id="+cladding.getCladding_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, cladding.getCladding_id());
                 ps.executeUpdate();
@@ -48,9 +48,9 @@ public class CladdingMapper
 
     public void editCladding(Cladding cladding) {
         try (Connection connection = database.connect()) {
-            String sql = "UPDATE cladding SET material_id = ? WHERE cladding_id="+cladding.getCladding_id();
+            String sql = "UPDATE cladding SET type="+cladding.getType()+" WHERE cladding_id="+cladding.getCladding_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, cladding.getMaterial_id());
+                ps.setString(1, cladding.getType());
                 ps.executeUpdate();
 
             }
@@ -63,13 +63,13 @@ public class CladdingMapper
     public Cladding receiveCladdingByObject(Cladding paraCladding) {
         Cladding tmpCladding = null;
         try (Connection connection = database.connect()) {
-            String sql = "SELECT material_id FROM cladding WHERE cladding_id=" +paraCladding.getCladding_id();
+            String sql = "SELECT type FROM cladding WHERE cladding_id="+paraCladding.getCladding_id();
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next()) {
-                    int material_id = rs.getInt("material_id");
-                    tmpCladding = new Cladding(paraCladding.getCladding_id(), material_id);
+                    String type = rs.getString("type");
+                    tmpCladding = new Cladding(paraCladding.getCladding_id(), type);
                 }
             }
         } catch (SQLException e) {
@@ -88,8 +88,8 @@ public class CladdingMapper
                 ResultSet rs = ps.executeQuery(sql);
                 if (rs.next()) {
                     int id = rs.getInt("cladding_id");
-                    int material_id = rs.getInt("material_id");
-                    cladding = new Cladding(id, material_id);
+                    String type = rs.getString("type");
+                    cladding = new Cladding(id, type);
                 }
             }
         } catch (SQLException e) {
@@ -108,9 +108,9 @@ public class CladdingMapper
                 ResultSet rs = ps.executeQuery(sql);
                 while (rs.next()) {
                     int id = rs.getInt("cladding_id");
-                    int material_id = rs.getInt("material_id");
-                    Cladding tmpCladding = new Cladding(id, material_id);
-                    claddingList.add(new Cladding(id, tmpCladding.getMaterial()));
+                    String type = rs.getString("type");
+                    Cladding tmpCladding = new Cladding(id, type);
+                    claddingList.add(new Cladding(id, tmpCladding.getType()));
                 }
             }
         } catch (SQLException e) {

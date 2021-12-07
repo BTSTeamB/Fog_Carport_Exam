@@ -2,10 +2,7 @@ package PresentationLayer.Controllers;
 
 import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facade;
-import Entities.Cladding;
-import Entities.Material;
-import Entities.PredefinedCarport;
-import Entities.Roofing;
+import Entities.*;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.PageUtility;
 
@@ -13,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +50,7 @@ public class OrderController extends HttpServlet
         request.setAttribute("roofingList", roofingList);
 
 
+        //wtf does this do
         for (int i = 0; i < pdCarportList.size(); i++)
         {
             String idChecker = String.valueOf(pdCarportList.get(i).getId());
@@ -59,7 +58,7 @@ public class OrderController extends HttpServlet
             {
                 PredefinedCarport pdCarport = pdCarportList.get(i);
                 session.setAttribute("viewMoreCarport", pdCarport);
-                view.forwardToJsp("viewMoreFOOBAR.jsp", request, response);
+                view.forwardToJsp("viewMore.jsp", request, response);
             }
         }
 
@@ -79,129 +78,99 @@ public class OrderController extends HttpServlet
         }
         View view = new View();
 
-        //Hardcoded in case dynamic doesn't work
-        Material claddingMat = new Material((Integer.parseInt(request.getParameter("cladding"))));
-        Material roofingMat = new Material((Integer.parseInt(request.getParameter("roofing"))));
+        //values to indicate what cladding/roofing user selected
 
-        if(claddingMat.getMaterial_id() == 0)
+        int claddingType = (Integer.parseInt(request.getParameter("cladding")));
+        int roofingType = (Integer.parseInt(request.getParameter("roofing")));
+
+        System.out.println("USER SELECTED THESE VALUES");
+        System.out.println("CLADDING: "+claddingType);
+        System.out.println("ROOFING: "+roofingType);
+
+        //Material Lists
+        List<CladdingMaterialLine> cmlList = pageUtility.getAllCMLBySpecificId(claddingType);
+        List<Material> claddingMaterialList = new ArrayList<>();
+//        int cml_count = 0; //FOOBAR
+
+//        System.out.println("- - - - - GENERATING LIST FOR CLADDING - - - - -");
+        for (CladdingMaterialLine claddingMaterialLine : cmlList)
         {
-            claddingMat.setName("Træ Beklædning");
-            claddingMat.setDescription("Flot træ, skåret af vores bedste praktikanter");
-            claddingMat.setPrice(255.5);
-            claddingMat.setLength(18.2);
-            claddingMat.setHeight(3.2);
-            claddingMat.setWidth(4.12);
+            try
+            {
+                claddingMaterialList.add(pageUtility.getMaterialById(claddingMaterialLine.getMaterialId()));
+//                System.out.println(claddingMaterialList.get(cml_count).getName());
+//                cml_count++;
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-        else if(claddingMat.getMaterial_id() == 1)
+//        System.out.println("CLADDING MATERIAL LIST SIZE: "+claddingMaterialList.size());
+
+        List<RoofingMaterialLine> rmlList = pageUtility.getAllRMLBySpecificId(roofingType);
+        List<Material> roofingMaterialList = new ArrayList<>();
+//        int rml_count = 0;//FOOBAR
+
+//        System.out.println("- - - - - GENERATING LIST FOR ROOFING - - - - -");
+        for (RoofingMaterialLine roofingMaterialLine : rmlList)
         {
-            claddingMat.setName("Sten Beklædning");
-            claddingMat.setDescription("Flot beklædning med symmetriske sten-plader");
-            claddingMat.setPrice(680.0);
-            claddingMat.setLength(18.2);
-            claddingMat.setHeight(3.2);
-            claddingMat.setWidth(4.12);
+            try
+            {
+                roofingMaterialList.add(pageUtility.getMaterialById(roofingMaterialLine.getMaterialId()));
+//                System.out.println(roofingMaterialList.get(rml_count).getName());
+//                rml_count++;
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-        else if(claddingMat.getMaterial_id() == 2)
+//        System.out.println("ROOFING MATERIAL LIST SIZE: "+roofingMaterialList.size());
+
+
+
+        //Making Cladding/Roofing objects so we can throw their "type" value into the session
+        // and retrieve it on OrderSum
+        Cladding cladding = pageUtility.getCladdingByID(claddingType);
+        Roofing roofing = null;
+        try
         {
-            claddingMat.setName("Glas Beklædning");
-            claddingMat.setDescription("Hvad er en glas carport lol");
-            claddingMat.setPrice(10000.0);
-            claddingMat.setLength(69.2);
-            claddingMat.setHeight(420.2);
-            claddingMat.setWidth(80085.12);
+            roofing = pageUtility.getRoofingByID(roofingType);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
-        if(roofingMat.getMaterial_id() == 0)
-        {
-            roofingMat.setName("Træ Tag");
-            roofingMat.setDescription("Flot træ, skåret af vores bedste praktikanter");
-            roofingMat.setPrice(255.5);
-            roofingMat.setLength(18.2);
-            roofingMat.setHeight(3.2);
-            roofingMat.setWidth(4.12);
-        }
-        else if(roofingMat.getMaterial_id() == 1)
-        {
-            roofingMat.setName("Sten Tag");
-            roofingMat.setDescription("Flot beklædning med symmetriske sten-plader");
-            roofingMat.setPrice(680.0);
-            roofingMat.setLength(18.2);
-            roofingMat.setHeight(3.2);
-            roofingMat.setWidth(4.12);
-        }
-        else if(roofingMat.getMaterial_id() == 2)
-        {
-            roofingMat.setName("Klink Tag");
-            roofingMat.setDescription("Det kan noget");
-            roofingMat.setPrice(812.1);
-            roofingMat.setLength(69.2);
-            roofingMat.setHeight(420.2);
-            roofingMat.setWidth(4.8);
-        }
-
-        System.out.println(claddingMat.getMaterial_id());
-        System.out.println(roofingMat.getMaterial_id());
-
-        Cladding cladding = new Cladding(claddingMat);
-        Roofing roofing = new Roofing(roofingMat);
-
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
-        System.out.println("Cladding");
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
-        System.out.println(cladding.getMaterial().getName());
-        System.out.println(cladding.getMaterial().getDescription());
-        System.out.println(cladding.getMaterial().getPrice());
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
-        System.out.println("Roofing");
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
-        System.out.println(roofing.getMaterial().getName());
-        System.out.println(roofing.getMaterial().getDescription());
-        System.out.println(roofing.getMaterial().getPrice());
-        System.out.println("- - - - - - - - - - - - - - - - - - -");
+        System.out.println("INFO FROM CLADDING SELECTED BY USER, RETRIEVED BY DB");
+        System.out.println(cladding.getCladding_id());
+        System.out.println(cladding.getType());
+        System.out.println("INFO FROM ROOFING SELECTED BY USER, RETRIEVED BY DB");
+        System.out.println(roofing.getRoofing_id());
+        System.out.println(roofing.getType());
 
         session.setAttribute("chosenCladding", cladding);
         session.setAttribute("chosenRoofing", roofing);
 
+        //These ifs are to check the ids in the MaterialLine tabel in our DB
+        //And get a material list and display it for the user at checkout.
 
-        // DYNAMIC METHODS
-
-        //Anden dynamisk metode hvor man laver en cladding objekt med kun id, så via det objekt
-        //henter man mere data til den via databasen, så når man har sit materiale,
-        //så kan man sette sit materiale objekt i klassen. (SMART?)
-
-//        int chosenCladding = Integer.parseInt(request.getParameter("cladding"));
-//        int chosenRoofing = Integer.parseInt(request.getParameter("roofing"));
-//        Cladding tmpCladding = new Cladding(chosenCladding);
-//        System.out.println("Got tmpCladding!");
-//        Cladding mIdClad = pageUtility.getCladdingByObject(tmpCladding);
-//        System.out.println("Got mIdClad!");
-//        try
+//        if(claddingType == 1)
 //        {
-//            mIdClad.setMaterial(pageUtility.getMaterialById(mIdClad.getMaterial_id()));
-//            System.out.println("Material set!");
-//        } catch (Exception e)
+//            pageUtility.getAllCMLBySpecificId(claddingType);
+//        }
+//        else if(claddingType == 2)
 //        {
-//            e.printStackTrace();
+//
+//        }
+//
+//        if(roofingType == 1)
+//        {
+//
+//        }
+//        else if(roofingType == 2)
+//        {
+//
 //        }
 
-
-
-
-            //Dynamic method, ignore until u get to view database tabels
-//        PredefinedCarport orderSummaryCarport = (PredefinedCarport) session.getAttribute("viewMoreCarport");
-//        try
-//        {   Cladding tmpCladding;
-//            Roofing tmpRoofing;
-//            tmpCladding = pageUtility.getCladdingByID(Integer.parseInt(request.getParameter("cladding")));
-//            Cladding cladding = new Cladding(tmpCladding.getCladding_id(), new Material(tmpCladding.getMaterial_id()));
-//            tmpRoofing = pageUtility.getRoofingByID(Integer.parseInt(request.getParameter("roofing")));
-//            Roofing roofing = new Roofing(tmpRoofing.getRoofing_id(), new Material(tmpRoofing.getMaterial_id()));
-//            request.setAttribute("chosenCladding", cladding);
-//            request.setAttribute("chosenRoofing", roofing);
-//        } catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
 
         view.forwardToJsp("orderSummary.jsp", request, response);
     }

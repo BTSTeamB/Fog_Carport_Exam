@@ -62,7 +62,7 @@ public class UserUtility
 
     public void registerGuestUser(User user) throws Exception
     {
-        facade.createUser(user.getName(), user.getAddress(), user.getZipCode(), user.getPhoneNumber(), user.getEmail(), user.getPassword());
+        facade.createGuestUser(user.getIs_guest(),user.getName(), user.getAddress(), user.getZipCode(), user.getPhoneNumber(), user.getEmail(), user.getPassword());
     }
 
     public void registerUser(String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception

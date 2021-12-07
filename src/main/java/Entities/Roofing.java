@@ -3,28 +3,22 @@ package Entities;
 public class Roofing
 {
     int roofing_id;
-    Material material;
-    int material_id;
+    String type;
 
-    public Roofing(int roofing_id, Material material)
+    public Roofing(int roofing_id, String type)
     {
         this.roofing_id = roofing_id;
-        this.material = material;
+        this.type = type;
 
     }
-    public Roofing(int material_id){
-        this.material_id = material_id;
-    }
-
-    public Roofing(int roofing_id, int material_id){
-        this.roofing_id = roofing_id;
-        this.material_id = material_id;
+    public Roofing(String type){
+        this.type = type;
     }
 
     //FOOBAR
-    public Roofing(Material roofingMat)
+    public Roofing(int roofing_id)
     {
-        this.material = roofingMat;
+        this.roofing_id = roofing_id;
     }
 
     public int getRoofing_id() {
@@ -36,19 +30,12 @@ public class Roofing
         this.roofing_id = roofing_id;
     }
 
-    public Material getMaterial() {
-        return material;
+    public String getType() {
+        return type;
     }
 
-    public void setMaterial(Material material) {
-        this.material = material;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getMaterial_id() {
-        return material_id;
-    }
-
-    public void setMaterial_id(int material_id) {
-        this.material_id = material_id;
-    }
 }

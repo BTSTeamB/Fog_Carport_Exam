@@ -22,8 +22,8 @@ public class PredefinedCarportMapper {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO predefined_carport(width,length,price,imageUrl) values(?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, predefinedCarport.getWidth());
-                ps.setInt(2, predefinedCarport.getLength());
+                ps.setDouble(1, predefinedCarport.getWidth());
+                ps.setDouble(2, predefinedCarport.getLength());
                 ps.setDouble(3, predefinedCarport.getPrice());
                 ps.setString(4, predefinedCarport.getImgUrl());
                 ps.executeUpdate();
@@ -38,8 +38,8 @@ public class PredefinedCarportMapper {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE predefined_carport SET width=?,length=? ,price=?, imageUrl=? WHERE id=" + predefinedCarport.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, predefinedCarport.getWidth());
-                ps.setInt(2, predefinedCarport.getLength());
+                ps.setDouble(1, predefinedCarport.getWidth());
+                ps.setDouble(2, predefinedCarport.getLength());
                 ps.setDouble(3, predefinedCarport.getPrice());
                 ps.setString(4, predefinedCarport.getImgUrl());
                 ps.executeUpdate();
@@ -59,8 +59,8 @@ public class PredefinedCarportMapper {
                 ResultSet rs = ps.executeQuery(sql);
                 while (rs.next()){
                     int id = rs.getInt("id");
-                    int width = rs.getInt("width");
-                    int length = rs.getInt("length");
+                    double width = rs.getInt("width");
+                    double length = rs.getInt("length");
                     double price = rs.getDouble("price");
                     String imgUrl = rs.getString("imageUrl");
                     pdCarport = new PredefinedCarport(id, width, length, price, imgUrl);

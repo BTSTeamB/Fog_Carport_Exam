@@ -25,16 +25,16 @@
     <form action="OrderController" method="post">
         <label for="cladding">Choose cladding:</label>
         <select name="cladding" id="cladding">
-            <option value="0">Træ</option>
-            <option value="1">Sten</option>
-            <option value="2">Glas</option>
+            <option value="1">Træ</option>
+            <option value="2">Sten</option>
+            <option value="3">Glas</option>
         </select>
 
         <label for="roofing">Choose Roofing:</label>
         <select name="roofing" id="roofing">
-            <option value="0">Træ</option>
-            <option value="1">Sten</option>
-            <option value="2">Klink</option>
+            <option value="1">Træ</option>
+            <option value="2">Sten</option>
+            <option value="3">Klink</option>
         </select>
 
         <button class="button-cards" type="submit" name="act" value="${sessionScope.viewMoreCarport.id}">Read More

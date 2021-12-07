@@ -23,24 +23,22 @@
 <div class="des">
     <p>Length: ${sessionScope.viewMoreCarport.length}cm - - Width: ${sessionScope.viewMoreCarport.width}cm</p>
 
+    <form action="OrderController" method="post">
     <label for="cladding">Choose cladding:</label>
-
-
     <select name="cladding" id="cladding">
     <c:forEach var="cladding" items="${requestScope.claddingList}">
-        <option value="${cladding.cladding_id}">${cladding.material.name}</option>
+        <option value="${cladding.cladding_id}">${cladding.type}</option>
         </c:forEach>
     </select>
 
     <label for="roofing">Choose Roofing:</label>
     <select name="roofing" id="roofing">
         <c:forEach var="roofing" items="${requestScope.roofingList}">
-            <option value="${roofing.roofing_id}">${roofing.material.name}</option>
+            <option value="${roofing.roofing_id}">${roofing.type}</option>
         </c:forEach>
     </select>
 
-    <form action="OrderController" method="post">
-        <button class="button-cards" name="act" value="${sessionScope.viewMoreCarport.id}">Read More</button>
+        <button class="button-cards" type="submit">Confirm</button>
     </form>
 </div>
 

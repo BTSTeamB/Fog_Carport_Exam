@@ -23,14 +23,14 @@
 
     <label>Cladding of your choice:</label>
     <div>
-        <p>${sessionScope.chosenCladding.material.name}</p>
+        <p>${sessionScope.chosenCladding.type}</p>
     </div>
 
     <br>
 
     <label>Roofing of your choice:</label>
     <div>
-        <p>${sessionScope.chosenRoofing.material.name}</p>
+        <p>${sessionScope.chosenRoofing.type}</p>
     </div>
 
     <form action="CheckOutController" method="get">

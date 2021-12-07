@@ -43,7 +43,6 @@ public class GuestController extends HttpServlet
 
 
         User user = new User(name, address, zipCode ,phoneNumber, email);
-
         try
         {
             userUtility.registerGuestUser(user);
@@ -61,10 +60,12 @@ public class GuestController extends HttpServlet
         System.out.println(user.getPassword());
         System.out.println(user.getPhoneNumber());
 
+
+
         try
         {
             user = userUtility.getUserByLogin(user.getEmail(), user.getPassword());
-            System.out.println(user.getUser_id());
+            user.setIs_guest(1);
         } catch (Exception e)
         {
             e.printStackTrace();

@@ -1,20 +1,20 @@
 package Entities;
 
 public class PredefinedCarport {
-    int width;
-    int length;
+    double width;
+    double length;
     double price;
     String imgUrl;
     int id;
 
     //Database create constructor
-    public PredefinedCarport(int width,int length, double price, String imgUrl){
+    public PredefinedCarport(double width,double length, double price, String imgUrl){
         this.width = width;
         this.length = length;
     }
 
     //Database edit constructor
-    public PredefinedCarport(int id, int width, int length, double price, String imgUrl) {
+    public PredefinedCarport(int id, double width, double length, double price, String imgUrl) {
         this.id = id;
         this.width = width;
         this.length = length;
@@ -46,7 +46,7 @@ public class PredefinedCarport {
         this.imgUrl = imgUrl;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -54,7 +54,7 @@ public class PredefinedCarport {
         this.width = width;
     }
 
-    public int getLength() {
+    public double getLength() {
         return length;
     }
 
