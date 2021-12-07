@@ -22,18 +22,13 @@ public class PageUtility
 
     public List<PredefinedCarport> getAllPDCarports() throws Exception
     {
-        List<PredefinedCarport> pdCarportList;
-        pdCarportList = facade.getAllPredefinedCarport();
-        return pdCarportList;
+        return facade.getAllPredefinedCarport();
     }
 
 
     public void splitPredefinedCarportList(List<PredefinedCarport> list, HttpSession session)
     {
         List<List<PredefinedCarport>> listOfLists = new ArrayList<>();
-
-        System.out.println("list size in method");
-        System.out.println(list.size());
 
         if(list.size() <= 3)
         {
@@ -67,24 +62,26 @@ public class PageUtility
             listOfLists.add(thirdSlide);
             listOfLists.add(fourthSlide);
         }
-        System.out.println("Size of list number 1:");
-        System.out.println(listOfLists.get(0).size());
-        System.out.println("IDs inside this list");
-        System.out.println(listOfLists.get(0).get(0).getId());
-        System.out.println(listOfLists.get(0).get(1).getId());
-        System.out.println(listOfLists.get(0).get(2).getId());
-        System.out.println("Size of list number 2:");
-        System.out.println(listOfLists.get(1).size());
-        System.out.println("IDs inside this list");
-        System.out.println(listOfLists.get(1).get(0).getId());
-        System.out.println(listOfLists.get(1).get(1).getId());
-        System.out.println(listOfLists.get(1).get(2).getId());
-        System.out.println("Size of list number 3:");
-        System.out.println(listOfLists.get(2).size());
-        System.out.println("IDs inside this list");
-        System.out.println(listOfLists.get(2).get(0).getId());
-        System.out.println(listOfLists.get(2).get(1).getId());
-        System.out.println(listOfLists.get(2).get(2).getId());
+
+        //Debugging
+//        System.out.println("Size of list number 1:");
+//        System.out.println(listOfLists.get(0).size());
+//        System.out.println("IDs inside this list");
+//        System.out.println(listOfLists.get(0).get(0).getId());
+//        System.out.println(listOfLists.get(0).get(1).getId());
+//        System.out.println(listOfLists.get(0).get(2).getId());
+//        System.out.println("Size of list number 2:");
+//        System.out.println(listOfLists.get(1).size());
+//        System.out.println("IDs inside this list");
+//        System.out.println(listOfLists.get(1).get(0).getId());
+//        System.out.println(listOfLists.get(1).get(1).getId());
+//        System.out.println(listOfLists.get(1).get(2).getId());
+//        System.out.println("Size of list number 3:");
+//        System.out.println(listOfLists.get(2).size());
+//        System.out.println("IDs inside this list");
+//        System.out.println(listOfLists.get(2).get(0).getId());
+//        System.out.println(listOfLists.get(2).get(1).getId());
+//        System.out.println(listOfLists.get(2).get(2).getId());
 
         session.setAttribute("listOfLists", listOfLists);
     }
@@ -105,14 +102,12 @@ public class PageUtility
 
     public Cladding getCladdingByID(int claddingId)
     {
-        Cladding cladding = facade.receiveCladdingById(claddingId);
-        return cladding;
+        return facade.receiveCladdingById(claddingId);
     }
 
     public List<Cladding> getAllCladdings()
     {
-        List<Cladding> claddingList = facade.receiveAllCladding();
-        return claddingList;
+        return facade.receiveAllCladding();
     }
 
     public Roofing getRoofingByObject(Roofing roofing) throws Exception

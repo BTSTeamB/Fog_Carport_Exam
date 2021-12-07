@@ -35,7 +35,8 @@ public class OrderController extends HttpServlet
         View view = new View();
 
         pdCarportList = (List<PredefinedCarport>) session.getAttribute("AllPDCarports");
-        String act = request.getParameter("act");
+
+        int chosenCarport = (Integer.parseInt(request.getParameter("act")));
 
         List<Cladding> claddingList = new ArrayList<>();
         List<Roofing> roofingList = new ArrayList<>();
@@ -50,15 +51,15 @@ public class OrderController extends HttpServlet
         request.setAttribute("roofingList", roofingList);
 
 
-        //wtf does this do
+        //Gets selected Carport
         for (int i = 0; i < pdCarportList.size(); i++)
         {
-            String idChecker = String.valueOf(pdCarportList.get(i).getId());
-            if(act.equals(idChecker))
+            int idChecker = pdCarportList.get(i).getId();
+            if(chosenCarport == idChecker)
             {
                 PredefinedCarport pdCarport = pdCarportList.get(i);
                 session.setAttribute("viewMoreCarport", pdCarport);
-                view.forwardToJsp("viewMore.jsp", request, response);
+                view.forwardToJsp("product.jsp", request, response);
             }
         }
 

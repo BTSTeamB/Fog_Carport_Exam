@@ -24,12 +24,12 @@ public class IndexController extends HttpServlet
     {
         HttpSession session = request.getSession();
         List<PredefinedCarport> pdCarports = new ArrayList<>();
-        List<PredefinedShed> pdSheds = new ArrayList<>();
 
         try
         {
             pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
+
             //Makes sure to cap the list at 15
             if(pdCarports.size() > 15)
             {

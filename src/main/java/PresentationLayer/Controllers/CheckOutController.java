@@ -38,6 +38,10 @@ public class CheckOutController extends HttpServlet
             try
             {
                 orderUtility.createPDOrder(session);
+                if(user.getIs_guest() == 1)
+                {
+                    session.invalidate();
+                }
             } catch (Exception e)
             {
                 e.printStackTrace();

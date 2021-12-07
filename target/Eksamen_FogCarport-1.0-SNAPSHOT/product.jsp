@@ -164,7 +164,7 @@
                 </li>
                 <li class="list-item">
                     <div class="item">
-                        3
+                        300
                         <span class="item-value">m</span>
                     </div>
                     <div class="item-title">

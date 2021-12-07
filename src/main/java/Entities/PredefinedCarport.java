@@ -35,6 +35,23 @@ public class PredefinedCarport {
         this.id = id;
     }
 
+
+    public String getSeeMoreUrl1()
+    {
+        return seeMoreUrl1;
+    }
+
+
+    public String getSeeMoreUrl2()
+    {
+        return seeMoreUrl2;
+    }
+
+    public void setSeeMoreUrl2(String seeMoreUrl2)
+    {
+        this.seeMoreUrl2 = seeMoreUrl2;
+    }
+
     public double getPrice()
     {
         return price;
@@ -59,7 +76,7 @@ public class PredefinedCarport {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
@@ -67,7 +84,7 @@ public class PredefinedCarport {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(double length) {
         this.length = length;
     }
 

@@ -72,7 +72,6 @@ public class PredefinedCarportMapper {
             }catch (SQLException e){
                 e.printStackTrace();
             }
-
         }
         return pdCarportList;
     }

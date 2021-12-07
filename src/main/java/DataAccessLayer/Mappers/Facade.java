@@ -58,14 +58,12 @@ public class Facade {
     }
 
     public Cladding receiveCladdingById(int cladding_id) {
-        Cladding cladding = claddingMapper.receiveCladdingById(cladding_id);
-        return cladding;
+        return claddingMapper.receiveCladdingById(cladding_id);
     }
 
     public List<Cladding> receiveAllCladding()
     {
-        List<Cladding> claddingList = claddingMapper.getAllCladding();
-        return claddingList;
+        return claddingMapper.getAllCladding();
     }
 
     public void createCML(int claddingId, int materialId) throws Exception
@@ -102,8 +100,7 @@ public class Facade {
 
     public Roofing receiveRoofingByObject(Roofing roofing) throws Exception
     {
-        Roofing tmpRoofing = roofingMapper.receiveRoofingByObject(roofing);
-        return tmpRoofing;
+       return roofingMapper.receiveRoofingByObject(roofing);
     }
 
     public Roofing receiveRoofingById(int roofing_id) throws Exception {
@@ -235,9 +232,7 @@ public class Facade {
 
     public List<PredefinedCarport> getAllPredefinedCarport() throws Exception
     {
-        List<PredefinedCarport> pdCarports;
-        pdCarports = predefinedCarportMapper.receiveAllPredefinedCarport();
-        return pdCarports;
+        return predefinedCarportMapper.receiveAllPredefinedCarport();
     }
 
     public void editPredefinedCarport(int id, int width, int length, double price, String imgUrl, String seeMoreUrl1, String seeMoreUrl2) throws Exception {

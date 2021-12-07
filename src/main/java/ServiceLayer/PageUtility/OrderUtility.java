@@ -34,7 +34,6 @@ public class OrderUtility
 
 
         System.out.println("- - - - - ORDER INFO - - - - -");
-        System.out.println(order.getOrder_id());
         System.out.println(order.getUser_id());
         System.out.println(order.getPrice());
         System.out.println(order.getCarport_length());
