@@ -33,7 +33,7 @@ public class OrderUtility
                 cladding.getCladding_id(), roofing.getRoofing_id());
 
 
-        System.out.println("ORDER INFO");
+        System.out.println("- - - - - ORDER INFO - - - - -");
         System.out.println(order.getOrder_id());
         System.out.println(order.getUser_id());
         System.out.println(order.getPrice());

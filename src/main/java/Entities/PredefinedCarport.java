@@ -5,27 +5,36 @@ public class PredefinedCarport {
     double length;
     double price;
     String imgUrl;
+    String seeMoreUrl1;
+    String seeMoreUrl2;
     int id;
 
     //Database create constructor
-    public PredefinedCarport(double width,double length, double price, String imgUrl){
+    public PredefinedCarport(double width,double length, double price, String imgUrl, String seeMoreUrl1, String seeMoreUrl2){
         this.width = width;
         this.length = length;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.seeMoreUrl1 = seeMoreUrl1;
+        this.seeMoreUrl2 = seeMoreUrl2;
     }
 
     //Database edit constructor
-    public PredefinedCarport(int id, double width, double length, double price, String imgUrl) {
+    public PredefinedCarport(int id, double width, double length, double price, String imgUrl, String seeMoreUrl1, String seeMoreUrl2) {
         this.id = id;
         this.width = width;
         this.length = length;
         this.price = price;
         this.imgUrl = imgUrl;
+        this.seeMoreUrl1 = seeMoreUrl1;
+        this.seeMoreUrl2 = seeMoreUrl2;
     }
 
     //Database delete/receiver constructor
     public PredefinedCarport(int id){
         this.id = id;
     }
+
     public double getPrice()
     {
         return price;

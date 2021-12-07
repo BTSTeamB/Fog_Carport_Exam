@@ -63,7 +63,9 @@ public class PredefinedCarportMapper {
                     double length = rs.getInt("length");
                     double price = rs.getDouble("price");
                     String imgUrl = rs.getString("imageUrl");
-                    pdCarport = new PredefinedCarport(id, width, length, price, imgUrl);
+                    String seeMoreUrl1 = rs.getString("seeMoreUrl1");
+                    String seeMoreUrl2 = rs.getString("seeMoreUrl2");
+                    pdCarport = new PredefinedCarport(id, width, length, price, imgUrl, seeMoreUrl1, seeMoreUrl2);
                     pdCarportList.add(pdCarport);
                 }
 
@@ -88,7 +90,9 @@ public class PredefinedCarportMapper {
                     int length = rs.getInt("length");
                     double price = rs.getDouble("price");
                     String imgUrl = rs.getString("imgUrl");
-                    pdCarport = new PredefinedCarport(id, width, length, price, imgUrl);
+                    String seeMoreUrl1 = rs.getString("seeMoreUrl1");
+                    String seeMoreUrl2 = rs.getString("seeMoreUrl2");
+                    pdCarport = new PredefinedCarport(id, width, length, price, imgUrl, seeMoreUrl1, seeMoreUrl2);
                 }
 
             }catch (SQLException e){
@@ -100,7 +104,7 @@ public class PredefinedCarportMapper {
 
     public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
         try (Connection connection = database.connect()) {
-            String sql = "DELETE FROM predefined_carport WHERE id=? ";
+            String sql = "DELETE FROM predefined_carport WHERE id="+predefinedCarport.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, predefinedCarport.getId());
                 ps.executeUpdate();

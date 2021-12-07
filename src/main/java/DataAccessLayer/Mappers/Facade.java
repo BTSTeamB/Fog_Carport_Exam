@@ -228,8 +228,8 @@ public class Facade {
 
 
     //Predefined Carport
-    public void createPredefinedCarport(int width, int length, double price, String imgUrl) throws Exception {
-        PredefinedCarport predefinedCarport = new PredefinedCarport(width, length, price, imgUrl);
+    public void createPredefinedCarport(int width, int length, double price, String imgUrl, String seeMoreUrl1, String seeMoreUrl2) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(width, length, price, imgUrl, seeMoreUrl1, seeMoreUrl2);
         predefinedCarportMapper.createPredefinedCarport(predefinedCarport);
     }
 
@@ -240,8 +240,8 @@ public class Facade {
         return pdCarports;
     }
 
-    public void editPredefinedCarport(int id, int width, int length, double price, String imgUrl) throws Exception {
-        PredefinedCarport predefinedCarport = new PredefinedCarport(id, width, length, price, imgUrl);
+    public void editPredefinedCarport(int id, int width, int length, double price, String imgUrl, String seeMoreUrl1, String seeMoreUrl2) throws Exception {
+        PredefinedCarport predefinedCarport = new PredefinedCarport(id, width, length, price, imgUrl, seeMoreUrl1, seeMoreUrl2);
         predefinedCarportMapper.editPredefinedCarport(predefinedCarport);
     }
 

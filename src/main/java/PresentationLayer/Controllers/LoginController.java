@@ -30,7 +30,6 @@ public class LoginController extends HttpServlet
         UserUtility userUtility = null;
         PageUtility pageUtility = null;
         List<PredefinedCarport> pdCarports = new ArrayList<>();
-        List<PredefinedShed> pdSheds = new ArrayList<>();
 
         try
         {
