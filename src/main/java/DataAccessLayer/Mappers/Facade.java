@@ -207,6 +207,11 @@ public class Facade {
         return userMapper.getUserByID(search_id);
     }
 
+    public User getUserByCredentials(String name, String address, String zipCode, String phoneNum, String email) throws Exception
+    {
+        return userMapper.getUserByCredentials(name, address, zipCode, phoneNum, email);
+    }
+
 
     //Predefined Shed
     public void createPredefinedShed(int width, int length, double price, String imgUrl) throws Exception {

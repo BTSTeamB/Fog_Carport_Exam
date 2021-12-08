@@ -4,6 +4,7 @@ import Entities.Order;
 import Entities.User;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
+import ServiceLayer.PageUtility.UserUtility;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -57,6 +58,18 @@ public class CustomerOrderListController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
+        View view = new View();
+        OrderUtility orderUtility = null;
+        UserUtility userUtility = null;
+
+        try
+        {
+            userUtility = new UserUtility();
+            orderUtility = new OrderUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
 
         String guestName = request.getParameter("guestOrderName");
         String guestAddress = request.getParameter("guestOrderAddress");
@@ -64,10 +77,31 @@ public class CustomerOrderListController extends HttpServlet
         String guestPhoneNum = request.getParameter("guestOrderPhoneNum");
         String guestEmail = request.getParameter("guestOrderEmail");
 
-        User orderGuest = new User(guestName, guestAddress, guestZipCode, guestPhoneNum, guestEmail);
+        User orderGuest = null;
+        try
+        {
+            orderGuest = userUtility.getUserByCredentials(guestName, guestAddress, guestZipCode, guestPhoneNum, guestEmail);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         session.setAttribute("user", orderGuest);
 
         response.sendRedirect("CustomerOrderListController");
+
+        //If Redirect doesn't work
+//        List<Order> usersOrders = orderUtility.getOrderListById(orderGuest.getUser_id());
+//
+//        try
+//        {
+//            orderUtility.setCladdingRoofingTypes(usersOrders);
+//        } catch (Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//
+//        request.setAttribute("usersOrders", usersOrders);
+//        view.forwardToJsp("customerOrderList.jsp", request, response);
     }
 }

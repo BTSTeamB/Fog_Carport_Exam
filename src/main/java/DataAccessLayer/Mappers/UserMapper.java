@@ -121,6 +121,39 @@ public class UserMapper {
     }
 
 
+    public User getUserByCredentials(String name, String address, String zipCode, String phoneNum, String email) throws Exception
+    {
+        User tmpUser = null;
+        try(Connection connection = database.connect())
+        {
+            String sql = " SELECT * FROM user WHERE name='"+name+"' AND address='"+address+"'AND zip_code='"+zipCode+"'" +
+                    "AND phone_no='"+phoneNum+"'AND email='"+email+"'";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next())
+                {
+                    int user_id = rs.getInt("user_id");
+                    int is_admin = rs.getInt("isAdmin");
+                    int is_guest = rs.getInt("isGuest");
+                    String userName = rs.getString("name");
+                    String userAddress = rs.getString("address");
+                    String userZipCode = rs.getString("zip_code");
+                    String userPhoneNumber = rs.getString("phone_no");
+                    String userEmail = rs.getString("email");
+                    String userPassword = rs.getString("password");
+
+                    tmpUser = new User(user_id, is_admin, is_guest,userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
+                }
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tmpUser;
+    }
 
 
 
@@ -143,13 +176,6 @@ public class UserMapper {
                     String userPhoneNumber = rs.getString("phone_no");
                     String userEmail = rs.getString("email");
                     String userPassword = rs.getString("password");
-
-                    System.out.println(userName);
-                    System.out.println(userAddress);
-                    System.out.println(userZipCode);
-                    System.out.println(userPhoneNumber);
-                    System.out.println(userEmail);
-                    System.out.println(userPassword);
 
                     tmpUser = new User(user_id, is_admin, is_guest,userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber);
                 }

@@ -103,9 +103,9 @@ public class UserUtility
         return tmpUser = facade.getUser(email, password);
     }
 
-
-    public void logoutUser()
+    public User getUserByCredentials(String name, String address, String zipCode, String phoneNum, String email) throws Exception
     {
-        //TODO: Make log out
+        return facade.getUserByCredentials(name, address, zipCode, phoneNum, email);
     }
+
 }

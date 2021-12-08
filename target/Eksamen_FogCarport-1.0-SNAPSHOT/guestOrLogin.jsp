@@ -15,25 +15,25 @@
 <form action="CustomerOrderListController" method="post">
     <label>Name</label>
     <br>
-    <input type="text" name="guestName" id="guestOrderName">
+    <input type="text" name="guestOrderName" id="guestOrderName">
     <br>
     <label>Address</label>
     <br>
-    <input type="text" name="guestAddress" id="guestOrderAddress">
+    <input type="text" name="guestOrderAddress" id="guestOrderAddress">
     <br>
     <label>Zip-Code</label>
     <br>
-    <input type="text" name="guestZipCode" id="guestOrderZipCode">
+    <input type="text" name="guestOrderZipCode" id="guestOrderZipCode">
     <br>
     <label>Phone Number</label>
     <br>
-    <input type="text" name="guestPhoneNum" id="guestOrderPhoneNum">
+    <input type="text" name="guestOrderPhoneNum" id="guestOrderPhoneNum">
     <br>
     <label>Email</label>
     <br>
-    <input type="text" name="guestEmail" id="guestOrderEmail">
+    <input type="text" name="guestOrderEmail" id="guestOrderEmail">
     <br>
-    <button type="subtmit">Submit guest data</button>
+    <button type="submit">Submit guest data</button>
 </form>
 
 <form>
