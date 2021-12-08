@@ -12,6 +12,9 @@
 </head>
 <body>
 <p> Order Sent! </p>
+<form action="index" method="get">
+    <button>Back to the front page</button>
+</form>
 
 </body>
 </html>

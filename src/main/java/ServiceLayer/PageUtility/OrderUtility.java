@@ -7,6 +7,7 @@ import Entities.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderUtility
@@ -42,6 +43,7 @@ public class OrderUtility
         System.out.println(order.getRoofing_id());
 
 
+
         createOrder(order);
     }
 
@@ -50,5 +52,63 @@ public class OrderUtility
         facade.createOrder(order);
     }
 
+    public Order getOrderByOrderId(int id)
+    {
+        return facade.getOrderByOrderId(id);
+    }
 
+    public List<Order> getOrderListById(int user_id)
+    {
+        return facade.getOrderListById(user_id);
+    }
+
+    public List<Material> getCladdingMaterial(int cladding_id)
+    {
+        //Material Lists
+        List<CladdingMaterialLine> cmlList = facade.getAllCMLBySpecificId(cladding_id);
+        List<Material> claddingMaterials = new ArrayList<>();
+
+        for (CladdingMaterialLine claddingMaterialLine : cmlList)
+        {
+            try
+            {
+                claddingMaterials.add(facade.getMaterialById(claddingMaterialLine.getMaterialId()));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return claddingMaterials;
+    }
+
+    public List<Material> getRoofingMaterial(int roofing_id)
+    {
+        //Material Lists
+        List<RoofingMaterialLine> rmlList = facade.getAllRMLBySpecificId(roofing_id);
+        List<Material> roofingMaterialList = new ArrayList<>();
+
+        for (RoofingMaterialLine roofingMaterialLine : rmlList)
+        {
+            try
+            {
+                roofingMaterialList.add(facade.getMaterialById(roofingMaterialLine.getMaterialId()));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return roofingMaterialList;
+    }
+
+    public List<Order> setCladdingRoofingTypes(List<Order> orders) throws Exception
+    {
+        for (Order order : orders)
+        {
+            order.setCladdingType(facade.receiveCladdingById(order.getCladding_id()).getType());
+            order.setRoofingType(facade.receiveRoofingById(order.getRoofing_id()).getType());
+        }
+
+        return orders;
+    }
 }

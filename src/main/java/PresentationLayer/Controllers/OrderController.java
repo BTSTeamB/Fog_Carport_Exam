@@ -4,6 +4,7 @@ import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facade;
 import Entities.*;
 import PresentationLayer.View;
+import ServiceLayer.PageUtility.OrderUtility;
 import ServiceLayer.PageUtility.PageUtility;
 
 import javax.servlet.*;
@@ -44,8 +45,6 @@ public class OrderController extends HttpServlet
         claddingList = pageUtility.getAllCladdings();
         roofingList = pageUtility.getAllRoofings();
 
-        System.out.println(claddingList.size());
-        System.out.println(roofingList.size());
 
         request.setAttribute("claddingList", claddingList);
         request.setAttribute("roofingList", roofingList);
@@ -70,8 +69,10 @@ public class OrderController extends HttpServlet
     {
         HttpSession session = request.getSession();
         PageUtility pageUtility = null;
+        OrderUtility orderUtility = null;
         try
         {
+            orderUtility = new OrderUtility();
              pageUtility = new PageUtility();
         } catch (ClassNotFoundException e)
         {
@@ -84,52 +85,12 @@ public class OrderController extends HttpServlet
         int claddingType = (Integer.parseInt(request.getParameter("cladding")));
         int roofingType = (Integer.parseInt(request.getParameter("roofing")));
 
-        System.out.println("USER SELECTED THESE VALUES");
-        System.out.println("CLADDING: "+claddingType);
-        System.out.println("ROOFING: "+roofingType);
+//        //Not currently being used
+        //TODO: Make this list appear nicely in the order summary page.
+//        List<Material> claddingMaterials = orderUtility.getCladdingMaterial(claddingType);
+//        List<Material> roofingMaterials = orderUtility.getRoofingMaterial(roofingType);
 
-        //Material Lists
-        List<CladdingMaterialLine> cmlList = pageUtility.getAllCMLBySpecificId(claddingType);
-        List<Material> claddingMaterialList = new ArrayList<>();
-//        int cml_count = 0; //FOOBAR
-
-//        System.out.println("- - - - - GENERATING LIST FOR CLADDING - - - - -");
-        for (CladdingMaterialLine claddingMaterialLine : cmlList)
-        {
-            try
-            {
-                claddingMaterialList.add(pageUtility.getMaterialById(claddingMaterialLine.getMaterialId()));
-//                System.out.println(claddingMaterialList.get(cml_count).getName());
-//                cml_count++;
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-//        System.out.println("CLADDING MATERIAL LIST SIZE: "+claddingMaterialList.size());
-
-        List<RoofingMaterialLine> rmlList = pageUtility.getAllRMLBySpecificId(roofingType);
-        List<Material> roofingMaterialList = new ArrayList<>();
-//        int rml_count = 0;//FOOBAR
-
-//        System.out.println("- - - - - GENERATING LIST FOR ROOFING - - - - -");
-        for (RoofingMaterialLine roofingMaterialLine : rmlList)
-        {
-            try
-            {
-                roofingMaterialList.add(pageUtility.getMaterialById(roofingMaterialLine.getMaterialId()));
-//                System.out.println(roofingMaterialList.get(rml_count).getName());
-//                rml_count++;
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-//        System.out.println("ROOFING MATERIAL LIST SIZE: "+roofingMaterialList.size());
-
-
-
-        //Making Cladding/Roofing objects so we can throw their "type" value into the session
+        //Making Cladding/Roofing objects, so we can throw their "type" value into the session
         // and retrieve it on OrderSum
         Cladding cladding = pageUtility.getCladdingByID(claddingType);
         Roofing roofing = null;
@@ -150,27 +111,6 @@ public class OrderController extends HttpServlet
 
         session.setAttribute("chosenCladding", cladding);
         session.setAttribute("chosenRoofing", roofing);
-
-        //These ifs are to check the ids in the MaterialLine tabel in our DB
-        //And get a material list and display it for the user at checkout.
-
-//        if(claddingType == 1)
-//        {
-//            pageUtility.getAllCMLBySpecificId(claddingType);
-//        }
-//        else if(claddingType == 2)
-//        {
-//
-//        }
-//
-//        if(roofingType == 1)
-//        {
-//
-//        }
-//        else if(roofingType == 2)
-//        {
-//
-//        }
 
 
         view.forwardToJsp("orderSummary.jsp", request, response);

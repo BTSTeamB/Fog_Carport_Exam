@@ -14,13 +14,23 @@
 
 <label> Order as Guest</label>
 <form action="GuestController" method="post">
+    <label>Name</label>
+    <br>
     <input type="text" name="guestName" id="guestName">
+    <br>
+    <label>Address</label>
     <br>
     <input type="text" name="guestAddress" id="guestAddress">
     <br>
+    <label>Zip-Code</label>
+    <br>
     <input type="text" name="guestZipCode" id="guestZipCode">
     <br>
+    <label>Phone Number</label>
+    <br>
     <input type="text" name="guestPhoneNum" id="guestPhoneNum">
+    <br>
+    <label>Email</label>
     <br>
     <input type="text" name="guestEmail" id="guestEmail">
     <br>

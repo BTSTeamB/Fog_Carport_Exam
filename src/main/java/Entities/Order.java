@@ -9,12 +9,15 @@ public class Order {
     private double carport_length;
     private double carport_width;
     private Cladding cladding;
+    private int cladding_id;
+    private String claddingType;
     private Roofing roofing;
+    private int roofing_id;
+    private String roofingType;
     private int shed_width;
     private int shed_length;
     private String time_created;
-    private int cladding_id;
-    private int roofing_id;
+
 
     public Order(int user_id, double price, double carport_length, double carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
         this.user_id = user_id;
@@ -29,17 +32,16 @@ public class Order {
     }
 
     //Database retriever Constructor
-    public Order(int order_id, int user_id, double price, double carport_length, double carport_width, Cladding cladding, Roofing roofing, int shed_width, int shed_length, String time_created) {
+    public Order(int order_id, int user_id, double price, double carport_length, double carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) {
         this.order_id = order_id;
         this.user_id = user_id;
         this.price = price;
         this.carport_length = carport_length;
         this.carport_width = carport_width;
-        this.cladding = cladding;
-        this.roofing = roofing;
+        this.cladding_id = cladding_id;
+        this.roofing_id = roofing_id;
         this.shed_width = shed_width;
         this.shed_length = shed_length;
-        this.time_created = time_created;
     }
 
     public Order(int user_id,double price, double carport_length, double carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length) {
@@ -60,6 +62,39 @@ public class Order {
         this.carport_width = carport_width;
         this.cladding_id = cladding_id;
         this.roofing_id = roofing_id;
+    }
+
+    public Order(int order_id, int user_id, double carport_length, double carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length)
+    {
+        this.order_id = order_id;
+        this.user_id = user_id;
+        this.carport_length = carport_length;
+        this.carport_width = carport_width;
+        this.cladding_id = cladding_id;
+        this.roofing_id = roofing_id;
+        this.shed_width = shed_width;
+        this.shed_length = shed_length;
+    }
+
+
+    public void setCladdingType(String claddingType)
+    {
+        this.claddingType = claddingType;
+    }
+
+    public void setRoofingType(String roofingType)
+    {
+        this.roofingType = roofingType;
+    }
+
+    public String getCladdingType()
+    {
+        return claddingType;
+    }
+
+    public String getRoofingType()
+    {
+        return roofingType;
     }
 
     public int getOrder_id() {

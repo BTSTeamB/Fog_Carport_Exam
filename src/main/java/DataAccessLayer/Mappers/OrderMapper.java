@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderMapper
 {
@@ -71,27 +73,56 @@ public class OrderMapper
 
     }
 
-    public Order receiveOrder(Order order) {
+    public List<Order> getOrderListById(int userId)
+    {
+        List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT user_id,price,carport_length,carport_width,cladding_id,roofing_id,shed_width,shed_length FROM Fog_carport.order WHERE order_id=" + order.getOrder_id();
+            String sql = "SELECT * FROM Fog_carport.order WHERE user_id="+userId;
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery(sql);
-                if (rs.next()) {
+                while (rs.next()) {
+                    int order_id = rs.getInt("order_id");
                     int user_id = rs.getInt("user_id");
                     double price = rs.getDouble("price");
-                    int carport_length = rs.getInt("carport_length");
-                    int carport_width = rs.getInt("carport_width");
+                    double carport_length = rs.getDouble("carport_length");
+                    double carport_width = rs.getDouble("carport_width");
                     int cladding_id = rs.getInt("cladding_id");
                     int roofing_id = rs.getInt("roofing_id");
                     int shed_width = rs.getInt("shed_width");
                     int shed_length = rs.getInt("shed_length");
-                    System.out.println(user_id +","+ carport_length + ","+ price + "," + carport_width + "," + cladding_id+ "," + roofing_id+ "," + shed_width+ "," + shed_length);
+
+                    orderList.add(new Order(order_id, user_id,price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        return orderList;
+    }
+
+    public Order getOrderByOrderId(int id) {
+        Order order = null;
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM Fog_carport.order WHERE order_id=" + id;
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                if (rs.next()) {
+                    int order_id = rs.getInt("order_id");
+                    int user_id = rs.getInt("user_id");
+                    double price = rs.getDouble("price");
+                    double carport_length = rs.getDouble("carport_length");
+                    double carport_width = rs.getDouble("carport_width");
+                    int cladding_id = rs.getInt("cladding_id");
+                    int roofing_id = rs.getInt("roofing_id");
+                    int shed_width = rs.getInt("shed_width");
+                    int shed_length = rs.getInt("shed_length");
+                    order = new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return order;
     }
 }

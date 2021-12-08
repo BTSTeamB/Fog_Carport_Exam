@@ -20,7 +20,7 @@
     <ul class="nav-links">
         <li><a href="index.jsp">Home</a></li>
         <li><a href="#">Design</a></li>
-        <li><a href="OrderController">Orders</a></li>
+        <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
         <a class="sign-in" onclick="openLoginForm()" style="display: none;">SIGN-IN</a>
@@ -78,7 +78,7 @@
     </div>
     <div class="bgrnd">
         <div class="color-overlay"></div>
-        <img class="background-image" src="Resources/images/accountBackground.jpeg" alt="picture of a car inside car">
+        <img class="background-image" src="Resources/images/accountBackground.jpg" alt="picture of a car inside car">
     </div>
 </div>
 </body>

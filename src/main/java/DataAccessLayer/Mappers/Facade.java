@@ -158,6 +158,10 @@ public class Facade {
     public void createOrder(Order order) throws Exception {
         orderMapper.createOrder(order);
     }
+    public List<Order> getOrderListById(int user_id)
+    {
+        return orderMapper.getOrderListById(user_id);
+    }
 
     //Unit
     public Unit createUnit(String name) throws Exception {
@@ -165,6 +169,11 @@ public class Facade {
         unitMapper.createUnit(unit);
 
         return unit;
+    }
+
+    public Order getOrderByOrderId(int id)
+    {
+        return orderMapper.getOrderByOrderId(id);
     }
 
 

@@ -30,7 +30,7 @@
     <ul class="nav-links">
         <li><a class="home" href="index.jsp">Home</a></li>
         <li><a href="#">Design</a></li>
-        <li><a href="#">Orders</a></li>
+        <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
         <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
