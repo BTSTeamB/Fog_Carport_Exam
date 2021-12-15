@@ -1,7 +1,7 @@
 package PresentationLayer.Controllers;
 
 import Entities.Material;
-import Entities.MaterialAlgorithm;
+import ServiceLayer.PageUtility.carportAlgorithm;
 import Entities.Order;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
@@ -18,23 +18,23 @@ public class MaterialListController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        HttpSession session = request.getSession();
         OrderUtility orderUtility = null;
         View view = new View();
-        MaterialAlgorithm materialAlgorithm = null;
+        carportAlgorithm materialAlgorithm = null;
+        Order order = null;
 
-        Order order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
         try
         {
             orderUtility = new OrderUtility();
-            materialAlgorithm = new MaterialAlgorithm(order.getCarport_width(), order.getCarport_length());
+            order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
+            materialAlgorithm = new carportAlgorithm(order.getCarport_width(), order.getCarport_length());
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
 
-        List<Material> claddingMaterials = orderUtility.getCladdingMaterial(order.getCladding_id());
-        List<Material> roofingMaterials = orderUtility.getRoofingMaterial(order.getRoofing_id());
+        List<Material> claddingMaterials = materialAlgorithm.calculateCladdingMaterialList(orderUtility.getCladdingMaterial(order.getCladding_id()));
+        List<Material> roofingMaterials = materialAlgorithm.calculateRoofingMaterialList(orderUtility.getRoofingMaterial(order.getRoofing_id()));
 
         request.setAttribute("ordersCladding", claddingMaterials);
         request.setAttribute("ordersRoofing", roofingMaterials);

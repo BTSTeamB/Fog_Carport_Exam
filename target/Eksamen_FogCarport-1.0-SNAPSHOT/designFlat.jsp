@@ -24,7 +24,7 @@
     <ul class="nav-links">
         <li><a class="home" href="index.jsp">Home</a></li>
         <li><a href="">About</a></li>
-        <li><a href="design.jsp">Orders</a></li>
+        <li><a href="designFlat.jsp">Orders</a></li>
     </ul>
     <div class="dropdown">
         <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
@@ -127,7 +127,7 @@
     </div>
     <div class="input-text">
         <div class="input-text-header">
-            <h2> Fill in the form below carefully and click on "Order offer"</h2>
+            <h2> Fill in the form below carefully and click on "Calculate"</h2>
         </div>
         <div class="input-text-des">
             <span>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="input-con">
-        <form action="checkout-guest.jsp">
+        <form action="DesignController" method="post">
             <div class="section-select">
                 <label for="carport_width">Caport width</label>
                 <select name="width" id="carport_width">
@@ -152,6 +152,10 @@
                         <option value="420">420cm</option>
                         <option value="450">450cm</option>
                         <option value="480">480cm</option>
+                        <option value="510">510cm</option>
+                        <option value="540">540cm</option>
+                        <option value="570">570cm</option>
+                        <option value="600">600cm</option>
                     </optgroup>
                 </select>
                 <label for="carport_roof">Carport roof</label>
@@ -160,8 +164,6 @@
                         <option value="" disabled selected hidden>Roof*</option>
                         <option value="1">Flat-roof, Asphalt roofing </option>
                         <option value="2">Flat-roof, Trapez Plastic</option>
-                        <option value="3">Gable-roof, Concrete tiles</option>
-                        <option value="4">Gable-roof, Tile roof shingles</option>
                     </optgroup>
                 </select>
                 <label for="tool-room-width">Tool room width</label>
@@ -209,6 +211,12 @@
                         <option value="540">540cm</option>
                         <option value="570">570cm</option>
                         <option value="600">600cm</option>
+                        <option value="630">630cm</option>
+                        <option value="660">660cm</option>
+                        <option value="690">690cm</option>
+                        <option value="720">720cm</option>
+                        <option value="750">750cm</option>
+                        <option value="780">780cm</option>
                     </optgroup>
                 </select>
                 <label for="carport_cladding">Carport cladding</label>

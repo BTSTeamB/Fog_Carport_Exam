@@ -25,7 +25,7 @@
         <ul class="nav-links">
           <li><a class="home" href="index.jsp">Home</a></li>
           <li><a href="">About</a></li>
-          <li><a href="design.jsp">Orders</a></li>
+          <li><a href="designFlat.jsp">Orders</a></li>
         </ul>
         <div class="dropdown">
           <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
@@ -126,14 +126,14 @@
             <br>
             <hr class="guest-line">
             <div class="guest-information">
-              <form action="orderComplete.jsp">
+              <form action="DesignController" method="get">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="account-name" placeholder="Brugers navn skal stå her">
                 <i class="fas fa-pen-square"></i>
                
 
-                <label for="account-address">Adress</label>
-                <input type="text" name="adress" id="account-address" placeholder="Brugers adresse skal stå her">
+                <label for="account-address">Address</label>
+                <input type="text" name="address" id="account-address" placeholder="Brugers adresse skal stå her">
                 <i class="fas fa-pen-square"></i>
               
                 <label for="account-zip">Zip-code</label>
@@ -161,13 +161,13 @@
                 </div>
                <div class="item-subtotal">
                    <div class="item-subtotal-container">
-                        <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">DKK 10000,000</span></p>
+                        <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">${sessionScope.totalPrice}0</span></p>
                         <p class="p-space"><span class="span-left">Shipping*</span> <span class="span-right">Free</span></p> 
                         <p><span class="span-left">standard</span></p>
                     </div>
                </div>
                <div class="order-total">
-                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">DKK 10000,000</span></p>
+                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">${sessionScope.totalPrice}0</span></p>
                </div>
                <hr class="horizontal-line">
            </div>
@@ -179,10 +179,10 @@
                   <img class="small-image" src="Resources/images/carport1.0.jpg" alt="">
                 </div>    
                 <div class="order-right">
-                  <p class="item-name">carport 1</p>
-                  <p class="small-p">width / height</p>
-                  <p class="small-p">cladding / roofing</p>
-                  <p class="small-p">DKK 10000,000</p>
+                  <p class="item-name">Your new carport!</p>
+                  <p class="small-p">${sessionScope.wantedWidth} / ${sessionScope.wantedLength}</p>
+                  <p class="small-p">${requestScope.selectedCladdingType} / ${requestScope.selectedRoofingType}</p>
+                  <p class="small-p">${sessionScope.totalPrice}0</p>
                 </div>
               </div>
            </div>

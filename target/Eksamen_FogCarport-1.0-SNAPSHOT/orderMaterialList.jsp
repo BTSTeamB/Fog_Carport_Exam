@@ -18,15 +18,17 @@
     <tr>
         <th>Material Name</th>
         <th>Length(cm)</th>
+        <th>Width(cm)</th>
         <th>Amount</th>
         <th>Unit</th>
         <th>Description/Instruction</th>
     </tr>
     <c:forEach var="claddingMaterial" items="${requestScope.ordersCladding}">
         <tr>
-            <td>${claddingMaterial.name}</td>
+            <td>${claddingMaterial.name}         </td>
             <td>${claddingMaterial.length}</td>
-            <td>X - To be Replaced - X</td>
+            <td>${claddingMaterial.width}</td>
+            <td>${claddingMaterial.quantity}</td>
             <td>${claddingMaterial.unit}</td>
             <td>${claddingMaterial.description}</td>
         </tr>
@@ -37,15 +39,17 @@
     <tr>
         <th>Material Name</th>
         <th>Length(cm)</th>
+        <th>Width(cm)</th>
         <th>Amount</th>
         <th>Unit</th>
         <th>Description/Instruction</th>
     </tr>
     <c:forEach var="roofingMaterial" items="${requestScope.ordersRoofing}">
         <tr>
-            <td>${roofingMaterial.name}</td>
+            <td>${roofingMaterial.name}          </td>
             <td>${roofingMaterial.length}</td>
-            <td>X - To be Replaced - X</td>
+            <td>${roofingMaterial.width}</td>
+            <td>${roofingMaterial.quantity}</td>
             <td>${roofingMaterial.unit}</td>
             <td>${roofingMaterial.description}</td>
         </tr>

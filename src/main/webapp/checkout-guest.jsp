@@ -127,12 +127,12 @@
             <br>
             <hr class="guest-line">
             <div class="guest-information">
-              <form action="orderComplete.jsp">
+              <form action="DesignController" method="get">
                 <label for="check-out-guest-name">Name</label>
                 <input type="text" name="name" id="check-out-guest-name">
                 
-                <label for="check-out-guest-address">Adress</label>
-                <input type="text" name="adress" id="check-out-guest-address">
+                <label for="check-out-guest-address">Address</label>
+                <input type="text" name="address" id="check-out-guest-address">
               
                 <label for="check-out-guest-zip">zip-code</label>
                 <input type="number" name="zip" id="check-out-guest-zip">
@@ -156,13 +156,13 @@
                 </div>
                <div class="item-subtotal">
                    <div class="item-subtotal-container">
-                        <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">DKK 10000,000</span></p>
+                        <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">${sessionScope.totalPrice}0</span></p>
                         <p class="p-space"><span class="span-left">Shipping*</span> <span class="span-right">Free</span></p> 
                         <p><span class="span-left">standard</span></p>
                     </div>
                </div>
                <div class="order-total">
-                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">DKK 10000,000</span></p>
+                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">${sessionScope.totalPrice}0</span></p>
                </div>
                <hr class="horizontal-line">
            </div>
@@ -174,10 +174,10 @@
                   <img class="small-image" src="Resources/images/carport1.0.jpg" alt="">
                 </div>    
                 <div class="order-right">
-                  <p class="item-name">carport 1</p>
-                  <p class="small-p">width / height</p>
-                  <p class="small-p">cladding / roofing</p>
-                  <p class="small-p">DKK 10000,000</p>
+                  <p class="item-name">Your new carport!</p>
+                    <p class="small-p">${sessionScope.wantedWidth} / ${sessionScope.wantedLength}</p>
+                    <p class="small-p">${requestScope.selectedCladdingType} / ${requestScope.selectedRoofingType}</p>
+                    <p class="small-p">${sessionScope.totalPrice}0</p>
                 </div>
               </div>
            </div>

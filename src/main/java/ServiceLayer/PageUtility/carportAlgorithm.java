@@ -1,11 +1,12 @@
-package Entities;
+package ServiceLayer.PageUtility;
 
+import Entities.Material;
 import ServiceLayer.PageUtility.OrderUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaterialAlgorithm
+public class carportAlgorithm
 {
     double maxWidth = 600.00;
     double maxLength = 780.00;
@@ -13,24 +14,24 @@ public class MaterialAlgorithm
     double lengthPercentile;
     double widthPercentile;
 
-    public MaterialAlgorithm(double usersWantedWidth, double usersWantedLength) throws ClassNotFoundException
+    public carportAlgorithm(double usersWantedWidth, double usersWantedLength) throws ClassNotFoundException
     {
         this.widthPercentile = (maxWidth - usersWantedWidth ) / maxWidth * 100 / 100;
         this.lengthPercentile = (maxLength - usersWantedLength) / maxLength * 100 / 100;
     }
 
-    public List<Material> calculateCladdingMaterialList(List<Material> claddingMaterials,double widthPercentile, double lengthPercentile)
+    public List<Material> calculateCladdingMaterialList(List<Material> claddingMaterials)
     {
         //Decreases all values in material list by percentile
 
         for (int i = 0; i < claddingMaterials.size(); i++)
         {
-            claddingMaterials.get(i).setLength((double) Math.round((claddingMaterials.get(i).getLength() - claddingMaterials.get(i).getLength() * lengthPercentile) * 100) / 100);
-            claddingMaterials.get(i).setWidth((double) Math.round((claddingMaterials.get(i).getWidth() - claddingMaterials.get(i).getWidth() * widthPercentile) * 100) / 100);
+            claddingMaterials.get(i).setLength((double) Math.round((claddingMaterials.get(i).getLength() - claddingMaterials.get(i).getLength() * this.lengthPercentile) * 100) / 100);
+            claddingMaterials.get(i).setWidth((double) Math.round((claddingMaterials.get(i).getWidth() - claddingMaterials.get(i).getWidth() * this.widthPercentile) * 100) / 100);
         }
 
         //Cheap way to get 'Quantity' calculated into our list.
-        double averagePercentile = (lengthPercentile + widthPercentile) / 2;
+        double averagePercentile = (this.lengthPercentile + this.widthPercentile) / 2;
         for (int i = 0; i < claddingMaterials.size(); i++)
         {
             claddingMaterials.get(i).setQuantity((int) (claddingMaterials.get(i).getQuantity() - claddingMaterials.get(i).getQuantity() * averagePercentile));
@@ -52,18 +53,18 @@ public class MaterialAlgorithm
         return claddingMaterials;
     }
 
-    public List<Material> calculateRoofingMaterialList(List<Material> roofingMaterials,double widthPercentile, double lengthPercentile)
+    public List<Material> calculateRoofingMaterialList(List<Material> roofingMaterials)
     {
         //Decreases all values in material list by percentile
 
         for (int i = 0; i < roofingMaterials.size(); i++)
         {
-            roofingMaterials.get(i).setLength((double) Math.round((roofingMaterials.get(i).getLength() - roofingMaterials.get(i).getLength() * lengthPercentile) * 100) / 100);
-            roofingMaterials.get(i).setWidth((double) Math.round((roofingMaterials.get(i).getWidth() - roofingMaterials.get(i).getWidth() * widthPercentile) * 100) / 100);
+            roofingMaterials.get(i).setLength((double) Math.round((roofingMaterials.get(i).getLength() - roofingMaterials.get(i).getLength() * this.lengthPercentile) * 100) / 100);
+            roofingMaterials.get(i).setWidth((double) Math.round((roofingMaterials.get(i).getWidth() - roofingMaterials.get(i).getWidth() * this.widthPercentile) * 100) / 100);
         }
 
         //Cheap way to get 'Quantity' calculated into our list.
-        double averagePercentile = (lengthPercentile + widthPercentile) / 2;
+        double averagePercentile = (this.lengthPercentile + this.widthPercentile) / 2;
         for (int i = 0; i < roofingMaterials.size(); i++)
         {
             roofingMaterials.get(i).setQuantity((int) (roofingMaterials.get(i).getQuantity() - roofingMaterials.get(i).getQuantity() * averagePercentile));
