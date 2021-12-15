@@ -182,6 +182,30 @@
         <div class="header">
             <h1>Design your own carport</h1>
         </div>
+
+        <div class="card card-left">
+            <h1>Flat roof</h1>
+            <div class="card-button-left">
+                <form action="designFlat.jsp">
+                    <button class="button-left-card" type="submit">Start building</button>
+                </form>
+            </div>
+            <div class="card-image">
+                <img src="Resources/images/carportligetag.jpg" alt="picture of carport">
+            </div>
+        </div>
+
+        <div class="card card-right">
+            <h1>Slooping roof</h1>
+            <div class="card-button-left">
+                <form action="designGable.jsp">
+                    <button class="button-left-card" type="submit">Start building</button>
+                </form>
+            </div>
+            <div class="card-image">
+                <img src="Resources/images/carport6.2.jpg" alt="picture of carport">
+            </div>
+        </div>
     </div>
 </section>
 

@@ -225,6 +225,10 @@
 
         <br>
 
+        <div class="arrow bounce">
+            <a class="fas fa-chevron-down"></a>
+        </div>
+
         <br>
         <div class="des-container2">
             <h2 class="des-header">Description</h2>

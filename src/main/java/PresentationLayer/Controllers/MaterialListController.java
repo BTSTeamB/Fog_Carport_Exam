@@ -1,6 +1,7 @@
 package PresentationLayer.Controllers;
 
 import Entities.Material;
+import Entities.MaterialAlgorithm;
 import Entities.Order;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
@@ -20,16 +21,18 @@ public class MaterialListController extends HttpServlet
         HttpSession session = request.getSession();
         OrderUtility orderUtility = null;
         View view = new View();
+        MaterialAlgorithm materialAlgorithm = null;
 
+        Order order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
         try
         {
             orderUtility = new OrderUtility();
+            materialAlgorithm = new MaterialAlgorithm(order.getCarport_width(), order.getCarport_length());
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
 
-        Order order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
         List<Material> claddingMaterials = orderUtility.getCladdingMaterial(order.getCladding_id());
         List<Material> roofingMaterials = orderUtility.getRoofingMaterial(order.getRoofing_id());
 
@@ -43,7 +46,6 @@ public class MaterialListController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
 
 
     }

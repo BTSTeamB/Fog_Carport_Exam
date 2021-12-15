@@ -2,10 +2,6 @@
 html{
   scroll-behavior: smooth;
 }
-  
-.sign-in{
-  cursor: pointer;
-}
 
 section {
   height: 100vh;
@@ -133,8 +129,7 @@ section {
 
 .background-wrap .header{
   position: absolute;
-  z-index: 1;
-  text-align: center;
+  text-align: center;;
   left: 50%;
   top: 10%;
   transform: translate(-50%, -50%);
@@ -142,10 +137,51 @@ section {
   font-size: 2rem;
 }
 
-.background-wrap .second-header{
-  left: 50%;
+.card{
+  background-color: #242424;
+  width: 15em;
+  height: 15em;
+  border-radius: 15px;
+  position: absolute;
+  text-align: center;;
+  transform: translate(-50%, -50%);
+  color: var(--better-white-color);
+  font-size: 2rem;
 }
 
+.button-left-card{
+  height: 3em;
+  width: 15em;
+  border: none;
+  background-color: var(--fog-firm-color);
+  font-family: 'Helvetica', FontAwesome, sans-serif;
+  color: var(--better-white-color);
+  cursor: pointer;
+}
+
+.card-image img{
+  width: 100%;
+  margin-top: 1.5em;
+  height: 10em;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.card h1{
+  color: var(--better-white-color);
+  font-size: 1em;
+  margin: 0.2em;
+}
+
+.background-wrap .card-left{
+  left: 27%;
+  top: 55%;
+}
+
+.background-wrap .card-right{
+  left: 73%;
+  top: 55%;
+}
 
 #third-section{
   background-color: var(--second-third-section-color);
@@ -157,5 +193,7 @@ section {
   max-width: 100%;
   opacity: 0.05;
 }
+
+
 
 
