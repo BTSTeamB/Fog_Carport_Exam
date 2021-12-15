@@ -25,40 +25,75 @@ public class ClevesDemoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int længde = 900;//brugernes valg
+        int brede = 700;//brugerns valg
+        int stolper = 0;
+        int lægter = 0;
 
 
+        if (længde >= 400 || længde <= 780) {
+            stolper = 3;
+        }
+        if (længde < 400) {
+            stolper = 2;
+        }
+        if(længde <280 ){
+            længde = 280;
+        }
+        if(længde >780){
+            længde =780;
+        }
+        if(brede <280){
+            brede = 280;
+
+        }
+        if(brede > 600){
+            brede = 600;
+        }
 
         SVG svg = new SVG(0, 0, "0 0 800 800", 100, 100);
-        svg.addRect(155, 0, 600.0, 780.0);
-        svg.addRect(155, 35, 4.5, 780);
-        svg.addRect(155, 565, 4.5, 780);
-        for (int x = 1; x < 16; x++) {
-            svg.addRect(100 + 55 * x, 0, 600.0, 4.8);
+
+        svg.addRect(155, 0, brede, længde);
+        svg.addRect(155, 35, 4.5, længde);
+        svg.addRect(155, brede - 35, 4.5, længde);
+
+
+        lægter = længde / 55;
+
+
+        //lægter
+        for (int x = 1; x < lægter; x++) {
+            svg.addRect(155 + 55 * x, 0, brede, 4.8);
         }
-        svg.text("7,50 m");
-        svg.text2("6,00 m ");
 
-        svg.addRect(260, 32, 10.0, 10.0);
-        svg.addRect(570, 32, 10.0, 10.0);
-        svg.addRect(700, 32, 10.0, 10.0);
-        svg.addRect(910, 32, 10.0, 10.0);
+        //stolper up
+        for (int x = 1; x <= stolper; x++) {
+
+            svg.addRect(32 + 250 * x, 32, 10.0, 10.0);
+        }
+        //stopler down
+        for (int x = 1; x <= stolper; x++) {
+
+            svg.addRect(32 + 250 * x, brede - 38, 10.0, 10.0);
+        }
+
+        svg.text2(155 + (længde / 2), brede + 75, længde + "cm");
+        svg.text(75, brede / 2, brede + "cm");
 
 
-        svg.addRect(260, 562, 10.0, 10.0);
-        svg.addRect(570, 562, 10.0, 10.0);
-        svg.addRect(700, 562, 10.0, 10.0);
-        svg.addRect(910, 562, 10.0, 10.0);
+        //striped-lines
+        svg.addLine(290,38, stolper, brede);
+        svg.addLine(779, 40, 291, 562);
 
-        svg.addLine(154, 0, 750, 600);
-        svg.addLine(750, 0, 154, 600);
-        svg.addLine1(100,100,100,600);
-        svg.addLine1(150,700,850,700);
-        // svg.addSvg(svg = new SVG(0,0,"0 0 800 600", 100 ,100));
-        svg.addArrowsEnd("endArrow",10,10,12,6);
+        //arrow-lines
+        svg.addLine1(100, 0, 100, brede);
+        svg.addLine1(150, brede + 30, længde + 155, brede + 30);
+
+        svg.addArrowsEnd("endArrow", 10, 10, 12, 6);
         svg.addArrowsStart("beginArrow", 10, 10, 0, 6);
 
-        request.setAttribute("svgdrawing", svg.toString());
 
+        request.setAttribute("svgdrawing", svg.toString());
         request.getRequestDispatcher("/WEB-INF/SVG.jsp").forward(request, response);
 
 
