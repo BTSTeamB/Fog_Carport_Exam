@@ -129,9 +129,9 @@ public class Facade {
 
 
     //Material
-    public Material createMaterial(int materialId,String name, String description, double price, int unit_id, Double length, Double height, Double width) throws Exception
+    public Material createMaterial(int materialId,String name, String description, double price, int quantity ,int unit_id, Double length, Double height, Double width) throws Exception
     {
-        Material material = new Material(materialId, name, description, price, unit_id, length, height, width);
+        Material material = new Material(materialId, name, description, price, quantity, unit_id, length, height, width);
         materialMapper.createMaterial(material);
         return material;
     }

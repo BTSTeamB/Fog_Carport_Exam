@@ -12,6 +12,7 @@ public class Material
     Double height;
     Double width;
     String time_created;
+    int quantity;
 
     public Material(String name, String description, double price, int unit_id, Double length, Double height, Double width)
     {
@@ -22,27 +23,27 @@ public class Material
         this.length = length;
         this.height = height;
         this.width = width;
-        this.time_created = time_created;
     }
 
     //Database retriever Constructor
-    public Material(int material_id, String name, String description, double price, Unit unit, Double length, Double height, Double width, String time_created)
+    public Material(int material_id, String name, String description, double price, int quantity, Unit unit, Double length, Double height, Double width)
     {
         this.material_id = material_id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.quantity = quantity;
         this.unit = unit;
         this.length = length;
         this.height = height;
         this.width = width;
-        this.time_created = time_created;
     }
-    public Material(int materialId,String name, String description, double price,int unit_id, Double length, Double height, Double width){
+    public Material(int materialId,String name, String description, double price, int quantity ,int unit_id, Double length, Double height, Double width){
         this.material_id = materialId;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.quantity = quantity;
         this.unit_id = unit_id;
         this.length = length;
         this.height = height;
@@ -53,6 +54,18 @@ public class Material
     public Material(int material_id)
     {
         this.material_id = material_id;
+    }
+
+
+
+    public int getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
     }
 
     public int getMaterial_id() {
@@ -126,5 +139,4 @@ public class Material
     public void setWidth(Double width) {
         this.width = width;
     }
-    //TODO: Get currentId, hvor man henter id fra database og sætter et nyt objekts id til det.
 }
