@@ -19,7 +19,6 @@
     </div>
     <ul class="nav-links">
         <li><a href="index.jsp">Home</a></li>
-        <li><a href="#">Design</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">

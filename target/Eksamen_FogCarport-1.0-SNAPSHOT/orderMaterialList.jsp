@@ -25,7 +25,7 @@
     </tr>
     <c:forEach var="claddingMaterial" items="${requestScope.ordersCladding}">
         <tr>
-            <td>${claddingMaterial.name}         </td>
+            <td>${claddingMaterial.name}</td>
             <td>${claddingMaterial.length}</td>
             <td>${claddingMaterial.width}</td>
             <td>${claddingMaterial.quantity}</td>
@@ -46,7 +46,7 @@
     </tr>
     <c:forEach var="roofingMaterial" items="${requestScope.ordersRoofing}">
         <tr>
-            <td>${roofingMaterial.name}          </td>
+            <td>${roofingMaterial.name}</td>
             <td>${roofingMaterial.length}</td>
             <td>${roofingMaterial.width}</td>
             <td>${roofingMaterial.quantity}</td>

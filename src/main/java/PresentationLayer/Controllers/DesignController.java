@@ -132,11 +132,11 @@ public class DesignController extends HttpServlet
         double totalPrice = 0.0;
         for (int i = 0; i < claddingMaterials.size(); i++)
         {
-            totalPrice += claddingMaterials.get(i).getPrice();
+            totalPrice += (claddingMaterials.get(i).getPrice() * claddingMaterials.get(i).getQuantity());
         }
         for (int i = 0; i < roofingMaterials.size(); i++)
         {
-            totalPrice += roofingMaterials.get(i).getPrice();
+            totalPrice += (roofingMaterials.get(i).getPrice() * claddingMaterials.get(i).getQuantity());
         }
 
         // Rounding off totalPrice so it isn't an insane number

@@ -29,7 +29,6 @@
     </div>
     <ul class="nav-links">
         <li><a class="home" href="index.jsp">Home</a></li>
-        <li><a href="#">Design</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
@@ -120,12 +119,13 @@
 <section id="first-section">
     <div class="text-video-overlay">
         <h1>FOG Carporte</h1>
-        <h2>Caporte der holder i længden</h2>
+        <h2>Carports for your needs</h2>
     </div>
     <div class="button-container">
-        <button class="button-container-item bt1">DESIGN DIN EGEN</button>
+        <button onclick="document.getElementById('third-section').scrollIntoView();" class="button-container-item bt1">
+            DESIGN YOUR OWN</button>
         <button onclick="document.getElementById('second-section').scrollIntoView();" class="button-container-item bt2">
-            KØB FÆRDIGLAVET
+            BUY PRE-MADE
         </button>
     </div>
     <div class="video-container">
@@ -184,7 +184,7 @@
         </div>
 
         <div class="card card-left">
-            <h1>Flat roof</h1>
+            <h1>Flat Roof</h1>
             <div class="card-button-left">
                 <form action="designFlat.jsp">
                     <button class="button-left-card" type="submit">Start building</button>
@@ -196,7 +196,7 @@
         </div>
 
         <div class="card card-right">
-            <h1>Slooping roof</h1>
+            <h1>Gabled Roof</h1>
             <div class="card-button-left">
                 <form action="designGable.jsp">
                     <button class="button-left-card" type="submit">Start building</button>

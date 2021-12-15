@@ -23,18 +23,17 @@
     </div>
     <ul class="nav-links">
         <li><a class="home" href="index.jsp">Home</a></li>
-        <li><a href="">About</a></li>
         <li><a href="design.jsp">Orders</a></li>
     </ul>
     <div class="dropdown">
-        <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-        <button class="dropbtn" style='display: none;'>&#xf007; Username
+        <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
+        <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+        <button class="dropbtn" style='display: none; ${sessionScope.changeDropDownButton}'>
+            &#xf007; ${sessionScope.user.getName()}
+            <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content" style="display: none;">
-            <a href="account.jsp">Account</a>
-            <a href="LogoutController">Sign-out</a>
-        </div>
+        ${sessionScope.changeDropDownMenu}
     </div>
 </nav>
 

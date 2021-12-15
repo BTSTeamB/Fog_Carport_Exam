@@ -24,18 +24,17 @@
         </div>
         <ul class="nav-links">
           <li><a class="home" href="index.jsp">Home</a></li>
-          <li><a href="">About</a></li>
           <li><a href="designFlat.jsp">Orders</a></li>
         </ul>
         <div class="dropdown">
-          <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-          <button class="dropbtn" style='display: none;'>&#xf007; Username
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content" style="display: none;">
-            <a href="account.jsp">Account</a>
-            <a href="LogoutController">Sign-out</a>
-          </div>
+            <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
+            <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+            <button class="dropbtn" style='display: none; ${sessionScope.changeDropDownButton}'>
+                &#xf007; ${sessionScope.user.getName()}
+                <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
+                <i class="fa fa-caret-down"></i>
+            </button>
+            ${sessionScope.changeDropDownMenu}
         </div>
       </nav>
 
@@ -128,24 +127,24 @@
             <div class="guest-information">
               <form action="DesignController" method="get">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="account-name" placeholder="Brugers navn skal stå her">
+                <input type="text" name="name" id="account-name" value="${sessionScope.user.name}">
                 <i class="fas fa-pen-square"></i>
                
 
                 <label for="account-address">Address</label>
-                <input type="text" name="address" id="account-address" placeholder="Brugers adresse skal stå her">
+                <input type="text" name="address" id="account-address" value="${sessionScope.user.address}">
                 <i class="fas fa-pen-square"></i>
               
                 <label for="account-zip">Zip-code</label>
-                <input type="number" name="zip" id="account-zip" placeholder="Brugers zip-code skal stå her">
+                <input type="number" name="zip" id="account-zip" value="${sessionScope.user.zipCode}">
                 <i class="fas fa-pen-square"></i>
                 
                 <label for="account-email">E-mail</label>
-                <input type="email" name="email" id="account-email" placeholder="brugers email skal stå her">
+                <input type="email" name="email" id="account-email" value="${sessionScope.user.email}">
                 <i class="fas fa-pen-square"></i>
             
                 <label for="account-phone">Phone</label>
-                <input type="number" name="phone" id="account-phone" placeholder="brugers telefon nummer skal stå her">
+                <input type="number" name="phone" id="account-phone" value="${sessionScope.user.phoneNumber}">
                 <i class="fas fa-pen-square"></i>
 
                 <button class="checkout-button" type="submit">Place Order</button>
