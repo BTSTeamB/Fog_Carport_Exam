@@ -25,29 +25,34 @@ public class ClevesDemoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int længde = 900;//brugernes valg
-        int brede = 700;//brugerns valg
+        int længde = 780;//brugernes valg
+        int brede = 600;//brugerns valg
         int stolper = 0;
         int lægter = 0;
 
 
-        if (længde >= 400 || længde <= 780) {
+        if (længde >= 660 || længde <= 780) {
+            stolper = 5;
+        } else if (længde >= 480 || længde < 660) {
+            stolper = 4;
+        } else if (længde >= 330 || længde < 480) {
             stolper = 3;
-        }
-        if (længde < 400) {
+        } else if (længde < 330) {
             stolper = 2;
-        }
-        if(længde <280 ){
-            længde = 280;
-        }
-        if(længde >780){
-            længde =780;
-        }
-        if(brede <280){
-            brede = 280;
+
 
         }
-        if(brede > 600){
+        if (længde < 240) {
+            længde = 240;
+        }
+        if (længde > 780) {
+            længde = 780;
+        }
+        if (brede < 240) {
+            brede = 240;
+
+        }
+        if (brede > 600) {
             brede = 600;
         }
 
@@ -69,12 +74,13 @@ public class ClevesDemoServlet extends HttpServlet {
         //stolper up
         for (int x = 1; x <= stolper; x++) {
 
-            svg.addRect(32 + 250 * x, 32, 10.0, 10.0);
+            svg.addRect(55 + ((længde / stolper) * x), 32, 10.0, 10.0);
         }
+        //70+(længde / x
         //stopler down
         for (int x = 1; x <= stolper; x++) {
 
-            svg.addRect(32 + 250 * x, brede - 38, 10.0, 10.0);
+            svg.addRect(55 + ((længde / stolper) * x), brede - 38, 10.0, 10.0);
         }
 
         svg.text2(155 + (længde / 2), brede + 75, længde + "cm");
@@ -82,8 +88,8 @@ public class ClevesDemoServlet extends HttpServlet {
 
 
         //striped-lines
-        svg.addLine(290,38, stolper, brede);
-        svg.addLine(779, 40, 291, 562);
+        //svg.addLine(290,38, længde, brede-38);
+        //svg.addLine(779, 40, 291, 562);
 
         //arrow-lines
         svg.addLine1(100, 0, 100, brede);
