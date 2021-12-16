@@ -6,6 +6,7 @@ import Entities.*;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
 import ServiceLayer.PageUtility.PageUtility;
+import ServiceLayer.PageUtility.carportAlgorithm;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -70,6 +71,7 @@ public class OrderController extends HttpServlet
         HttpSession session = request.getSession();
         PageUtility pageUtility = null;
         OrderUtility orderUtility = null;
+        carportAlgorithm carportAlgorithm = null;
         User user = (User) session.getAttribute("user");
         try
         {
@@ -103,16 +105,11 @@ public class OrderController extends HttpServlet
             e.printStackTrace();
         }
 
-        System.out.println("INFO FROM CLADDING SELECTED BY USER, RETRIEVED BY DB");
-        System.out.println(cladding.getCladding_id());
-        System.out.println(cladding.getType());
-        System.out.println("INFO FROM ROOFING SELECTED BY USER, RETRIEVED BY DB");
-        System.out.println(roofing.getRoofing_id());
-        System.out.println(roofing.getType());
 
         session.setAttribute("chosenCladding", cladding);
         session.setAttribute("chosenRoofing", roofing);
 
+        PredefinedCarport pdCarport = (PredefinedCarport) session.getAttribute("viewMoreCarport");
 
         if (user == null)
         {

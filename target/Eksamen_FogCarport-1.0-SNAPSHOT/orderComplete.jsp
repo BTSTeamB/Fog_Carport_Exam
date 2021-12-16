@@ -23,8 +23,7 @@
         </div>
         <ul class="nav-links">
           <li><a class="home" href="index.jsp">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="designFlat.jsp">Orders</a></li>
+          <li><a href="CustomerOrderListController">Orders</a></li>
         </ul>
         <div class="dropdown">
           <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>

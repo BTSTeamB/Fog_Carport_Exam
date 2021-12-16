@@ -183,9 +183,9 @@ public class Facade {
         userMapper.createUser(user);
     }
 
-    public void createGuestUser(int isGuest, String name, String address, String zipCode, String phoneNumber, String email, String password) throws Exception
+    public void createGuestUser(String name, String address, String zipCode, String phoneNumber, String email) throws Exception
     {
-        User user = new User(name, address, zipCode, phoneNumber, email, password);
+        User user = new User(name, address, zipCode, phoneNumber, email);
         userMapper.createGuestUser(user);
 
     }

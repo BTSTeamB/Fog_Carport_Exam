@@ -139,7 +139,7 @@
 <section id="second-section">
     <div class="background-wrap">
         <div class="header">
-            <h1>Prepared carport</h1>
+            <h1>Pre-made Carports</h1>
         </div>
         <div class="carousel">
             <c:forEach var="subLists" items="${sessionScope.listOfLists}">
@@ -153,7 +153,7 @@
                                 <h1>DKK ${preDefinedCarport.price},00</h1>
                             </div>
                             <div class="des">
-                                <p>${preDefinedCarport.length}x${preDefinedCarport.width}mtr</p>
+                                <p>${preDefinedCarport.length}x${preDefinedCarport.width}cm</p>
                                 <form action="OrderController" method="get">
                                     <button class="button-cards" name="act" value="${preDefinedCarport.id}" >Read More</button>
                                 </form>
