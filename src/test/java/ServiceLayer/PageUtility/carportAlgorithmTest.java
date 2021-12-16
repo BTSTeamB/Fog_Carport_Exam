@@ -16,7 +16,7 @@ class carportAlgorithmTest
         List<Material> claddingMaterials = orderUtility.getCladdingMaterial(1);
         List<Material> roofingMaterials = orderUtility.getRoofingMaterial(1);
 
-        carportAlgorithm materialAlgorithm = new carportAlgorithm(240,240);
+        carportAlgorithm materialAlgorithm = new carportAlgorithm(600,420);
 
         System.out.println("Length Percentile: " + materialAlgorithm.lengthPercentile+ "\n " + "Width Percentile: " + materialAlgorithm.widthPercentile);
 

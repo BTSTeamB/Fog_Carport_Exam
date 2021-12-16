@@ -1,0 +1,49 @@
+body{
+    background-color: #1b1b1b;
+    color: var(--better-white-color);
+}
+
+table{
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 5em;
+}
+
+.table-header{
+   color: #969696;
+}
+
+.lines{
+    border: 0.5px solid #727272;
+}
+
+
+td{
+    height: 2.6em;
+}
+
+td:nth-of-type(7), th:nth-of-type(7)
+{
+    padding-left: 5em;
+}
+
+th{
+    text-transform: uppercase;
+}
+
+.order-number-click{
+    background-color: transparent;
+    border: transparent;
+    color: var(--fog-firm-color);
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+
+.order-header{
+    margin: 1em;
+}
+
+

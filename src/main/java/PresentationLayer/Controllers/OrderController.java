@@ -70,6 +70,7 @@ public class OrderController extends HttpServlet
         HttpSession session = request.getSession();
         PageUtility pageUtility = null;
         OrderUtility orderUtility = null;
+        User user = (User) session.getAttribute("user");
         try
         {
             orderUtility = new OrderUtility();
@@ -113,6 +114,13 @@ public class OrderController extends HttpServlet
         session.setAttribute("chosenRoofing", roofing);
 
 
-        view.forwardToJsp("orderSummary.jsp", request, response);
+        if (user == null)
+        {
+            view.forwardToJsp("premade-checkout-guest.jsp", request, response);
+        }
+        else
+        {
+            view.forwardToJsp("premade-checkout-user.jsp", request, response);
+        }
     }
 }

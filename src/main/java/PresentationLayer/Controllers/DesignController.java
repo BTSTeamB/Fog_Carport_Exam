@@ -2,12 +2,9 @@ package PresentationLayer.Controllers;
 
 import Entities.Material;
 import Entities.Order;
-import ServiceLayer.PageUtility.PageUtility;
-import ServiceLayer.PageUtility.UserUtility;
-import ServiceLayer.PageUtility.carportAlgorithm;
+import ServiceLayer.PageUtility.*;
 import Entities.User;
 import PresentationLayer.View;
-import ServiceLayer.PageUtility.OrderUtility;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -72,10 +69,16 @@ public class DesignController extends HttpServlet
         }
 
         Order designedOrder = new Order(user.getUser_id(),totalPrice,wantedLength,wantedWidth, wantedCladding_id, wantedRoofing_id);
+        List<Material> printCladding = (List<Material>) session.getAttribute("claddingMaterials_calculated");
+        List<Material> printRoofing = (List<Material>) session.getAttribute("roofingMaterials_calculated");
 
         try
         {
             orderUtility.createOrder(designedOrder);
+            Pdf pdf = new Pdf(printCladding, printRoofing);
+            pdf.generatePdf();
+            Emailer emailer = new Emailer(user.getEmail());
+            emailer.sendmail();
         } catch (Exception e)
         {
             e.printStackTrace();

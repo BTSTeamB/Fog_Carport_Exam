@@ -1,19 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Resources/css/navbar-style.css" />
+    <link rel="stylesheet" href="Resources/css/scrollbar-style.css">
     <link rel="stylesheet" href="Resources/css/login-popup-style.css">
     <link rel="stylesheet" href="Resources/css/register-popup-style.css">
-    <link rel="stylesheet" href="Resources/css/navbar-style.css" />
-    <link rel="stylesheet" href="Resources/css/order-complete-style.css">
+    <link rel="stylesheet" href="Resources/css/materialList-style.css">
     <link rel="icon" href="Resources/images/fog-logo.png">
     <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script defer src="Resources/js/popup.js"></script>
-    <title>Order Complete</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>Material List</title>
 </head>
 <body>
     <nav>
@@ -26,14 +28,14 @@
           <li><a href="CustomerOrderListController">Orders</a></li>
         </ul>
         <div class="dropdown">
-          <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-          <button class="dropbtn" style='display: none;'>&#xf007; Username
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content" style="display: none;">
-            <a href="account.jsp">Account</a>
-            <a href="LogoutController">Sign-out</a>
-          </div>
+            <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
+            <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+            <button class="dropbtn" style='display: none; ${sessionScope.changeDropDownButton}'>
+                &#xf007; ${sessionScope.user.getName()}
+                <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
+                <i class="fa fa-caret-down"></i>
+            </button>
+            ${sessionScope.changeDropDownMenu}
         </div>
       </nav>
   
@@ -109,16 +111,50 @@
         </div>
       </div>
 
-      <div class="complete-container">
-        <i class="far fa-check-circle"></i>
-        <h1 class="complete-header">
-              Your Carport Order is Confirmed
-        </h1>
-        <p>Thank you for shopping at johannesfog.dk </p>
-        <br>
-        <p>Your order number is x</p>
-        <br>
-        <img src="Resources/images/hedgehog.png" alt="">
-      </div>
+    <h1 class="material-list-header">Material List</h1>
+<div class="material-list-container">
+    <h3 class="material-list-underheader">Cladding Materials</h3>
+    <table>
+        <tr>
+            <th>Material Name</th>
+            <th>Length(cm)</th>
+            <th>Width(cm)</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Description/Instruction</th>
+        </tr>
+        <c:forEach var="claddingMaterial" items="${requestScope.ordersCladding}">
+            <tr>
+                <td>${claddingMaterial.name}</td>
+                <td>${claddingMaterial.length}</td>
+                <td>${claddingMaterial.width}</td>
+                <td>${claddingMaterial.quantity}</td>
+                <td>${claddingMaterial.unit}</td>
+                <td>${claddingMaterial.description}</td>
+            </tr>
+        </c:forEach>
+    </table>
+    <h3 class="material-list-underheader">Roofing Materials</h3>
+    <table>
+        <tr>
+            <th>Material Name</th>
+            <th>Length(cm)</th>
+            <th>Width(cm)</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Description/Instruction</th>
+        </tr>
+        <c:forEach var="roofingMaterial" items="${requestScope.ordersRoofing}">
+            <tr>
+                <td>${roofingMaterial.name}</td>
+                <td>${roofingMaterial.length}</td>
+                <td>${roofingMaterial.width}</td>
+                <td>${roofingMaterial.quantity}</td>
+                <td>${roofingMaterial.unit}</td>
+                <td>${roofingMaterial.description}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>

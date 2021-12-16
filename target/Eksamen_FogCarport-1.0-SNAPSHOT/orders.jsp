@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +9,12 @@
     <link rel="stylesheet" href="Resources/css/login-popup-style.css">
     <link rel="stylesheet" href="Resources/css/register-popup-style.css">
     <link rel="stylesheet" href="Resources/css/navbar-style.css" />
-    <link rel="stylesheet" href="Resources/css/order-complete-style.css">
+    <link rel="stylesheet" href="Resources/css/order-style.css">
     <link rel="icon" href="Resources/images/fog-logo.png">
     <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script defer src="Resources/js/popup.js"></script>
-    <title>Order Complete</title>
+    <title>Order View</title>
 </head>
 <body>
     <nav>
@@ -26,14 +27,14 @@
           <li><a href="CustomerOrderListController">Orders</a></li>
         </ul>
         <div class="dropdown">
-          <a class="sign-in" onclick="openLoginForm()">SIGN-IN</a>
-          <button class="dropbtn" style='display: none;'>&#xf007; Username
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content" style="display: none;">
-            <a href="account.jsp">Account</a>
-            <a href="LogoutController">Sign-out</a>
-          </div>
+            <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
+            <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
+            <button class="dropbtn" style='display: none; ${sessionScope.changeDropDownButton}'>
+                &#xf007; ${sessionScope.user.getName()}
+                <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
+                <i class="fa fa-caret-down"></i>
+            </button>
+            ${sessionScope.changeDropDownMenu}
         </div>
       </nav>
   
@@ -109,16 +110,37 @@
         </div>
       </div>
 
-      <div class="complete-container">
-        <i class="far fa-check-circle"></i>
-        <h1 class="complete-header">
-              Your Carport Order is Confirmed
-        </h1>
-        <p>Thank you for shopping at johannesfog.dk </p>
-        <br>
-        <p>Your order number is x</p>
-        <br>
-        <img src="Resources/images/hedgehog.png" alt="">
-      </div>
+      <div class="order-container">
+          <h1 class="order-header">
+              ${sessionScope.user.name}'s Orders
+          </h1>
+            <table>
+                <tr class="table-header">
+                    <th>PURCHASE DATE</th>
+                    <th>ORDER NUMBER</th>
+                    <th>Carport Length</th>
+                    <th>Carport Width</th>
+                    <th>Cladding Type</th>
+                    <th>Roofing Type</th>
+                    <th>total</th>
+                </tr>
+
+                <c:forEach var="userOrder" items="${requestScope.usersOrders}">
+                    <tr class="lines">
+                        <td>DATE</td>
+                        <td>
+                            <form action="MaterialListController" method="get">
+                                <input class="order-number-click" type="submit" value="${userOrder.order_id}" name="selectedOrder">
+                            </form>
+                        </td>
+                        <td>${userOrder.carport_length}</td>
+                        <td>${userOrder.carport_width}</td>
+                        <td>${userOrder.claddingType}</td>
+                        <td>${userOrder.roofingType}</td>
+                        <td>${userOrder.price}</td>
+                    </tr>
+                </c:forEach>
+        </table>
+    </div>
 </body>
 </html>

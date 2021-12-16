@@ -34,7 +34,14 @@ public class carportAlgorithm
         double averagePercentile = (this.lengthPercentile + this.widthPercentile) / 2;
         for (int i = 0; i < claddingMaterials.size(); i++)
         {
+            if (claddingMaterials.get(i).getName().equals("Pressure Impregnated Post"))
+            {
+                claddingMaterials.get(i).setQuantity((int) (claddingMaterials.get(i).getQuantity() - claddingMaterials.get(i).getQuantity() * this.lengthPercentile));
+            }
+            else
+            {
             claddingMaterials.get(i).setQuantity((int) (claddingMaterials.get(i).getQuantity() - claddingMaterials.get(i).getQuantity() * averagePercentile));
+            }
             if(claddingMaterials.get(i).getQuantity() < 1)
             {
                 claddingMaterials.get(i).setQuantity(1);
@@ -82,20 +89,20 @@ public class carportAlgorithm
     public void printCladdingMaterialList (List<Material> claddingMaterialList)
     {
         System.out.println("CLADDING MATERIALS");
-        System.out.println("Material ID - Name - Price - Quantity - Length - Height/Depth - Width");
+        System.out.println("Material ID - Name - Price - Quantity - Length - Height/Depth - Width - Description");
         for (int i = 0; i < claddingMaterialList.size(); i++)
         {
-            System.out.println(claddingMaterialList.get(i).getMaterial_id() +"\t\t\t"+  claddingMaterialList.get(i).getName() +"\t "+claddingMaterialList.get(i).getPrice()+"\t "+claddingMaterialList.get(i).getQuantity()+ "\t "+claddingMaterialList.get(i).getLength() +"\t "+claddingMaterialList.get(i).getHeight() + "\t " + claddingMaterialList.get(i).getWidth());
+            System.out.println(claddingMaterialList.get(i).getMaterial_id() +"\t\t\t"+  claddingMaterialList.get(i).getName() +"\t "+claddingMaterialList.get(i).getPrice()+"\t "+claddingMaterialList.get(i).getQuantity()+ "\t "+claddingMaterialList.get(i).getLength() +"\t "+claddingMaterialList.get(i).getHeight() + "\t " + claddingMaterialList.get(i).getWidth() + "\t " + claddingMaterialList.get(i).getDescription());
         }
     }
 
     public void printRoofingMaterialList (List<Material> roofingMaterialList)
     {
         System.out.println("ROOFING MATERIALS");
-        System.out.println("Material ID - Name - Price - Quantity - Length - Height/Depth - Width");
+        System.out.println("Material ID - Name - Price - Quantity - Length - Height/Depth - Width - Description");
         for (int i = 0; i < roofingMaterialList.size(); i++)
         {
-            System.out.println(roofingMaterialList.get(i).getMaterial_id() +"\t\t\t"+  roofingMaterialList.get(i).getName() +"\t "+roofingMaterialList.get(i).getPrice()+"\t "+ roofingMaterialList.get(i).getQuantity()+"\t "+roofingMaterialList.get(i).getLength() +"\t "+roofingMaterialList.get(i).getHeight() + "\t " + roofingMaterialList.get(i).getWidth());
+            System.out.println(roofingMaterialList.get(i).getMaterial_id() +"\t\t\t"+  roofingMaterialList.get(i).getName() +"\t "+roofingMaterialList.get(i).getPrice()+"\t "+ roofingMaterialList.get(i).getQuantity()+"\t "+roofingMaterialList.get(i).getLength() +"\t "+roofingMaterialList.get(i).getHeight() + "\t " + roofingMaterialList.get(i).getWidth() + "\t " + roofingMaterialList.get(i).getDescription());
         }
     }
 
@@ -108,4 +115,5 @@ public class carportAlgorithm
     {
         return widthPercentile;
     }
+
 }

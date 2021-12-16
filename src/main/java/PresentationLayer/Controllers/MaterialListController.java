@@ -39,7 +39,7 @@ public class MaterialListController extends HttpServlet
         request.setAttribute("ordersCladding", claddingMaterials);
         request.setAttribute("ordersRoofing", roofingMaterials);
 
-        view.forwardToJsp("orderMaterialList.jsp", request, response);
+        view.forwardToJsp("materialList.jsp", request, response);
 
     }
 

@@ -49,7 +49,7 @@ public class CustomerOrderListController extends HttpServlet
             }
 
             request.setAttribute("usersOrders", usersOrders);
-            view.forwardToJsp("customerOrderList.jsp", request, response);
+            view.forwardToJsp("orders.jsp", request, response);
         }
 
     }
@@ -102,6 +102,6 @@ public class CustomerOrderListController extends HttpServlet
 //        }
 //
 //        request.setAttribute("usersOrders", usersOrders);
-//        view.forwardToJsp("customerOrderList.jsp", request, response);
+//        view.forwardToJsp("FOOBARcustomerOrderList.jsp", request, response);
     }
 }
