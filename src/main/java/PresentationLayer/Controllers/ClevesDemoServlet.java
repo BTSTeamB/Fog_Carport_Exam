@@ -31,13 +31,13 @@ public class ClevesDemoServlet extends HttpServlet {
         int lægter = 0;
 
 
-        if (længde >= 660 || længde <= 780) {
+        if (længde >= 720 || længde <= 780) {
             stolper = 5;
-        } else if (længde >= 480 || længde < 660) {
+        } else if (længde >= 570 || længde < 720) {
             stolper = 4;
-        } else if (længde >= 330 || længde < 480) {
+        } else if (længde >= 450 || længde < 570) {
             stolper = 3;
-        } else if (længde < 330) {
+        } else if (længde <450 ) {
             stolper = 2;
 
 
