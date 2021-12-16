@@ -31,11 +31,11 @@ public class ClevesDemoServlet extends HttpServlet {
         int lægter = 0;
 
 
-        if (længde >= 720 || længde <= 780) {
+        if (længde >= 720 && længde <= 780) {
             stolper = 5;
-        } else if (længde >= 570 || længde < 720) {
+        } else if (længde >= 570 && længde < 720) {
             stolper = 4;
-        } else if (længde >= 450 || længde < 570) {
+        } else if (længde >= 450 && længde < 570) {
             stolper = 3;
         } else if (længde <450 ) {
             stolper = 2;
@@ -76,7 +76,7 @@ public class ClevesDemoServlet extends HttpServlet {
 
             svg.addRect(55 + ((længde / stolper) * x), 32, 10.0, 10.0);
         }
-        //70+(længde / x
+
         //stopler down
         for (int x = 1; x <= stolper; x++) {
 
@@ -88,8 +88,8 @@ public class ClevesDemoServlet extends HttpServlet {
 
 
         //striped-lines
-        //svg.addLine(290,38, længde, brede-38);
-        //svg.addLine(779, 40, 291, 562);
+       svg.addLine( 55+((længde/stolper)*1), 35, 55+((længde/stolper)*stolper), (brede/stolper)+brede-160);
+       svg.addLine(55+((længde/stolper)*1), brede- 38, 55+((længde/stolper)*stolper), 40);
 
         //arrow-lines
         svg.addLine1(100, 0, 100, brede);
