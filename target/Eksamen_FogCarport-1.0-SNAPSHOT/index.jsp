@@ -119,7 +119,7 @@
 <section id="first-section">
     <div class="text-video-overlay">
         <h1>FOG Carports</h1>
-        <h2>Carports for your needs</h2>
+        <h2>Carports tailored for your needs</h2>
     </div>
     <div class="button-container">
         <button onclick="document.getElementById('third-section').scrollIntoView();" class="button-container-item bt1">

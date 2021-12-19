@@ -113,6 +113,7 @@
 
 <h1 class="material-list-header">Admin Options</h1>
 <a href="CustomerOrderController">View All Orders</a>
+<br>
 <a href="CustomerController">View All Customers</a>
 
 </body>
