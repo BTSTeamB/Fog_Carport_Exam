@@ -163,6 +163,11 @@ public class Facade {
         return orderMapper.getOrderListById(user_id);
     }
 
+    public List<Order> getAllOrders()
+    {
+        return orderMapper.getAllOrders();
+    }
+
     //Unit
     public Unit createUnit(String name) throws Exception {
         Unit unit = new Unit(name);
@@ -212,6 +217,11 @@ public class Facade {
         return userMapper.getUserByCredentials(name, address, zipCode, phoneNum, email);
     }
 
+    public List<User> getAllUsers() throws Exception
+    {
+        return userMapper.getAllUsers();
+    }
+
 
     //Predefined Shed
     public void createPredefinedShed(int width, int length, double price, String imgUrl) throws Exception {
@@ -258,6 +268,5 @@ public class Facade {
         PredefinedCarport predefinedCarport = new PredefinedCarport(id);
         predefinedCarportMapper.deletePredefinedCarport(predefinedCarport);
     }
-
 
 }

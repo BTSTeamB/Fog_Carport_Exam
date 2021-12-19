@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "OrderController", value = "/OrderController")
-public class OrderController extends HttpServlet
+public class PDCarportController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -70,12 +70,9 @@ public class OrderController extends HttpServlet
     {
         HttpSession session = request.getSession();
         PageUtility pageUtility = null;
-        OrderUtility orderUtility = null;
-        carportAlgorithm carportAlgorithm = null;
         User user = (User) session.getAttribute("user");
         try
         {
-            orderUtility = new OrderUtility();
              pageUtility = new PageUtility();
         } catch (ClassNotFoundException e)
         {
@@ -88,13 +85,7 @@ public class OrderController extends HttpServlet
         int claddingType = (Integer.parseInt(request.getParameter("cladding")));
         int roofingType = (Integer.parseInt(request.getParameter("roofing")));
 
-//        //Not currently being used
-        //TODO: Make this list appear nicely in the order summary page.
-//        List<Material> claddingMaterials = orderUtility.getCladdingMaterial(claddingType);
-//        List<Material> roofingMaterials = orderUtility.getRoofingMaterial(roofingType);
 
-        //Making Cladding/Roofing objects, so we can throw their "type" value into the session
-        // and retrieve it on OrderSum
         Cladding cladding = pageUtility.getCladdingByID(claddingType);
         Roofing roofing = null;
         try

@@ -1,0 +1,51 @@
+package PresentationLayer.Controllers;
+
+import Entities.Order;
+import Entities.User;
+import PresentationLayer.View;
+import ServiceLayer.PageUtility.AdminUtility;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebServlet(name = "CustomerController", value = "/CustomerController")
+public class CustomerController extends HttpServlet
+{
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        AdminUtility adminUtility = null;
+        View view = new View();
+
+        try
+        {
+            adminUtility = new AdminUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        List<User> allUsers = new ArrayList<>();
+        try
+        {
+            allUsers = adminUtility.getAllUsers();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("allUsers", allUsers);
+
+        view.forwardToJsp("adminCustomersList.jsp",request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+
+    }
+}

@@ -125,4 +125,32 @@ public class OrderMapper
         }
         return order;
     }
+
+    public List<Order> getAllOrders()
+    {
+        List<Order> tmpOrderList = new ArrayList<>();
+
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM Fog_carport.order";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                while (rs.next()) {
+                    int order_id = rs.getInt("order_id");
+                    int user_id = rs.getInt("user_id");
+                    double price = rs.getDouble("price");
+                    double carport_length = rs.getDouble("carport_length");
+                    double carport_width = rs.getDouble("carport_width");
+                    int cladding_id = rs.getInt("cladding_id");
+                    int roofing_id = rs.getInt("roofing_id");
+                    int shed_width = rs.getInt("shed_width");
+                    int shed_length = rs.getInt("shed_length");
+
+                    tmpOrderList.add(new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tmpOrderList;
+    }
 }

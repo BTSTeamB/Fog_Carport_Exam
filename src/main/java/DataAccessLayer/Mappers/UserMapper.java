@@ -4,6 +4,8 @@ import DataAccessLayer.Database;
 import Entities.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
     private Database database;
@@ -190,5 +192,38 @@ public class UserMapper {
         return tmpUser;
     }
 
+    public List<User> getAllUsers () throws Exception
+    {
+        List<User> tmpUserList = new ArrayList<>();
+        try(Connection connection = database.connect())
+        {
+            String sql = " SELECT * FROM user";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery(sql);
+                while (rs.next())
+                {
+                    int user_id = rs.getInt("user_id");
+                    int is_admin = rs.getInt("isAdmin");
+                    int is_guest = rs.getInt("isGuest");
+                    String userName = rs.getString("name");
+                    String userAddress = rs.getString("address");
+                    String userZipCode = rs.getString("zip_code");
+                    String userPhoneNumber = rs.getString("phone_no");
+                    String userEmail = rs.getString("email");
+                    String userPassword = rs.getString("password");
+
+                    tmpUserList.add(new User(user_id, is_admin, is_guest, userName, userAddress, userZipCode, userEmail, userPassword, userPhoneNumber));
+
+                }
+
+            } catch (SQLIntegrityConstraintViolationException e) {
+                throw new Exception();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tmpUserList;
+    }
 
 }

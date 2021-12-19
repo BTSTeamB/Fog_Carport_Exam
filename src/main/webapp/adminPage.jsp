@@ -1,20 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Resources/images/fog-logo.png">
+    <link rel="stylesheet" href="Resources/css/navbar-style.css" />
     <link rel="stylesheet" href="Resources/css/scrollbar-style.css">
-    <link rel="stylesheet" href="Resources/css/checkout-guest-style.css">
     <link rel="stylesheet" href="Resources/css/login-popup-style.css">
     <link rel="stylesheet" href="Resources/css/register-popup-style.css">
-    <link rel="stylesheet" href="Resources/css/navbar-style.css">
+    <link rel="stylesheet" href="Resources/css/materialList-style.css">
+    <link rel="icon" href="Resources/images/fog-logo.png">
+    <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
     <script defer src="Resources/js/popup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
-    <title>Checkout</title>
+    <title>Material List</title>
 </head>
 <body>
 <nav>
@@ -47,7 +48,7 @@
         <div class="header">
             Member login
         </div>
-        <form action="checkout-user.jsp" method="post">
+        <form action="LoginController" method="post">
             <div class="login-element">
                 <label for="LoginUsername">E-mail</label>
                 <label for="LoginUsername" style="display: none;">Wrong email address or password</label>
@@ -76,12 +77,12 @@
         <div class="header">
             Member register
         </div>
-        <form action="orderComplete.jsp" method="post"></form>
+        <form action="RegisterController" method="post"></form>
         <div class="register-element">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="&#xf007;  insert name">
 
-            <label for="address">Adress</label>
+            <label for="address">Address</label>
             <input type="text" name="address" id="address" placeholder="&#xf015; insert address">
 
             <label for="zip-code">zip-code</label>
@@ -110,77 +111,10 @@
     </div>
 </div>
 
-<div class="checkout-container">
-    <div class="checkout-left">
-        <div class="checkout-header">
-            <h2>CHECKOUT</h2>
-            <div class="checkout-sign-in-container">
-                <div class="checkout-sign-in">
-                    <p><a class="sign-in" onclick="openLoginForm()">SIGN IN</a> for a faster checkout experience, or you can continue as a guest. You
-                        will be able to create an account during checkout</p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h2>GUEST INFORMATION</h2>
-            <br>
-            <hr class="guest-line">
-            <div class="guest-information">
-                <form action="CheckOutController" method="get">
-                    <label for="check-out-guest-name">Name</label>
-                    <input type="text" name="name" id="check-out-guest-name">
+<h1 class="material-list-header">Admin Options</h1>
+<a href="CustomerOrderController">View All Orders</a>
+<br>
+<a href="CustomerController">View All Customers</a>
 
-                    <label for="check-out-guest-address">Address</label>
-                    <input type="text" name="address" id="check-out-guest-address">
-
-                    <label for="check-out-guest-zip">zip-code</label>
-                    <input type="number" name="zip" id="check-out-guest-zip">
-
-                    <label for="check-out-guest-email">E-mail</label>
-                    <input type="email" name="email" id="check-out-guest-email">
-
-                    <label for="check-out-guest-phone">Phone</label>
-                    <input type="number" name="phone" id="check-out-guest-phone">
-
-                    <button class="checkout-button" type="submit">Place Order</button>
-                </form>
-                <p class="tip-text">OBS. if you type your guest credentials you will stil be able to view your order</p>
-            </div>
-        </div>
-    </div>
-    <div class="checkout-right">
-        <div class="order-summary">
-            <div class="order-header">
-                <h3>ORDER SUMMARY</h3>
-            </div>
-            <div class="item-subtotal">
-                <div class="item-subtotal-container">
-                    <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">${sessionScope.viewMoreCarport.price}</span></p>
-                    <p class="p-space"><span class="span-left">Shipping*</span> <span class="span-right">Free</span></p>
-                    <p><span class="span-left">standard</span></p>
-                </div>
-            </div>
-            <div class="order-total">
-                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">${sessionScope.viewMoreCarport.price}</span></p>
-            </div>
-            <hr class="horizontal-line">
-        </div>
-        <br>
-        <div class="cart-summary">
-            <div class="order-header">
-                <div class="order-left">
-                    <h3>CART SUMMARY</h3>
-                    <img class="small-image" src="${sessionScope.viewMoreCarport.imgUrl}" alt="">
-                </div>
-                <div class="order-right">
-                    <p class="item-name">Your new carport!</p>
-                    <p class="small-p">${sessionScope.viewMoreCarport.width} / ${sessionScope.viewMoreCarport.length}</p>
-                    <p class="small-p">${sessionScope.chosenCladding.type} / ${sessionScope.chosenRoofing.type}</p>
-                    <p class="small-p">${sessionScope.viewMoreCarport.price}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </body>
 </html>

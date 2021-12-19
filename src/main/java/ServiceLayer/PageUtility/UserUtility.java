@@ -75,18 +75,25 @@ public class UserUtility
         // til at skrive fejl besked og smide i request scope
         User loggedInUser;
         loggedInUser = facade.getUser(email, password);
+        String adminLink = "";
         if(loggedInUser != null)
         {
+            if(loggedInUser.getIs_admin() == 1)
+            {
+                adminLink = "            <a href=\"adminPage.jsp\">Admin</a>\n";
+            }
             String changeSignInButton = "style='display: none;'";
             String changeDropDownButton = "display: block;";
             String changeDropDownMenu = "<div class=\"dropdown-content\">\n" +
                     "            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->\n" +
                     "            <a href=\"account.jsp\">Account</a>\n" +
+                                    adminLink +
                     "            <a href=\"LogoutController\">Sign-out</a>\n" +
                     "        </div>";
             session.setAttribute("changeSignInButton", changeSignInButton);
             session.setAttribute("changeDropDownButton", changeDropDownButton);
             session.setAttribute("changeDropDownMenu", changeDropDownMenu);
+
             session.setAttribute("user", loggedInUser);
             return loggedInUser;
         }
