@@ -138,7 +138,7 @@
     <div class="input-con">
         <form action="DesignController" method="post">
             <div class="section-select">
-                <label for="carport_width">Caport width</label>
+                <label for="carport_width">Carport width</label>
                 <select name="width" id="carport_width">
                     <optgroup label="Width">
                         <option value="" disabled selected hidden>Width*</option>
@@ -167,8 +167,8 @@
                 </select>
                 <label for="tool-room-width">Tool room width</label>
                 <select name="tool-room-width" id="tool-room-width">
-                    <optgroup label="Roof - width">
-                        <option value="false">Do not want tool room</option>
+                    <optgroup label="tool-room-width">
+                        <option value="0">Do not want tool room</option>
                         <option value="210">210cm</option>
                         <option value="240">240cm</option>
                         <option value="270">270cm</option>
@@ -183,11 +183,6 @@
                         <option value="540">540cm</option>
                         <option value="570">570cm</option>
                         <option value="600">600cm</option>
-                        <option value="630">630cm</option>
-                        <option value="660">660cm</option>
-                        <option value="690">690cm</option>
-                        <option value="690">690cm</option>
-                        <option value="720">720cm</option>
                     </optgroup>
                 </select>
             </div>
@@ -228,27 +223,13 @@
                 </select>
                 <label for="tool-room-length">Tool room length</label>
                 <select name="tool-room-length" id="tool-room-length">
-                    <optgroup label="Roof - length">
-                        <option value="false">Do not want tool room</option>
+                    <optgroup label="tool-room-length">
+                        <option value="0">Do not want tool room</option>
                         <option value="210">150cm</option>
                         <option value="240">180cm</option>
                         <option value="270">210cm</option>
                         <option value="240">240cm</option>
                         <option value="270">270cm</option>
-                        <option value="300">300cm</option>
-                        <option value="330">330cm</option>
-                        <option value="360">360cm</option>
-                        <option value="390">390cm</option>
-                        <option value="420">420cm</option>
-                        <option value="450">450cm</option>
-                        <option value="480">480cm</option>
-                        <option value="510">510cm</option>
-                        <option value="540">540cm</option>
-                        <option value="570">570cm</option>
-                        <option value="600">600cm</option>
-                        <option value="630">630cm</option>
-                        <option value="660">660cm</option>
-                        <option value="690">690cm</option>
                     </optgroup>
                 </select>
             </div>

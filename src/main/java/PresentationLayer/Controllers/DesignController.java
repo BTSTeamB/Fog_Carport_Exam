@@ -75,10 +75,13 @@ public class DesignController extends HttpServlet
         try
         {
             orderUtility.createOrder(designedOrder);
+            //Sends Email of material list to client
             Pdf pdf = new Pdf(printCladding, printRoofing);
             pdf.generatePdf();
             Emailer emailer = new Emailer(user.getEmail());
             emailer.sendmail();
+            //Sends blueprint Image to client
+
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -103,12 +106,17 @@ public class DesignController extends HttpServlet
 
         Double wantedWidth = 0.0;
         Double wantedLength = 0.0;
+        Double wantedShedWidth = 0.0;
+        Double wantedShedLength = 0.0;
         int selectedCladding = 0;
         int selectedRoofing = 0;
 
 
         wantedWidth = Double.valueOf(request.getParameter("width"));
         wantedLength = Double.valueOf(request.getParameter("length"));
+
+        wantedShedWidth = Double.valueOf(request.getParameter("tool-room-width"));
+        wantedShedLength = Double.valueOf(request.getParameter("tool-room-length"));
 
         selectedCladding = Integer.parseInt(request.getParameter("cladding"));
         selectedRoofing = Integer.parseInt(request.getParameter("roof"));
@@ -129,8 +137,55 @@ public class DesignController extends HttpServlet
             e.printStackTrace();
         }
 
+        if(wantedShedLength > 0 && wantedShedWidth > 0)
+        {
+            if(selectedCladding == 1)
+            {
+                //TODO: Lave selectedCladding om til den der tilsvarer cladding material line som har skur materialer med i databasen
+            }
+            else if(selectedCladding == 2)
+            {
+                //TODO: Same shit here.
+            }
+        }
+
         List<Material> claddingMaterials = materialAlgorithm.calculateCladdingMaterialList(orderUtility.getCladdingMaterial(selectedCladding));
         List<Material> roofingMaterials = materialAlgorithm.calculateRoofingMaterialList(orderUtility.getRoofingMaterial(selectedRoofing));
+
+        //If that checks if shedWidth / shedLength is over 0
+        if(wantedShedLength > 0 && wantedShedWidth > 0)
+        {
+            try
+            {
+                claddingMaterials.add(pageUtility.getMaterialById(28));
+                claddingMaterials.add(pageUtility.getMaterialById(29));
+                claddingMaterials.add(pageUtility.getMaterialById(38));
+                claddingMaterials.add(pageUtility.getMaterialById(39));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            for (int i = 0; i < claddingMaterials.size(); i++)
+            {
+                if (claddingMaterials.get(i).getName().equals("Pressure Impregnated Board"))
+                {
+                    claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() * 2);
+                }
+                if(claddingMaterials.get(i).getName().equals("Pressure Impregnated Post"))
+                {
+                    if(wantedWidth.equals(wantedShedWidth))
+                    {
+                        claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() + 4);
+                    }
+                    else
+                    {
+                    claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() + 5);
+                    }
+
+                }
+            }
+        }
 
         double totalPrice = 0.0;
         for (int i = 0; i < claddingMaterials.size(); i++)
@@ -154,6 +209,13 @@ public class DesignController extends HttpServlet
         {
             e.printStackTrace();
         }
+
+        drawCarport drawCarport = new drawCarport(wantedWidth.intValue(), wantedLength.intValue(), wantedShedWidth.intValue(), wantedShedLength.intValue());
+
+        drawCarport.drawCarportProduct();
+
+        request.setAttribute("svgDrawing", drawCarport.getSvg().toString());
+
 
         session.setAttribute("claddingMaterials_calculated", claddingMaterials);
         session.setAttribute("roofingMaterials_calculated", roofingMaterials);

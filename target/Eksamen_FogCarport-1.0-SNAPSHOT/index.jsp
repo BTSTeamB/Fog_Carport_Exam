@@ -119,13 +119,13 @@
 <section id="first-section">
     <div class="text-video-overlay">
         <h1>FOG Carports</h1>
-        <h2>Carports tailored for your needs</h2>
+        <h2>Carports tailored to your needs</h2>
     </div>
     <div class="button-container">
         <button onclick="document.getElementById('third-section').scrollIntoView();" class="button-container-item bt1">
             DESIGN YOUR OWN</button>
         <button onclick="document.getElementById('second-section').scrollIntoView();" class="button-container-item bt2">
-            BUY PRE-MADE
+            BUY PRE-DEFINED
         </button>
     </div>
     <div class="video-container">
@@ -139,7 +139,7 @@
 <section id="second-section">
     <div class="background-wrap">
         <div class="header">
-            <h1>Pre-made Carports</h1>
+            <h1>Pre-defined Carports</h1>
         </div>
         <div class="carousel">
             <c:forEach var="subLists" items="${sessionScope.listOfLists}">

@@ -171,18 +171,18 @@
                <hr class="horizontal-line">
            </div>
            <br>
-           <div class="cart-summary">
-              <div class="order-header">
-                <div class="order-left">
-                  <h3>CART SUMMARY</h3>
-                  <img class="small-image" src="Resources/images/carport1.0.jpg" alt="">
-                </div>    
-                <div class="order-right">
-                  <p class="item-name">Your new carport!</p>
-                  <p class="small-p">${sessionScope.wantedWidth} / ${sessionScope.wantedLength}</p>
-                  <p class="small-p">${requestScope.selectedCladdingType} / ${requestScope.selectedRoofingType}</p>
-                  <p class="small-p">${sessionScope.totalPrice}0</p>
-                </div>
+            <div class="cart-summary" style="height: 40em; width: 30em;">
+            <div class="order-header">
+                  <div class="order-left" style="position: relative;">
+                      <h3>CART SUMMARY</h3>
+                      ${requestScope.svgDrawing}
+                  </div>
+                  <div class="order-right">
+                      <p class="item-name">Your new carport!</p>
+                      <p class="small-p">${sessionScope.wantedWidth} / ${sessionScope.wantedLength}</p>
+                      <p class="small-p">${requestScope.selectedCladdingType} / ${requestScope.selectedRoofingType}</p>
+                      <p class="small-p">${sessionScope.totalPrice}0</p>
+                  </div>
               </div>
            </div>
         </div>

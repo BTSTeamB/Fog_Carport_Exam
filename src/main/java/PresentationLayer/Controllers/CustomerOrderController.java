@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerOrderController", value = "/CustomerOrderController")
-public class OrderController extends HttpServlet
+public class CustomerOrderController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
