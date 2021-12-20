@@ -12,12 +12,12 @@ public class MaterialMapper
 {
     private Database database;
 
-    public MaterialMapper(Database database)
+    protected MaterialMapper(Database database)
     {
         this.database = database;
     }
 
-    public void createMaterial(Material material) throws Exception {
+    protected void createMaterial(Material material) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "insert into material(name,description,price,quantity,unit_id,length,height/depth,width) value(?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -38,7 +38,7 @@ public class MaterialMapper
 
     }
 
-    public void deleteMaterial(Material material) {
+    protected void deleteMaterial(Material material) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM material WHERE material_id = ?" + material.getMaterial_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -59,7 +59,7 @@ public class MaterialMapper
 
     }
 
-    public void editMaterial(Material material) {
+    protected void editMaterial(Material material) {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE material SET  name=?,description=?,price=?,unit_id=?,length=?,height/depth=?,width=?,quantity=? WHERE material_id" + material.getMaterial_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class MaterialMapper
         }
     }
 
-    public Material receiveMaterialById(int material_id) {
+    protected Material receiveMaterialById(int material_id) {
         Material material = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM material WHERE material_id="+material_id;

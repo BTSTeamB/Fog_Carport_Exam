@@ -14,12 +14,12 @@ public class CladdingMapper
 {
     private Database database;
 
-    public CladdingMapper(Database database)
+    protected CladdingMapper(Database database)
     {
         this.database = database;
     }
 
-    public void createCladding(Cladding cladding) throws Exception {
+    protected void createCladding(Cladding cladding) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO cladding(type) value(?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -34,7 +34,7 @@ public class CladdingMapper
         }
     }
 
-    public void deleteCladding(Cladding cladding) {
+    protected void deleteCladding(Cladding cladding) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM cladding WHERE cladding_id="+cladding.getCladding_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -46,7 +46,7 @@ public class CladdingMapper
         }
     }
 
-    public void editCladding(Cladding cladding) {
+    protected void editCladding(Cladding cladding) {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE cladding SET type="+cladding.getType()+" WHERE cladding_id="+cladding.getCladding_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class CladdingMapper
 
     }
 
-    public Cladding receiveCladdingByObject(Cladding paraCladding) {
+    protected Cladding receiveCladdingByObject(Cladding paraCladding) {
         Cladding tmpCladding = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT type FROM cladding WHERE cladding_id="+paraCladding.getCladding_id();
@@ -79,7 +79,7 @@ public class CladdingMapper
         return tmpCladding;
     }
 
-    public Cladding receiveCladdingById(int claddingId) {
+    protected Cladding receiveCladdingById(int claddingId) {
         Cladding cladding = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM cladding WHERE cladding_id=" + claddingId;
@@ -99,7 +99,7 @@ public class CladdingMapper
         return cladding;
     }
 
-    public List<Cladding> getAllCladding() {
+    protected List<Cladding> getAllCladding() {
         List<Cladding> claddingList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM cladding";

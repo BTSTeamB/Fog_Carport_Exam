@@ -15,11 +15,11 @@ import java.util.List;
 public class PredefinedShedMapper {
     Database database;
 
-    public PredefinedShedMapper(Database database) {
+    protected PredefinedShedMapper(Database database) {
         this.database = database;
     }
 
-    public void createPredefinedShed(PredefinedShed predefinedShed) throws Exception {
+    protected void createPredefinedShed(PredefinedShed predefinedShed) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO predefined_shed(width,length,price,imageUrl) values(?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -35,7 +35,7 @@ public class PredefinedShedMapper {
         }
     }
 
-    public PredefinedShed receivePredefinedShed(PredefinedShed predefinedShed)throws Exception {
+    protected PredefinedShed receivePredefinedShed(PredefinedShed predefinedShed)throws Exception {
         PredefinedShed tmpPdShed = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM predefined_shed WHERE id="+predefinedShed.getId();
@@ -56,7 +56,7 @@ public class PredefinedShedMapper {
         return tmpPdShed;
     }
 
-    public List<PredefinedShed> receiveAllPredefinedShed()throws Exception {
+    protected List<PredefinedShed> receiveAllPredefinedShed()throws Exception {
         PredefinedShed pdShed = null;
         List<PredefinedShed> pdShedList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -81,7 +81,7 @@ public class PredefinedShedMapper {
         return pdShedList;
     }
 
-    public void editPredefinedShed(PredefinedShed predefinedShed) throws Exception {
+    protected void editPredefinedShed(PredefinedShed predefinedShed) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE predefiend_shed SET width=?,length=?, price=?, imageUrl=? WHERE id="+predefinedShed.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -97,7 +97,7 @@ public class PredefinedShedMapper {
             e.printStackTrace();
         }
     }
-    public void deletePredefinedShed(PredefinedShed predefinedShed) {
+    protected void deletePredefinedShed(PredefinedShed predefinedShed) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM predefined_shed WHERE id=?";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

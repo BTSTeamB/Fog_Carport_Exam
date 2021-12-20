@@ -22,17 +22,14 @@
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
-        <a class="sign-in" onclick="openLoginForm()" style="display: none;">SIGN-IN</a>
+        <a class="sign-in" onclick="openLoginForm()" ${sessionScope.changeSignInButton}>SIGN-IN</a>
         <!--Skal være BLOCK hvis bruger er ikke logget på. Skal være NONE hvis de er logget på -->
-        <button class="dropbtn" style='display: block;'>&#xf007; ${sessionScope.user.getName()}
+        <button class="dropbtn" style='display: none; ${sessionScope.changeDropDownButton}'>
+            &#xf007; ${sessionScope.user.getName()}
             <!--Den her skal være display NONE hvis de ikke er logget på. BLOCK hvis de er logget på. -->
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content">
-            <!--Den her skal have display NONE hvis de er ikke logget på. HELE Stylingen skal slettes hvis de er logget på -->
-            <a href="account.jsp">Account</a>
-            <a href="LogoutController">Sign-out</a>\
-        </div>
+        ${sessionScope.changeDropDownMenu}
     </div>
 </nav>
 

@@ -14,11 +14,11 @@ import java.util.List;
 public class PredefinedCarportMapper {
     Database database;
 
-    public PredefinedCarportMapper(Database database) {
+    protected PredefinedCarportMapper(Database database) {
         this.database = database;
     }
 
-    public void createPredefinedCarport(PredefinedCarport predefinedCarport) throws Exception {
+    protected void createPredefinedCarport(PredefinedCarport predefinedCarport) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO predefined_carport(width,length,price,imageUrl) values(?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -34,7 +34,7 @@ public class PredefinedCarportMapper {
         }
     }
 
-    public void editPredefinedCarport(PredefinedCarport predefinedCarport)throws Exception {
+    protected void editPredefinedCarport(PredefinedCarport predefinedCarport)throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE predefined_carport SET width=?,length=? ,price=?, imageUrl=? WHERE id=" + predefinedCarport.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -50,7 +50,7 @@ public class PredefinedCarportMapper {
         }
     }
 
-    public List<PredefinedCarport> receiveAllPredefinedCarport()throws Exception {
+    protected List<PredefinedCarport> receiveAllPredefinedCarport()throws Exception {
         PredefinedCarport pdCarport;
         List<PredefinedCarport> pdCarportList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -76,7 +76,7 @@ public class PredefinedCarportMapper {
         return pdCarportList;
     }
 
-    public PredefinedCarport receivePredefinedCarport(PredefinedCarport predefinedCarport)throws Exception
+    protected PredefinedCarport receivePredefinedCarport(PredefinedCarport predefinedCarport)throws Exception
     {
         PredefinedCarport pdCarport = null;
         try (Connection connection = database.connect()) {
@@ -101,7 +101,7 @@ public class PredefinedCarportMapper {
         }
     }
 
-    public void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
+    protected void deletePredefinedCarport(PredefinedCarport predefinedCarport) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM predefined_carport WHERE id="+predefinedCarport.getId();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

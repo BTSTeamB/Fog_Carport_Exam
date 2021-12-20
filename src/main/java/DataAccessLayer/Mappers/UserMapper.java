@@ -10,11 +10,11 @@ import java.util.List;
 public class UserMapper {
     private Database database;
 
-    public UserMapper(Database database) {
+    protected UserMapper(Database database) {
         this.database = database;
     }
 
-    public void createUser (User user) throws Exception {
+    protected void createUser (User user) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = " insert into user(name,address,zip_code,phone_no,email,password) values(?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -35,7 +35,7 @@ public class UserMapper {
         }
     }
 
-    public void createGuestUser(User user) throws Exception
+    protected void createGuestUser(User user) throws Exception
     {
         try (Connection connection = database.connect()) {
             String sql = " insert into user(isGuest,name,address,zip_code,phone_no,email,password) values(?,?,?,?,?,?,?)";
@@ -59,11 +59,11 @@ public class UserMapper {
     }
 
 
-    public void deleteUser (User user){
+    protected void deleteUser (User user){
 
     }
 
-    public void editUser(User user) {
+    protected void editUser(User user) {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE user SET name=?, address=?,zip_code=?,phone_no=?, email=?, password=? WHERE user_id="+user.getUser_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -81,7 +81,7 @@ public class UserMapper {
         }
     }
 
-    public User getUserByID (int search_id) throws Exception
+    protected User getUserByID (int search_id) throws Exception
     {
         User tmpUser = null;
         try(Connection connection = database.connect())
@@ -123,7 +123,7 @@ public class UserMapper {
     }
 
 
-    public User getUserByCredentials(String name, String address, String zipCode, String phoneNum, String email) throws Exception
+    protected User getUserByCredentials(String name, String address, String zipCode, String phoneNum, String email) throws Exception
     {
         User tmpUser = null;
         try(Connection connection = database.connect())
@@ -159,7 +159,7 @@ public class UserMapper {
 
 
 
-    public User getUser (String email, String password) throws Exception
+    protected User getUser (String email, String password) throws Exception
     {
         User tmpUser = null;
         try(Connection connection = database.connect())
@@ -192,7 +192,7 @@ public class UserMapper {
         return tmpUser;
     }
 
-    public List<User> getAllUsers () throws Exception
+    protected List<User> getAllUsers () throws Exception
     {
         List<User> tmpUserList = new ArrayList<>();
         try(Connection connection = database.connect())

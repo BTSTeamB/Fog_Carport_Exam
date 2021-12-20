@@ -14,12 +14,12 @@ public class OrderMapper
 {
     private Database database;
 
-    public OrderMapper(Database database)
+    protected OrderMapper(Database database)
     {
         this.database = database;
     }
 
-    public void createOrder(Order order) throws Exception {
+    protected void createOrder(Order order) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO Fog_carport.order(user_id,price,carport_length,carport_width,cladding_id,roofing_id,shed_width,shed_length) values(?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -41,7 +41,7 @@ public class OrderMapper
         }
     }
 
-    public void deleteOrder(Order order) {
+    protected void deleteOrder(Order order) {
         try (Connection connection = database.connect()) {
             String sql = " DELETE FROM order WHERE order_id=" + order.getOrder_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -53,7 +53,7 @@ public class OrderMapper
         }
     }
 
-    public void editOrder(Order order) {
+    protected void editOrder(Order order) {
         try (Connection connection = database.connect()) {
             String sql = " UPDATE order SET user_id=?,price=?,carport_length=?,carport_width=?,cladding_id=?,roofing_id=?,shed_width=?,shed_length=? WHERE order_id=" + order.getOrder_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -73,7 +73,7 @@ public class OrderMapper
 
     }
 
-    public List<Order> getOrderListById(int userId)
+    protected List<Order> getOrderListById(int userId)
     {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -101,7 +101,7 @@ public class OrderMapper
         return orderList;
     }
 
-    public Order getOrderByOrderId(int id) {
+    protected Order getOrderByOrderId(int id) {
         Order order = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM Fog_carport.order WHERE order_id=" + id;
@@ -126,7 +126,7 @@ public class OrderMapper
         return order;
     }
 
-    public List<Order> getAllOrders()
+    protected List<Order> getAllOrders()
     {
         List<Order> tmpOrderList = new ArrayList<>();
 

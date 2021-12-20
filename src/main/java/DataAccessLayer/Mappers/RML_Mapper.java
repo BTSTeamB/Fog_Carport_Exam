@@ -15,12 +15,12 @@ public class RML_Mapper
 {
     private Database database;
 
-    public RML_Mapper(Database database)
+    protected RML_Mapper(Database database)
     {
         this.database = database;
     }
 
-    public void createLine(RoofingMaterialLine rml) throws Exception {
+    protected void createLine(RoofingMaterialLine rml) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO roofing_material_line(roof_id, material_id) value(?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -35,7 +35,7 @@ public class RML_Mapper
         }
     }
 
-    public List<RoofingMaterialLine> getAllRMLBySpecificId(int id) {
+    protected List<RoofingMaterialLine> getAllRMLBySpecificId(int id) {
         List<RoofingMaterialLine> rmlList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM roofing_material_line WHERE roof_id="+id;

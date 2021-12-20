@@ -13,12 +13,12 @@ public class UnitMapper
 {
     private Database database;
 
-    public UnitMapper(Database database)
+    protected UnitMapper(Database database)
     {
         this.database = database;
     }
 
-    public void createUnit(Unit unit) throws Exception {
+    protected void createUnit(Unit unit) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO unit(name) values(?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -34,7 +34,7 @@ public class UnitMapper
         }
     }
 
-    public void editUser(User user) {
+    protected void editUser(User user) {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE user SET name=?, address=?,zip_code=?,phone_no=?, email=?, password=MD5(?) WHERE user_id="+user.getUser_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -52,7 +52,7 @@ public class UnitMapper
         }
     }
 
-    public void deleteUnit(Unit unit) {
+    protected void deleteUnit(Unit unit) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM unit WHERE name = ? ";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -64,12 +64,12 @@ public class UnitMapper
         }
     }
 
-    public void editUnit(Unit unit)
+    protected void editUnit(Unit unit)
     {
 
     }
 
-    public Unit getUnit (Unit unit)
+    protected Unit getUnit (Unit unit)
     {
 
         return null;

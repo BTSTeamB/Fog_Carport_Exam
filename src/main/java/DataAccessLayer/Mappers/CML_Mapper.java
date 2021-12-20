@@ -18,12 +18,12 @@ public class CML_Mapper
 
     private Database database;
 
-    public CML_Mapper(Database database)
+    protected CML_Mapper(Database database)
     {
         this.database = database;
     }
 
-    public void createLine(CladdingMaterialLine cml) throws Exception {
+    protected void createLine(CladdingMaterialLine cml) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO cladding_material_line(roof_id, material_id) value(?,?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -38,7 +38,7 @@ public class CML_Mapper
         }
     }
 
-    public List<CladdingMaterialLine> getAllCMLBySpecificId(int id) {
+    protected List<CladdingMaterialLine> getAllCMLBySpecificId(int id) {
         List<CladdingMaterialLine> cmlList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM cladding_material_line WHERE cladding_id="+id;

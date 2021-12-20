@@ -16,12 +16,12 @@ public class RoofingMapper
 {
     private Database database;
 
-    public RoofingMapper(Database database)
+    protected RoofingMapper(Database database)
     {
         this.database = database;
     }
 
-    public void createRoofing(Roofing roofing) throws Exception {
+    protected void createRoofing(Roofing roofing) throws Exception {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO roofing(material_id) value(?)";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -37,7 +37,7 @@ public class RoofingMapper
         }
     }
 
-    public void deleteRoofing(Roofing roofing) {
+    protected void deleteRoofing(Roofing roofing) {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM roofing WHERE roof_id=?" + roofing.getRoofing_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -49,7 +49,7 @@ public class RoofingMapper
         }
     }
 
-    public void editRoofing(Roofing roofing) {
+    protected void editRoofing(Roofing roofing) {
         try (Connection connection = database.connect()) {
             String sql = "UPDATE roofing SET material_id="+roofing.getType()+" WHERE roof_id="+ roofing.getRoofing_id();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -63,7 +63,7 @@ public class RoofingMapper
 
     }
 
-    public List<Roofing> getAllRoofing() {
+    protected List<Roofing> getAllRoofing() {
         List<Roofing> roofingList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM roofing";
@@ -84,7 +84,7 @@ public class RoofingMapper
     }
 
 
-    public Roofing receiveRoofingByObject(Roofing paraRoofing) {
+    protected Roofing receiveRoofingByObject(Roofing paraRoofing) {
         Roofing tmpRoofing = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT type FROM roofing WHERE roof_id=" + paraRoofing.getRoofing_id();
@@ -104,7 +104,7 @@ public class RoofingMapper
     }
 
 
-    public Roofing receiveRoofingById(int roofing_id) {
+    protected Roofing receiveRoofingById(int roofing_id) {
         Roofing roofing = null;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM roofing WHERE roof_id=" + roofing_id;
