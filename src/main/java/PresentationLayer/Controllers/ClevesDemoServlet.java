@@ -104,21 +104,34 @@ public class ClevesDemoServlet extends HttpServlet {
             svg.addArrowsStart("beginArrow", 10, 10, 0, 6);
         }
 
+
+
+
+
+
+
         if (shed == true) {
             svg.addRect(155, 0, brede, længde);
-            svg.shed(55 + ((længde / stolper) * (stolper - 1)), 35, shedbrede - 60, shedLængde);
+            svg.shed(55 + ((længde / stolper) * (stolper - 1)), 35, shedbrede - 70, shedLængde-30);
             svg.addRect(155, 35, 4.5, længde);
             svg.addRect(155, brede - 35, 4.5, længde);
 
-            for (int x = 1; x <= 2; x++) {
-                svg.addRect(55 + ((længde / stolper) * (stolper - 1)), shedbrede / 2, 10.0, 10.0);
-                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + shedLængde, shedbrede / 2, 10.0, 10.0);
-            }
+
+
 
             for (int x = 1; x <= 1; x++) {
-                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + shedLængde, shedbrede - 35, 10.0, 10.0);
-                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + shedLængde, 35, 10.0, 10.0);
+                svg.addRect(55 + ((længde / stolper) * (stolper - 1)), shedbrede / 2, 10.0, 10.0);
+                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + (shedLængde-30), shedbrede / 2, 10.0, 10.0);
             }
+
+
+
+            for (int x = 1; x <= 1; x++) {
+                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + (shedLængde-30), shedbrede - 35, 10.0, 10.0);
+                svg.addRect(55 + ((længde / stolper) * (stolper - 1)) + (shedLængde-30), 35, 10.0, 10.0);
+            }
+
+
 
 
             lægter = længde / 55;
@@ -133,18 +146,24 @@ public class ClevesDemoServlet extends HttpServlet {
                 svg.addRect(55 + ((længde / stolper) * x), 32, 10.0, 10.0);
             }
 
+
+
             if (shedbrede != brede) {
-                for (int x = 1; x <= stolper - 1; x++) {
+                for (int x = 1; x <= stolper; x++) {
 
                     svg.addRect(55 + ((længde / stolper) * x), brede - 38, 10.0, 10.0);
                     svg.addRect(55 + ((længde / stolper) * (stolper - 1)), shedbrede - 32, 10.0, 10.0);
                 }
             }
             //stopler down
-            for (int x = 1; x <= stolper; x++) {
+            if (shedbrede == brede) {
+                for (int x = 1; x <= stolper - 1; x++) {
 
-                svg.addRect(55 + ((længde / stolper) * x), brede - 38, 10.0, 10.0);
+                    svg.addRect(55 + ((længde / stolper) * x), brede - 38, 10.0, 10.0);
+                }
             }
+
+
 
             svg.text2(155 + (længde / 2), brede + 75, længde + "cm");
             svg.text(75, brede / 2, brede + "cm");
@@ -162,7 +181,16 @@ public class ClevesDemoServlet extends HttpServlet {
             svg.addArrowsStart("beginArrow", 10, 10, 0, 6);
 
         }
+
+
+//tegning fra siden
+        SVG svg1 = new SVG(800, 800, "0 0 2000 2000", 1000, 1000);
+
+        svg1.addRect(800, 800, brede, længde);
+
+
         request.setAttribute("svgdrawing", svg.toString());
+        request.setAttribute("svgTEgningFromSide", svg.toString());
         request.getRequestDispatcher("/WEB-INF/SVG.jsp").forward(request, response);
 
 
