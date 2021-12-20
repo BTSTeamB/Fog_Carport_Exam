@@ -42,6 +42,7 @@ public class SVG {
     private final String endArrowTemplate = "<defs> <marker id=\"%s\" markerWidth=\"%d%%\" markerHeight=\"%d%%\" refX=\"%s\" refY=\"%s\" orient=\"auto\"> <path d=\"M0,0 L12,6 L0,12 L0,0\" style=\"fill: #000000;\" /> </marker>";
     private final String textTemplate = "<text style=\"text-anchor: middle\" transform=\"translate(%s,%s) rotate(-90)\">%s</text>";
     private final String text2Template = "<text style=\"text-anchor: middle\" transform=\"translate(%s,%s) \">%s</text>";
+    private final String shedTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%s\" width=\"%s\" style=\"stroke:#000000; fill: #ffffff\" stroke-dasharray=\"5\"/>";
 
     //%M0,0 L12,6 L0,12 L0,0
     //  M0,6 L12,0 L12,12 L0,6
@@ -94,23 +95,29 @@ public class SVG {
         svg.append(String.format(endArrowTemplate, id, markerWidth, markerHeight, refX, refY));
     }
 
-    public void text(int x, int y,String text) {
+    public void text(int x, int y, String text) {
         this.text = text;
         this.x = x;
         this.y = y;
 
-        svg.append(String.format(textTemplate, x, y,text));
+        svg.append(String.format(textTemplate, x, y, text));
 
     }
 
-    public void text2( int x, int y,String text) {
+    public void text2(int x, int y, String text) {
         this.text = text;
         this.x = x;
         this.y = y;
 
-        svg.append(String.format(text2Template,x,y,text));
+        svg.append(String.format(text2Template, x, y, text));
     }
-
+public void shed(int x, int y, int height,int width){
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
+        svg.append(String.format(shedTemplate,x,y,height,width));
+}
 
     @Override
     public String toString() {
