@@ -132,6 +132,10 @@
             <span>
               Fields marked * MUST BE FILLED!
             </span>
+            <br>
+            <span style="color: #ca4141; font-size: 0.8rem;">
+                ${requestScope.failMessage}
+            </span>
         </div>
     </div>
 
@@ -141,7 +145,7 @@
                 <label for="carport_width">Caport width</label>
                 <select name="width" id="carport_width">
                     <optgroup label="Width">
-                        <option value="" disabled selected hidden>Width*</option>
+                        <option value="0" disabled selected hidden>Width*</option>
                         <option value="240">240cm</option>
                         <option value="270">270cm</option>
                         <option value="300">300cm</option>
@@ -160,7 +164,7 @@
                 <label for="carport_roof">Carport roof</label>
                 <select name="roof" id="carport_roof">
                     <optgroup label="Roof">
-                        <option value="" disabled selected hidden>Roof*</option>
+                        <option value="0" disabled selected hidden>Roof*</option>
                         <option value="3">Gable-roof, Concrete tiles</option>
                         <option value="4">Gable-roof, Tile roof shingles</option>
                     </optgroup>
@@ -191,7 +195,7 @@
                 <label for="carport_length">Carport length</label>
                 <select name="length" id="carport_length">
                     <optgroup label="Length">
-                        <option value="" disabled selected hidden>Length*</option>
+                        <option value="0" disabled selected hidden>Length*</option>
                         <option value="240">240cm</option>
                         <option value="270">270cm</option>
                         <option value="300">300cm</option>
@@ -216,7 +220,7 @@
                 <label for="carport_cladding">Carport cladding</label>
                 <select name="cladding" id="carport_cladding">
                     <optgroup label="Cladding">
-                        <option value="" disabled selected hidden>Cladding*</option>
+                        <option value="0" disabled selected hidden>Cladding*</option>
                         <option value="1">Wooden Cladding</option>
                         <option value="2">Stone Cladding</option>
                     </optgroup>
@@ -234,7 +238,7 @@
                 </select>
             </div>
             <br>
-            <button type="submit">Calculate</button>
+            <button type="submit" value="gableCookie" name="calculate">Calculate</button>
         </form>
     </div>
     <br>

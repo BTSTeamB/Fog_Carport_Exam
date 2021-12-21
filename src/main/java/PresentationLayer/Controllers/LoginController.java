@@ -54,6 +54,7 @@ public class LoginController extends HttpServlet
                 String loginFailMessage = "Wrong email or password, try again!";
                 request.setAttribute("loginFailMessage", loginFailMessage);
                 //TODO: Make a proper error page in our modal.
+                //Through some research we can conclude that it has to be done via JS, we will wait till 3rd semester
                 view.forwardToJsp("errorPage.jsp", request, response);
             }
             else

@@ -10,7 +10,6 @@
 <head>
     <title>Oops a mistake was made</title>
 </head>
-<body style="background-image: url('Resources/images/Error-Message-Screen.png');">
-
+<body style="background-image: url('Resources/images/Error-Message-Screen.jpeg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
 </body>
 </html>

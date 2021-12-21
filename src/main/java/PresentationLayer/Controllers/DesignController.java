@@ -9,6 +9,8 @@ import PresentationLayer.View;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -38,10 +40,10 @@ public class DesignController extends HttpServlet
         wantedRoofing_id = (int) session.getAttribute("wantedRoofingId");
 
 
+
         try
         {
             orderUtility = new OrderUtility();
-            pageUtility = new PageUtility();
             userUtility = new UserUtility();
         } catch (ClassNotFoundException e)
         {
@@ -55,6 +57,72 @@ public class DesignController extends HttpServlet
             String zip = request.getParameter("zip");
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");
+
+            String button = request.getParameter("place order");
+
+            if(request.getParameter("name").equals("") || request.getParameter("address").equals("") || request.getParameter("zip").length() != 4 || request.getParameter("phone").length() != 8|| request.getParameter("email").equals(""))
+            {
+                if(request.getParameter("name").equals(""))
+                {
+                    String failMessageName = "- This input needs to be filled out";
+                    request.setAttribute("failMessageName", failMessageName);
+                } else
+                {
+                    name = request.getParameter("name");
+                    request.setAttribute("inputName",name);
+                }
+
+                if(request.getParameter("address").equals(""))
+                {
+                    String failMessageAddress = "- This input needs to be filled out";
+                    request.setAttribute("failMessageAddress", failMessageAddress);
+                } else
+                {
+                    address = request.getParameter("address");
+                    request.setAttribute("inputAddress",address);
+                }
+
+                if(request.getParameter("zip").length() != 4)
+                {
+                    String failMessageZip = "- Your zip-code needs to be 4 digits long";
+                    request.setAttribute("failMessageZip", failMessageZip);
+                } else
+                {
+                    zip = request.getParameter("zip");
+                    request.setAttribute("inputZip",zip);
+                }
+
+                if(request.getParameter("phone").length() != 8)
+                {
+                    String failMessagePhone = "- Your phone-number needs to be 4 digits long";
+                    request.setAttribute("failMessagePhone", failMessagePhone);
+                } else
+                {
+                    phone = request.getParameter("phone");
+                    request.setAttribute("inputPhone", phone);
+                }
+
+                if(request.getParameter("email").equals(""))
+                {
+                    String failMessageEmail = "- Please enter a valid email";
+                    request.setAttribute("failMessageEmail", failMessageEmail);
+                } else
+                {
+                    email = request.getParameter("email");
+                    request.setAttribute("inputEmail",email);
+                }
+
+                if(button.equals("CO_guest-cookie"))
+                {
+                    view.forwardToJsp("checkout-guest.jsp", request, response);
+                }
+
+                if(button.equals("CO_user_cookie"))
+                {
+                    view.forwardToJsp("checkout-user.jsp", request, response);
+                }
+                return;
+            }
 
             user = new User(name, address, zip,phone, email);
 
@@ -115,6 +183,28 @@ public class DesignController extends HttpServlet
         Double wantedShedLength = 0.0;
         int selectedCladding = 0;
         int selectedRoofing = 0;
+
+
+
+        String button = request.getParameter("calculate");
+        if(request.getParameter("width") == null || request.getParameter("length") == null || (request.getParameter("cladding") == null || request.getParameter("roof") == null))
+        {
+            if(button.equals("flatCookie"))
+            {
+                String failMessage = "You forgot to fill out some or all '*' marked fields";
+                request.setAttribute("failMessage", failMessage);
+                view.forwardToJsp("designFlat.jsp", request, response);
+                return;
+            }
+
+            if(button.equals("gableCookie"))
+            {
+                String failMessage = "You forgot to fill out some or all '*' marked fields";
+                request.setAttribute("failMessage", failMessage);
+                view.forwardToJsp("designGable.jsp", request, response);
+                return;
+            }
+        }
 
 
         wantedWidth = Double.valueOf(request.getParameter("width"));
@@ -185,10 +275,15 @@ public class DesignController extends HttpServlet
 
         drawCarport.drawCarportProduct();
 
-        request.setAttribute("svgDrawing", drawCarport.getSvg().toString());
+        //TODO: Leg lidt med noget filewriter
 
-        System.out.println(drawCarport.getSvg().toString());
+        File file = new File("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg");
+        FileWriter writer = new FileWriter(file);
+        writer.write(drawCarport.getSvg().toString());
+        writer.flush();
+        writer.close();
 
+        session.setAttribute("svgDrawing", drawCarport.getSvg().toString());
 
         session.setAttribute("claddingMaterials_calculated", claddingMaterials);
         session.setAttribute("roofingMaterials_calculated", roofingMaterials);
