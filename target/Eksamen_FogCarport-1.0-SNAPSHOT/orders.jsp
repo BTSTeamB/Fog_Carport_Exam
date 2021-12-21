@@ -127,7 +127,7 @@
 
                 <c:forEach var="userOrder" items="${requestScope.usersOrders}">
                     <tr class="lines">
-                        <td>DATE</td>
+                        <td>${userOrder.time_created}</td>
                         <td>
                             <form action="MaterialListController" method="get">
                                 <input class="order-number-click" type="submit" value="${userOrder.order_id}" name="selectedOrder">
@@ -137,7 +137,7 @@
                         <td>${userOrder.carport_width}</td>
                         <td>${userOrder.claddingType}</td>
                         <td>${userOrder.roofingType}</td>
-                        <td>${userOrder.price}</td>
+                        <td>${userOrder.price} kr</td>
                     </tr>
                 </c:forEach>
         </table>

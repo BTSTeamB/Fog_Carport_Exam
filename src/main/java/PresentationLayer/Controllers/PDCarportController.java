@@ -44,7 +44,10 @@ public class PDCarportController extends HttpServlet
         List<Roofing> roofingList = new ArrayList<>();
 
         claddingList = pageUtility.getAllCladdings();
+        claddingList = claddingList.subList(0,2);
+
         roofingList = pageUtility.getAllRoofings();
+        roofingList = roofingList.subList(0,2);
 
 
         request.setAttribute("claddingList", claddingList);

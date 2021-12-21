@@ -90,8 +90,9 @@ public class OrderMapper
                     int roofing_id = rs.getInt("roofing_id");
                     int shed_width = rs.getInt("shed_width");
                     int shed_length = rs.getInt("shed_length");
+                    String time_created = rs.getString("time_created");
 
-                    orderList.add(new Order(order_id, user_id,price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length));
+                    orderList.add(new Order(order_id, user_id,price, carport_length, carport_width, cladding_id, roofing_id, shed_width, shed_length, time_created));
                 }
             }
         } catch (SQLException e) {
@@ -117,7 +118,8 @@ public class OrderMapper
                     int roofing_id = rs.getInt("roofing_id");
                     int shed_width = rs.getInt("shed_width");
                     int shed_length = rs.getInt("shed_length");
-                    order = new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length);
+                    String time_created = rs.getString("time_created");
+                    order = new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length, time_created);
                 }
             }
         } catch (SQLException e) {
@@ -144,8 +146,9 @@ public class OrderMapper
                     int roofing_id = rs.getInt("roofing_id");
                     int shed_width = rs.getInt("shed_width");
                     int shed_length = rs.getInt("shed_length");
+                    String time_created = rs.getString("time_created");
 
-                    tmpOrderList.add(new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length));
+                    tmpOrderList.add(new Order(order_id, user_id, price, carport_length,carport_width, cladding_id, roofing_id, shed_width, shed_length, time_created));
                 }
             }
         } catch (SQLException e) {

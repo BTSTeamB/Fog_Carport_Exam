@@ -27,6 +27,7 @@ public class MaterialListController extends HttpServlet
         {
             orderUtility = new OrderUtility();
             order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
+            System.out.println(order.getCladding_id());
             materialAlgorithm = new carportAlgorithm(order.getCarport_width(), order.getCarport_length());
         } catch (ClassNotFoundException e)
         {

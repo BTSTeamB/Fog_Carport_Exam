@@ -49,9 +49,13 @@ public class carportAlgorithm
 
             if (claddingMaterials.get(i).getName().equals("Pressure Impregnated Post"))
             {
+                if(claddingMaterials.get(i).getDescription().equals("Post, dig 90 cm into earth, for shed"))
+                {
+                    claddingMaterials.get(i).setQuantity(5); //Skurets stolper
+                }
                 if (claddingMaterials.get(i).getQuantity() < 4)
                 {
-                    claddingMaterials.get(i).setQuantity(4);
+                    claddingMaterials.get(i).setQuantity(4); //Carports minimum stolper
                 }
             }
             claddingMaterials.get(i).setPrice((double) Math.round((claddingMaterials.get(i).getPrice() - claddingMaterials.get(i).getPrice() * averagePercentile) * 100) / 100);

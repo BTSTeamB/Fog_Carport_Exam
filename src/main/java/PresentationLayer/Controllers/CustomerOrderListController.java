@@ -90,18 +90,5 @@ public class CustomerOrderListController extends HttpServlet
 
         response.sendRedirect("CustomerOrderListController");
 
-        //If Redirect doesn't work
-//        List<Order> usersOrders = orderUtility.getOrderListById(orderGuest.getUser_id());
-//
-//        try
-//        {
-//            orderUtility.setCladdingRoofingTypes(usersOrders);
-//        } catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//
-//        request.setAttribute("usersOrders", usersOrders);
-//        view.forwardToJsp("FOOBARcustomerOrderList.jsp", request, response);
     }
 }

@@ -155,7 +155,7 @@
                 <li class="list-item">
                     <div class="item">
                         ${sessionScope.viewMoreCarport.length}
-                        <span class="item-value">m</span>
+                        <span class="item-value">cm</span>
                     </div>
                     <div class="item-title">
                         <span class="title-value">Length</span>
@@ -163,8 +163,8 @@
                 </li>
                 <li class="list-item">
                     <div class="item">
-                        3
-                        <span class="item-value">m</span>
+                        300.0
+                        <span class="item-value">cm</span>
                     </div>
                     <div class="item-title">
                         <span class="title-value">Height</span>

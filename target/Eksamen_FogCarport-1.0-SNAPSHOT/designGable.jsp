@@ -168,7 +168,7 @@
                 <label for="tool-room-width">Tool room width</label>
                 <select name="tool-room-width" id="tool-room-width">
                     <optgroup label="tool-room-width">
-                        <option value="false">Do not want tool room</option>
+                        <option value="0">Do not want tool room</option>
                         <option value="210">210cm</option>
                         <option value="240">240cm</option>
                         <option value="270">270cm</option>
@@ -224,7 +224,7 @@
                 <label for="tool-room-length">Tool room length</label>
                 <select name="tool-room-length" id="tool-room-length">
                     <optgroup label="tool-room-length">
-                        <option value="false">Do not want tool room</option>
+                        <option value="0">Do not want tool room</option>
                         <option value="210">150cm</option>
                         <option value="240">180cm</option>
                         <option value="270">210cm</option>

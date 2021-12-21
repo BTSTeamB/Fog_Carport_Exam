@@ -87,6 +87,11 @@ public class DesignController extends HttpServlet
             e.printStackTrace();
         }
 
+        if(user.getIs_guest() == 1)
+        {
+            session.invalidate();
+        }
+
         view.forwardToJsp("orderComplete.jsp", request, response);
 
 
@@ -124,9 +129,6 @@ public class DesignController extends HttpServlet
         session.setAttribute("wantedWidth",wantedWidth);
         session.setAttribute("wantedLength",wantedLength);
 
-        session.setAttribute("wantedCladdingId", selectedCladding);
-        session.setAttribute("wantedRoofingId", selectedRoofing);
-
         try
         {
             materialAlgorithm = new carportAlgorithm(wantedWidth, wantedLength);
@@ -141,51 +143,20 @@ public class DesignController extends HttpServlet
         {
             if(selectedCladding == 1)
             {
-                //TODO: Lave selectedCladding om til den der tilsvarer cladding material line som har skur materialer med i databasen
+                selectedCladding = 3;
             }
             else if(selectedCladding == 2)
             {
-                //TODO: Same shit here.
+              selectedCladding = 4;
             }
         }
+
+        session.setAttribute("wantedCladdingId", selectedCladding);
+        session.setAttribute("wantedRoofingId", selectedRoofing);
 
         List<Material> claddingMaterials = materialAlgorithm.calculateCladdingMaterialList(orderUtility.getCladdingMaterial(selectedCladding));
         List<Material> roofingMaterials = materialAlgorithm.calculateRoofingMaterialList(orderUtility.getRoofingMaterial(selectedRoofing));
 
-        //If that checks if shedWidth / shedLength is over 0
-        if(wantedShedLength > 0 && wantedShedWidth > 0)
-        {
-            try
-            {
-                claddingMaterials.add(pageUtility.getMaterialById(28));
-                claddingMaterials.add(pageUtility.getMaterialById(29));
-                claddingMaterials.add(pageUtility.getMaterialById(38));
-                claddingMaterials.add(pageUtility.getMaterialById(39));
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-
-            for (int i = 0; i < claddingMaterials.size(); i++)
-            {
-                if (claddingMaterials.get(i).getName().equals("Pressure Impregnated Board"))
-                {
-                    claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() * 2);
-                }
-                if(claddingMaterials.get(i).getName().equals("Pressure Impregnated Post"))
-                {
-                    if(wantedWidth.equals(wantedShedWidth))
-                    {
-                        claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() + 4);
-                    }
-                    else
-                    {
-                    claddingMaterials.get(i).setQuantity(claddingMaterials.get(i).getQuantity() + 5);
-                    }
-
-                }
-            }
-        }
 
         double totalPrice = 0.0;
         for (int i = 0; i < claddingMaterials.size(); i++)
@@ -215,6 +186,8 @@ public class DesignController extends HttpServlet
         drawCarport.drawCarportProduct();
 
         request.setAttribute("svgDrawing", drawCarport.getSvg().toString());
+
+        System.out.println(drawCarport.getSvg().toString());
 
 
         session.setAttribute("claddingMaterials_calculated", claddingMaterials);

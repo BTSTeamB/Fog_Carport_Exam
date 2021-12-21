@@ -76,6 +76,20 @@ public class Order {
         this.shed_length = shed_length;
     }
 
+    public Order(int order_id, int user_id, double price, double carport_length, double carport_width, int cladding_id, int roofing_id, int shed_width, int shed_length, String time_created)
+    {
+        this.order_id = order_id;
+        this.user_id = user_id;
+        this.price = price;
+        this.carport_length = carport_length;
+        this.carport_width = carport_width;
+        this.cladding_id = cladding_id;
+        this.roofing_id = roofing_id;
+        this.shed_width = shed_width;
+        this.shed_length = shed_length;
+        this.time_created = time_created;
+    }
+
 
     public void setCladdingType(String claddingType)
     {

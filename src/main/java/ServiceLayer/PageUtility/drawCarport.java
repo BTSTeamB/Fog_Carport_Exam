@@ -22,7 +22,7 @@ public class drawCarport
         this.shedbrede = shedbrede;
         this.shedLængde = shedLængde;
 
-        svg = new SVG(0, 0, "0 0 "+(længde + 300)+ " " +(brede + 200)+"", 100, 100);
+        svg = new SVG(0, 0, "0 0 "+(længde + 300)+" " +(brede + 200)+"", 100, 100);
 
         if(shedbrede > 0 && shedLængde > 0)
         {
@@ -65,7 +65,6 @@ public class drawCarport
         if (this.brede > 600) {
             this.brede = 600;
         }
-
 
 
         //Draws carport
@@ -121,12 +120,16 @@ public class drawCarport
             this.svg.addRect(155, this.brede - 35, 4.5, this.længde);
 
 
+            this.lægterShed = (this.shedLængde /55);
+            for (int x = 1; x <= this.lægterShed; x++) {
+                this.svg.shed( ((this.længde / this.stolper) * this.stolper)+55 * x, 35, this.shedbrede-70, 4);
+            }
+
 
             for (int x = 1; x <= 1; x++) {
                 this.svg.addRect(55 + ((this.længde / this.stolper) * this.stolper), this.shedbrede / 2, 10.0, 10.0);
                 this.svg.addRect(55 + ((this.længde / this.stolper) * (this.stolper) + (this.shedLængde - 60)), this.shedbrede / 2, 10.0, 10.0);
             }
-
 
             for (int x = 1; x <= 1; x++) {
                 this.svg.addRect(55 + ((this.længde / this.stolper) * this.stolper) + (this.shedLængde - 60), this.shedbrede - 35, 10.0, 10.0);
@@ -138,11 +141,6 @@ public class drawCarport
             for (int x = 1; x < this.lægter; x++) {
                 this.svg.addRect(155 + 55 * x, 0, this.brede, 4.8);
             }
-            this.lægterShed = (this.shedLængde /55);
-            for (int x = 1; x <= this.lægterShed; x++) {
-                this.svg.shed( ((this.længde / this.stolper) * this.stolper)+55 * x, 35, this.shedbrede-70, 4);
-            }
-
 
             //stolper up
             for (int x = 1; x <= this.stolper; x++) {
@@ -168,7 +166,7 @@ public class drawCarport
             }
 
 
-            this.svg.text2(155 + (this.længde / 2), this.brede + 75, længde + "cm");
+            this.svg.text2(155 + (this.længde / 2), this.brede + 75, this.længde + "cm");
             this.svg.text(75, this.brede / 2, this.brede + "cm");
 
 
