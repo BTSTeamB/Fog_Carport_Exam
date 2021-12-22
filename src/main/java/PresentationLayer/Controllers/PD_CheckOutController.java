@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "CheckOutController", value = "/CheckOutController")
-public class CheckOutController extends HttpServlet
+public class PD_CheckOutController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -33,6 +33,7 @@ public class CheckOutController extends HttpServlet
 
         if (user == null)
         {
+            //Hvis der ikke er en kunde i session, så skal der registreres en gæst
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String zip = request.getParameter("zip");
@@ -41,6 +42,7 @@ public class CheckOutController extends HttpServlet
 
             String button = request.getParameter("place order");
 
+            //Fejl-håndtering
             if (request.getParameter("name").equals("") || request.getParameter("address").equals("") || request.getParameter("zip").length() != 4 || request.getParameter("phone").length() != 8 || request.getParameter("email").equals(""))
             {
                 if (request.getParameter("name").equals(""))
@@ -118,6 +120,8 @@ public class CheckOutController extends HttpServlet
         try
         {
             orderUtility.createPDOrder(session);
+            //Lukker gæstens session, så hvis de skulle kigge på deres ordre,
+            // kommer deres oversigt ikke direkte op, som om de er logget på.
             if (user.getIs_guest() == 1)
             {
                 session.invalidate();

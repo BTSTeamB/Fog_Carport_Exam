@@ -1,7 +1,6 @@
 package PresentationLayer.Controllers;
 
 import Entities.PredefinedCarport;
-import Entities.PredefinedShed;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.PageUtility;
 
@@ -25,6 +24,8 @@ public class IndexController extends HttpServlet
         HttpSession session = request.getSession();
         List<PredefinedCarport> pdCarports = new ArrayList<>();
 
+        //Gendanner forsiden for en, så carousel ikke er tom,
+        // hvis session er invalidated og man trykker ind på hjemmesiden igen
         try
         {
             pageUtility = new PageUtility();

@@ -34,16 +34,6 @@ public class OrderUtility
                 cladding.getCladding_id(), roofing.getRoofing_id());
 
 
-        System.out.println("- - - - - ORDER INFO - - - - -");
-        System.out.println(order.getUser_id());
-        System.out.println(order.getPrice());
-        System.out.println(order.getCarport_length());
-        System.out.println(order.getCarport_width());
-        System.out.println(order.getCladding_id());
-        System.out.println(order.getRoofing_id());
-
-
-
         createOrder(order);
     }
 

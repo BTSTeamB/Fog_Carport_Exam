@@ -18,7 +18,7 @@
         <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
     </div>
     <ul class="nav-links">
-        <li><a href="index.jsp">Home</a></li>
+        <li><a href="index">Home</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">

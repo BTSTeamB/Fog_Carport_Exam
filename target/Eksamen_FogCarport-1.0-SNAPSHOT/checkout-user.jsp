@@ -23,7 +23,7 @@
         <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
     </div>
     <ul class="nav-links">
-        <li><a class="home" href="index.jsp">Home</a></li>
+        <li><a class="home" href="index">Home</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
@@ -161,14 +161,14 @@
             <div class="item-subtotal">
                 <div class="item-subtotal-container">
                     <p class="p-space"><span class="span-left">Item Subtotal</span> <span
-                            class="span-right">${sessionScope.totalPrice}0</span></p>
+                            class="span-right">${sessionScope.totalPrice}0 kr.</span></p>
                     <p class="p-space"><span class="span-left">Shipping*</span> <span class="span-right">Free</span></p>
                     <p><span class="span-left">standard</span></p>
                 </div>
             </div>
             <div class="order-total">
                 <p><span class="span-left">ORDER TOTAL</span> <span
-                        class="span-right">${sessionScope.totalPrice}0</span></p>
+                        class="span-right">${sessionScope.totalPrice}0 kr.</span></p>
             </div>
             <hr class="horizontal-line">
         </div>
@@ -183,7 +183,7 @@
                     <p class="item-name">Your new carport!</p>
                     <p class="small-p">${sessionScope.wantedWidth} / ${sessionScope.wantedLength}</p>
                     <p class="small-p">${requestScope.selectedCladdingType} / ${requestScope.selectedRoofingType}</p>
-                    <p class="small-p">${sessionScope.totalPrice}0</p>
+                    <p class="small-p">${sessionScope.totalPrice}0 kr.</p>
                 </div>
             </div>
         </div>

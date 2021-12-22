@@ -63,36 +63,9 @@ public class PageUtility
             listOfLists.add(fourthSlide);
         }
 
-        //Debugging
-//        System.out.println("Size of list number 1:");
-//        System.out.println(listOfLists.get(0).size());
-//        System.out.println("IDs inside this list");
-//        System.out.println(listOfLists.get(0).get(0).getId());
-//        System.out.println(listOfLists.get(0).get(1).getId());
-//        System.out.println(listOfLists.get(0).get(2).getId());
-//        System.out.println("Size of list number 2:");
-//        System.out.println(listOfLists.get(1).size());
-//        System.out.println("IDs inside this list");
-//        System.out.println(listOfLists.get(1).get(0).getId());
-//        System.out.println(listOfLists.get(1).get(1).getId());
-//        System.out.println(listOfLists.get(1).get(2).getId());
-//        System.out.println("Size of list number 3:");
-//        System.out.println(listOfLists.get(2).size());
-//        System.out.println("IDs inside this list");
-//        System.out.println(listOfLists.get(2).get(0).getId());
-//        System.out.println(listOfLists.get(2).get(1).getId());
-//        System.out.println(listOfLists.get(2).get(2).getId());
-
         session.setAttribute("listOfLists", listOfLists);
     }
 
-
-    public List<PredefinedShed> getAllPDSheds() throws Exception
-    {
-        List<PredefinedShed> pdSheds = new ArrayList<>();
-        pdSheds = facade.getAllPredefinedShed();
-        return pdSheds;
-    }
 
     public Cladding getCladdingByObject(Cladding cladding)
     {

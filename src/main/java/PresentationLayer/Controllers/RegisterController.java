@@ -27,11 +27,12 @@ public class RegisterController extends HttpServlet
         try
         {
             userUtility = new UserUtility();
-        } catch (ClassNotFoundException  e)
+        } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
 
+        //Henter data brugeren skriver i deres form
         String userName = request.getParameter("name");
         String userAddress = request.getParameter("address");
         String userZipCode = request.getParameter("zip-code");
@@ -42,7 +43,8 @@ public class RegisterController extends HttpServlet
 
         try
         {
-            userUtility.registerUser(userName,userAddress, userZipCode, userPhoneNum, userEmail, userPassword);
+            //Registrerer brugeren
+            userUtility.registerUser(userName, userAddress, userZipCode, userPhoneNum, userEmail, userPassword);
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -51,28 +53,17 @@ public class RegisterController extends HttpServlet
             view.forwardToJsp("errorPage.jsp", request, response);
         }
 
-        //Debug Prints
-        System.out.println("Bruger indsat!");
-        System.out.println("Her er noget info");
-        System.out.println("- - - - - - - - - -");
-        System.out.println("Name: " + userName);
-        System.out.println("Address: " + userAddress);
-        System.out.println("ZipCode: " + userZipCode);
-        System.out.println("Email: " + userEmail);
-        System.out.println("Pass: " + userPassword);
-        System.out.println("PhoneNum: " + userPhoneNum);
-
 
         try
         {
-            if(userUtility.loginUser(userEmail, userPassword, httpSession) == null)
+            if (userUtility.loginUser(userEmail, userPassword, httpSession) == null)
             {
-            view.forwardToJsp("errorPage.jsp", request, response);
-            }
-            else
+                view.forwardToJsp("errorPage.jsp", request, response);
+            } else
             {
-            userUtility.loginUser(userEmail, userPassword, httpSession);
-            view.forwardToJsp("index.jsp", request, response);
+                //Logger den registreret bruger på
+                userUtility.loginUser(userEmail, userPassword, httpSession);
+                view.forwardToJsp("index.jsp", request, response);
             }
         } catch (Exception e)
         {

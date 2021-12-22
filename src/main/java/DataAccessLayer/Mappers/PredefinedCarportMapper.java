@@ -2,7 +2,6 @@ package DataAccessLayer.Mappers;
 
 import DataAccessLayer.Database;
 import Entities.PredefinedCarport;
-import Entities.PredefinedShed;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

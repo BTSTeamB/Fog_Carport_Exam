@@ -26,6 +26,7 @@ public class MaterialListController extends HttpServlet
         try
         {
             orderUtility = new OrderUtility();
+            //Henter ordrens detaljer ud fra den valgte ordres id
             order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
             System.out.println(order.getCladding_id());
             materialAlgorithm = new carportAlgorithm(order.getCarport_width(), order.getCarport_length());

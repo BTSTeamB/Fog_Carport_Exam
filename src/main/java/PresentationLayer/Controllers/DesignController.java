@@ -23,9 +23,9 @@ public class DesignController extends HttpServlet
         HttpSession session = request.getSession();
         View view = new View();
         OrderUtility orderUtility = null;
-        PageUtility pageUtility = null;
         UserUtility userUtility = null;
 
+        //Henter info fra JSP'en
         User user = (User) session.getAttribute("user");
         double totalPrice = (double) session.getAttribute("totalPrice");
         Double wantedWidth = 0.0;
@@ -41,6 +41,7 @@ public class DesignController extends HttpServlet
 
 
 
+        //instantierer utility classes
         try
         {
             orderUtility = new OrderUtility();
@@ -52,6 +53,7 @@ public class DesignController extends HttpServlet
 
         if(user == null)
         {
+            //Henter bruger data hvis der ikke er en bruger logget på
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String zip = request.getParameter("zip");
@@ -60,6 +62,7 @@ public class DesignController extends HttpServlet
 
             String button = request.getParameter("place order");
 
+            //Fejl håndtering
             if(request.getParameter("name").equals("") || request.getParameter("address").equals("") || request.getParameter("zip").length() != 4 || request.getParameter("phone").length() != 8|| request.getParameter("email").equals(""))
             {
                 if(request.getParameter("name").equals(""))
@@ -128,6 +131,7 @@ public class DesignController extends HttpServlet
 
             try
             {
+                //Smider gæstbrugeren i DB
                 userUtility.registerGuestUser(user);
                 user = userUtility.getUserByCredentials(name, address, zip, phone, email);
             } catch (Exception e)
@@ -136,25 +140,30 @@ public class DesignController extends HttpServlet
             }
         }
 
+        //Laver Designed Ordre
         Order designedOrder = new Order(user.getUser_id(),totalPrice,wantedLength,wantedWidth, wantedCladding_id, wantedRoofing_id);
+        //Henter styklisterne som har været igennem algoritmen
         List<Material> printCladding = (List<Material>) session.getAttribute("claddingMaterials_calculated");
         List<Material> printRoofing = (List<Material>) session.getAttribute("roofingMaterials_calculated");
 
         try
         {
+            //Afrunder handlen, smider ordren i databasen
             orderUtility.createOrder(designedOrder);
-            //Sends Email of material list to client
+            //Sender email til kunden
             Pdf pdf = new Pdf(printCladding, printRoofing);
             pdf.generatePdf();
             Emailer emailer = new Emailer(user.getEmail());
             emailer.sendmail();
             //Sends blueprint Image to client
+            //TODO: Kode til at lave SVG om til PDF
 
         } catch (Exception e)
         {
             e.printStackTrace();
         }
 
+        //Hvis kunden er en gæst, så invaliderer vi deres session.
         if(user.getIs_guest() == 1)
         {
             session.invalidate();
@@ -175,7 +184,7 @@ public class DesignController extends HttpServlet
         OrderUtility orderUtility = null;
         PageUtility pageUtility = null;
 
-        // User's choices
+        // Brugerens beslutninger i DesignCarport
 
         Double wantedWidth = 0.0;
         Double wantedLength = 0.0;
@@ -186,9 +195,13 @@ public class DesignController extends HttpServlet
 
 
 
+        // Fejl håndtering
+
+        //String er sat til knappen's værdi inde på JSP'en
         String button = request.getParameter("calculate");
         if(request.getParameter("width") == null || request.getParameter("length") == null || (request.getParameter("cladding") == null || request.getParameter("roof") == null))
         {
+            //Hvis knappen har "flatCookie" som værdi, så bliver du sendt tilbage til flat siden
             if(button.equals("flatCookie"))
             {
                 String failMessage = "You forgot to fill out some or all '*' marked fields";
@@ -197,6 +210,7 @@ public class DesignController extends HttpServlet
                 return;
             }
 
+            //Hvis knappen har "flatCookie" som værdi, så bliver du sendt tilbage til flat siden
             if(button.equals("gableCookie"))
             {
                 String failMessage = "You forgot to fill out some or all '*' marked fields";
@@ -207,12 +221,14 @@ public class DesignController extends HttpServlet
         }
 
 
+        //Tager inputsne fra JSP og laver dem om til datatypen Double.
         wantedWidth = Double.valueOf(request.getParameter("width"));
         wantedLength = Double.valueOf(request.getParameter("length"));
 
         wantedShedWidth = Double.valueOf(request.getParameter("tool-room-width"));
         wantedShedLength = Double.valueOf(request.getParameter("tool-room-length"));
 
+        //Undtagen her, her bliver den til int
         selectedCladding = Integer.parseInt(request.getParameter("cladding"));
         selectedRoofing = Integer.parseInt(request.getParameter("roof"));
 
@@ -229,6 +245,8 @@ public class DesignController extends HttpServlet
             e.printStackTrace();
         }
 
+        //Checker om brugeren vil have et skur. Hvis de vil,
+        // så ændrer cladding id'et til at vælge de rigtige materialer på DB
         if(wantedShedLength > 0 && wantedShedWidth > 0)
         {
             if(selectedCladding == 1)
@@ -241,6 +259,7 @@ public class DesignController extends HttpServlet
             }
         }
 
+        //Smider den valgte beklædning og tag ind i session
         session.setAttribute("wantedCladdingId", selectedCladding);
         session.setAttribute("wantedRoofingId", selectedRoofing);
 
@@ -248,6 +267,7 @@ public class DesignController extends HttpServlet
         List<Material> roofingMaterials = materialAlgorithm.calculateRoofingMaterialList(orderUtility.getRoofingMaterial(selectedRoofing));
 
 
+        //Regner prisen sammen for hele carporten
         double totalPrice = 0.0;
         for (int i = 0; i < claddingMaterials.size(); i++)
         {
@@ -258,7 +278,7 @@ public class DesignController extends HttpServlet
             totalPrice += (roofingMaterials.get(i).getPrice() * claddingMaterials.get(i).getQuantity());
         }
 
-        // Rounding off totalPrice so it isn't an insane number
+        // Runder totalPrice af så det ikke bliver til et kæmpe decimal-nummer
         totalPrice = Math.round(totalPrice*100) / 100;
 
         String claddingType = pageUtility.getCladdingByID(selectedCladding).getType();
@@ -275,9 +295,9 @@ public class DesignController extends HttpServlet
 
         drawCarport.drawCarportProduct();
 
-        //TODO: Leg lidt med noget filewriter
 
         //Path : "/Users/oliverrasoli/IntellJWork/" skal ændres til hvad der passer til droplet
+        //Skriver SVG koden ind i en fil
         File file = new File("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg");
         FileWriter writer = new FileWriter(file);
         writer.write(drawCarport.getSvg().toString());

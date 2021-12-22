@@ -17,7 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "OrderController", value = "/OrderController")
-public class PDCarportController extends HttpServlet
+//Skiftede navn til PD_CarportController, da den kun bliver brugt til at håndtere PreDefined ordre
+//Prøvede at ændre name og values her, men det gav fejl i HTTP Request.
+
+public class PD_CarportController extends HttpServlet
 {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -26,6 +29,8 @@ public class PDCarportController extends HttpServlet
         List<PredefinedCarport> pdCarportList = new ArrayList<>();
         PageUtility pageUtility = null;
 
+
+        //Get'eren her, samler alt data'en og smider det i en produkt-oversigt side.
         try
         {
            pageUtility = new PageUtility();
@@ -83,7 +88,7 @@ public class PDCarportController extends HttpServlet
         }
         View view = new View();
 
-        //values to indicate what cladding/roofing user selected
+        //Værdier som indikere hvilken beklædning/tag brugeren har valgt
 
         int claddingType = (Integer.parseInt(request.getParameter("cladding")));
         int roofingType = (Integer.parseInt(request.getParameter("roofing")));

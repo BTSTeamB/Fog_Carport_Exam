@@ -13,7 +13,7 @@
     <script defer src="Resources/js/popup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/de65582ff0.js" crossorigin="anonymous"></script>
-    <title>Carport with erection</title>
+    <title>Carport with flat-roof</title>
 </head>
 <body>
 <nav>
@@ -22,7 +22,7 @@
         <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
     </div>
     <ul class="nav-links">
-        <li><a class="home" href="index.jsp">Home</a></li>
+        <li><a class="home" href="index">Home</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">

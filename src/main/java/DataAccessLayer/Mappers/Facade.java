@@ -13,7 +13,6 @@ public class Facade {
     UnitMapper unitMapper;
     OrderMapper orderMapper;
     UserMapper userMapper;
-    PredefinedShedMapper predefinedShedMapper;
     PredefinedCarportMapper predefinedCarportMapper;
     CML_Mapper cml_mapper;
     RML_Mapper rml_mapper;
@@ -26,7 +25,6 @@ public class Facade {
         orderMapper = new OrderMapper(database);
         userMapper = new UserMapper(database);
         predefinedCarportMapper = new PredefinedCarportMapper(database);
-        predefinedShedMapper = new PredefinedShedMapper(database);
         cml_mapper = new CML_Mapper(database);
         rml_mapper = new RML_Mapper(database);
 
@@ -66,6 +64,8 @@ public class Facade {
         return claddingMapper.getAllCladding();
     }
 
+
+    //Cladding Material Line
     public void createCML(int claddingId, int materialId) throws Exception
     {
         CladdingMaterialLine cml = new CladdingMaterialLine(claddingId, materialId);
@@ -114,6 +114,7 @@ public class Facade {
         return roofingList;
     }
 
+    //Roofing Material Line
     public void createRML(int roofId, int materialId) throws Exception
     {
         RoofingMaterialLine rml = new RoofingMaterialLine(roofId, materialId);
@@ -221,31 +222,6 @@ public class Facade {
     {
         return userMapper.getAllUsers();
     }
-
-
-    //Predefined Shed
-    public void createPredefinedShed(int width, int length, double price, String imgUrl) throws Exception {
-        PredefinedShed predefinedShed = new PredefinedShed(width, length, price, imgUrl);
-        predefinedShedMapper.createPredefinedShed(predefinedShed);
-    }
-
-    public List<PredefinedShed> getAllPredefinedShed() throws Exception
-    {
-        List<PredefinedShed> pdSheds = new ArrayList<>();
-        pdSheds = predefinedShedMapper.receiveAllPredefinedShed();
-        return pdSheds;
-    }
-
-    public void editPredefinedShed(int id, int width, int length, double price, String imgUrl) throws Exception {
-        PredefinedShed predefinedShed = new PredefinedShed(id, width, length, price, imgUrl);
-        predefinedShedMapper.editPredefinedShed(predefinedShed);
-    }
-
-    public void deletePredefinedShed(int id) {
-        PredefinedShed predefinedShed = new PredefinedShed(id);
-        predefinedShedMapper.deletePredefinedShed(predefinedShed);
-    }
-
 
 
     //Predefined Carport

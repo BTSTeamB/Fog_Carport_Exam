@@ -1,7 +1,6 @@
 package PresentationLayer.Controllers;
 
 import Entities.PredefinedCarport;
-import Entities.PredefinedShed;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.PageUtility;
 import ServiceLayer.PageUtility.UserUtility;
@@ -42,6 +41,7 @@ public class LoginController extends HttpServlet
         }
 
 
+        //Har sgu glemt hvorfor den her ligger her
         pageUtility.splitPredefinedCarportList(pdCarports, httpSession);
 
        String logEmail = request.getParameter("LoginUsername");
@@ -49,16 +49,20 @@ public class LoginController extends HttpServlet
 
         try
         {
+            //Forsøg på noget fejl-håndtering
             if(userUtility.loginUser(logEmail, logPassword, httpSession) == null)
             {
                 String loginFailMessage = "Wrong email or password, try again!";
                 request.setAttribute("loginFailMessage", loginFailMessage);
+
                 //TODO: Make a proper error page in our modal.
                 //Through some research we can conclude that it has to be done via JS, we will wait till 3rd semester
+
                 view.forwardToJsp("errorPage.jsp", request, response);
             }
             else
             {
+                //Logger brugeren ind
                 userUtility.loginUser(logEmail, logPassword, httpSession);
                 view.forwardToJsp("index.jsp", request, response);
             }

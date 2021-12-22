@@ -38,7 +38,7 @@ public class UserController extends HttpServlet
     {
         HttpSession httpSession = request.getSession();
 
-
+        //Smart kode
         try
         {
             userUtility.editUser(request, httpSession);

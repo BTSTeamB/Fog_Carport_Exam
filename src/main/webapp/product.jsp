@@ -32,7 +32,7 @@
         <h4 class="nav-logo-item logoHeader">TRÆLAST & BYGGECENTER</h4>
     </div>
     <ul class="nav-links">
-        <li><a class="home" href="index.jsp">Home</a></li>
+        <li><a class="home" href="index">Home</a></li>
         <li><a href="CustomerOrderListController">Orders</a></li>
     </ul>
     <div class="dropdown">
@@ -134,7 +134,7 @@
     </div>
     <div class="option-widget">
         <div class="header-container">
-            <h1>Carport 1</h1>
+            <h1>Carport</h1>
         </div>
         <div class="des-container">
             <p>
