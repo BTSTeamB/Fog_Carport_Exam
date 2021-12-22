@@ -94,7 +94,7 @@ public class DesignController extends HttpServlet
 
                 if(request.getParameter("phone").length() != 8)
                 {
-                    String failMessagePhone = "- Your phone-number needs to be 4 digits long";
+                    String failMessagePhone = "- Your phone-number needs to be 8 digits long";
                     request.setAttribute("failMessagePhone", failMessagePhone);
                 } else
                 {
@@ -277,6 +277,7 @@ public class DesignController extends HttpServlet
 
         //TODO: Leg lidt med noget filewriter
 
+        //Path : "/Users/oliverrasoli/IntellJWork/" skal ændres til hvad der passer til droplet
         File file = new File("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg");
         FileWriter writer = new FileWriter(file);
         writer.write(drawCarport.getSvg().toString());

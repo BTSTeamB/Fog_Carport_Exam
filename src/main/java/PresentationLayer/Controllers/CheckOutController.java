@@ -31,7 +31,7 @@ public class CheckOutController extends HttpServlet
             e.printStackTrace();
         }
 
-        if(user == null)
+        if (user == null)
         {
             String name = request.getParameter("name");
             String address = request.getParameter("address");
@@ -39,32 +39,95 @@ public class CheckOutController extends HttpServlet
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");
 
-            user = new User(name, address, zip,phone, email);
+            String button = request.getParameter("place order");
+
+            if (request.getParameter("name").equals("") || request.getParameter("address").equals("") || request.getParameter("zip").length() != 4 || request.getParameter("phone").length() != 8 || request.getParameter("email").equals(""))
+            {
+                if (request.getParameter("name").equals(""))
+                {
+                    String failMessageName = "- This input needs to be filled out";
+                    request.setAttribute("failMessageName", failMessageName);
+                } else
+                {
+                    name = request.getParameter("name");
+                    request.setAttribute("inputName", name);
+                }
+
+                if (request.getParameter("address").equals(""))
+                {
+                    String failMessageAddress = "- This input needs to be filled out";
+                    request.setAttribute("failMessageAddress", failMessageAddress);
+                } else
+                {
+                    address = request.getParameter("address");
+                    request.setAttribute("inputAddress", address);
+                }
+
+                if (request.getParameter("zip").length() != 4)
+                {
+                    String failMessageZip = "- Your zip-code needs to be 4 digits long";
+                    request.setAttribute("failMessageZip", failMessageZip);
+                } else
+                {
+                    zip = request.getParameter("zip");
+                    request.setAttribute("inputZip", zip);
+                }
+
+                if (request.getParameter("phone").length() != 8)
+                {
+                    String failMessagePhone = "- Your phone-number needs to be 8 digits long";
+                    request.setAttribute("failMessagePhone", failMessagePhone);
+                } else
+                {
+                    phone = request.getParameter("phone");
+                    request.setAttribute("inputPhone", phone);
+                }
+
+                if (request.getParameter("email").equals(""))
+                {
+                    String failMessageEmail = "- Please enter a valid email";
+                    request.setAttribute("failMessageEmail", failMessageEmail);
+                } else
+                {
+                    email = request.getParameter("email");
+                    request.setAttribute("inputEmail", email);
+                }
+
+                if (button.equals("PD_CO_guest-cookie"))
+                {
+                    view.forwardToJsp("premade-checkout-guest.jsp", request, response);
+                }
+
+                if (button.equals("PD_CO_user_cookie"))
+                {
+                    view.forwardToJsp("premade-checkout-user.jsp", request, response);
+                }
+                return;
+            }
+
+            user = new User(name, address, zip, phone, email);
             try
             {
                 userUtility.registerGuestUser(user);
                 user = userUtility.getUserByCredentials(name, address, zip, phone, email);
-                session.setAttribute("user", user);
             } catch (Exception e)
             {
                 e.printStackTrace();
             }
         }
-            try
+        try
+        {
+            orderUtility.createPDOrder(session);
+            if (user.getIs_guest() == 1)
             {
-                orderUtility.createPDOrder(session);
-                if(user.getIs_guest() == 1)
-                {
-                    session.invalidate();
-                    response.sendRedirect("index");
-                }
-            } catch (Exception e)
-            {
-                e.printStackTrace();
+                session.invalidate();
             }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
-
-            view.forwardToJsp("orderComplete.jsp", request, response);
+        view.forwardToJsp("orderComplete.jsp", request, response);
 
     }
 

@@ -160,13 +160,13 @@
             </div>
             <div class="item-subtotal">
                 <div class="item-subtotal-container">
-                    <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">${sessionScope.viewMoreCarport.price}</span></p>
+                    <p class="p-space"><span class="span-left">Item Subtotal</span> <span class="span-right">${sessionScope.viewMoreCarport.price} kr.</span></p>
                     <p class="p-space"><span class="span-left">Shipping*</span> <span class="span-right">Free</span></p>
                     <p><span class="span-left">standard</span></p>
                 </div>
             </div>
             <div class="order-total">
-                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">${sessionScope.viewMoreCarport.price}</span></p>
+                <p><span class="span-left">ORDER TOTAL</span> <span class="span-right">${sessionScope.viewMoreCarport.price} kr.</span></p>
             </div>
             <hr class="horizontal-line">
         </div>
@@ -181,7 +181,7 @@
                     <p class="item-name">Your new carport!</p>
                     <p class="small-p">${sessionScope.viewMoreCarport.width} / ${sessionScope.viewMoreCarport.length}</p>
                     <p class="small-p">${sessionScope.chosenCladding.type} / ${sessionScope.chosenRoofing.type}</p>
-                    <p class="small-p">${sessionScope.viewMoreCarport.price}</p>
+                    <p class="small-p">${sessionScope.viewMoreCarport.price} kr.</p>
                 </div>
             </div>
         </div>

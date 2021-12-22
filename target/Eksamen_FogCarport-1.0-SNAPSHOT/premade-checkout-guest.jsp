@@ -127,22 +127,22 @@
             <hr class="guest-line">
             <div class="guest-information">
                 <form action="CheckOutController" method="get">
-                    <label for="check-out-guest-name">Name</label>
-                    <input type="text" name="name" id="check-out-guest-name">
+                    <label for="check-out-guest-name">Name <span style="color: #ca4141; font-size: 0.7rem;">${requestScope.failMessageName}</span></label>
+                    <input type="text" name="name" id="check-out-guest-name" value="${requestScope.inputName}">
 
-                    <label for="check-out-guest-address">Address</label>
-                    <input type="text" name="address" id="check-out-guest-address">
+                    <label for="check-out-guest-address">Address <span style="color: #ca4141; font-size: 0.7rem;">${requestScope.failMessageAddress}</span></label>
+                    <input type="text" name="address" id="check-out-guest-address" value="${requestScope.inputAddress}">
 
-                    <label for="check-out-guest-zip">zip-code</label>
-                    <input type="number" name="zip" id="check-out-guest-zip">
+                    <label for="check-out-guest-zip">zip-code <span style="color: #ca4141; font-size: 0.7rem;">${requestScope.failMessageZip}</span></label>
+                    <input type="number" name="zip" id="check-out-guest-zip" value="${requestScope.inputZip}">
 
-                    <label for="check-out-guest-email">E-mail</label>
-                    <input type="email" name="email" id="check-out-guest-email">
+                    <label for="check-out-guest-email">E-mail <span style="color: #ca4141; font-size: 0.7rem;">${requestScope.failMessageEmail}</span></label>
+                    <input type="email" name="email" id="check-out-guest-email" value="${requestScope.inputEmail}">
 
-                    <label for="check-out-guest-phone">Phone</label>
-                    <input type="number" name="phone" id="check-out-guest-phone">
+                    <label for="check-out-guest-phone">Phone <span style="color: #ca4141; font-size: 0.7rem;">${requestScope.failMessagePhone}</span></label>
+                    <input type="number" name="phone" id="check-out-guest-phone" value="${requestScope.inputPhone}">
 
-                    <button class="checkout-button" type="submit">Place Order</button>
+                    <button class="checkout-button" type="submit" value="PD_CO_guest-cookie" name="place order">Place Order</button>
                 </form>
                 <p class="tip-text">OBS. if you type your guest credentials you will stil be able to view your order</p>
             </div>
