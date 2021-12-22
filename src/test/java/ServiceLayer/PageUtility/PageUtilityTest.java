@@ -11,8 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PageUtilityTest
 {
 
-
-
     @Test
     void generateShedCarouselListPages()
     {
