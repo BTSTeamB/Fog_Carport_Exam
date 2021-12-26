@@ -21,7 +21,7 @@ public class SVG {
     private String text;
     private int rotate;
 
-    private final String headerTemplate = "<svg height=\"%d%%\" " +
+    private final String headerTemplate = "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" height=\"%d%%\" " +
             "width=\"%d%%\" " +
             "viewBox=\"%s\" " +
             "x=\"%d\"   " +
@@ -29,8 +29,8 @@ public class SVG {
             " preserveAspectRatio=\"xMinYMin\">";
 
     private final String rectTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%s\" width=\"%s\" style=\"stroke:#000000; fill: #ffffff\" />";
-    private final String lineTemplate = "<line x1=\"%d\" y1=\"%d\"x2=\"%d\"y2=\"%d\" style=\"stroke:#000000; fill: #ffffff\" stroke-dasharray=\"5\" />";
-    private final String line1Template = "<line x1=\"%d\" y1=\"%d\"x2=\"%d\"y2=\"%d\" style=\"stroke:#ffffff;marker-start: url(#beginArrow) ;marker-end: url(#endArrow);\" />";
+    private final String lineTemplate = "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; fill: #ffffff\" stroke-dasharray=\"5\" />";
+    private final String line1Template = "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#ffffff;marker-start: url(#beginArrow) ;marker-end: url(#endArrow);\" />";
 
     private final String innerSVGTemplate = "<svg height=\"%d%%\" " +
             "width=\"%d%%\" " +
@@ -38,8 +38,8 @@ public class SVG {
             "x=\"%d\"   " +
             "y=\"%d\"   " +
             " preserveAspectRatio=\"xMinYMin\">";
-    private final String beginArrowTemplate = "<defs> <marker id=\"%s\" markerWidth=\"%d%%\" markerHeight=\"%d%%\" refX=\"%s\" refY=\"%s\" orient=\"auto\"> <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #ffffff;\" /> </marker>";
-    private final String endArrowTemplate = "<defs> <marker id=\"%s\" markerWidth=\"%d%%\" markerHeight=\"%d%%\" refX=\"%s\" refY=\"%s\" orient=\"auto\"> <path d=\"M0,0 L12,6 L0,12 L0,0\" style=\"fill: #ffffff;\" /> </marker>";
+    private final String beginArrowTemplate = "<marker id=\"%s\" markerWidth=\"%d%%\" markerHeight=\"%d%%\" refX=\"%s\" refY=\"%s\" orient=\"auto\"> <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #ffffff;\" /> </marker>";
+    private final String endArrowTemplate = "<marker id=\"%s\" markerWidth=\"%d%%\" markerHeight=\"%d%%\" refX=\"%s\" refY=\"%s\" orient=\"auto\"> <path d=\"M0,0 L12,6 L0,12 L0,0\" style=\"fill: #ffffff;\" /> </marker>";
     private final String textTemplate = "<text style=\"text-anchor: middle; stroke: #ffffff;\" transform=\"translate(%s,%s) rotate(-90)\">%s</text>";
     private final String text2Template = "<text style=\"text-anchor: middle; stroke: #ffffff;\" transform=\"translate(%s,%s) \">%s</text>";
     private final String shedTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%s\" width=\"%s\" style=\"stroke:#000000; fill: #ffffff\" stroke-dasharray=\"5\"/>";

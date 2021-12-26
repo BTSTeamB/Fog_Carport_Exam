@@ -60,11 +60,14 @@ public class Emailer
 
             //Attachment body part
             MimeBodyPart pdfAttachment = new MimeBodyPart();
+            MimeBodyPart pngAttachment = new MimeBodyPart();
             pdfAttachment.attachFile("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/MaterialList.pdf");
+            pngAttachment.attachFile("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/Customers-Carport.png");
 
             //Attach body parts
             emailContent.addBodyPart(textBodyPart);
             emailContent.addBodyPart(pdfAttachment);
+            emailContent.addBodyPart(pngAttachment);
 
             //Attach multipart to message
             msg.setContent(emailContent);

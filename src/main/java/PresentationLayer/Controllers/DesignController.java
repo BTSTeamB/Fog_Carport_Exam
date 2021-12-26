@@ -150,13 +150,15 @@ public class DesignController extends HttpServlet
         {
             //Afrunder handlen, smider ordren i databasen
             orderUtility.createOrder(designedOrder);
-            //Sender email til kunden
-            Pdf pdf = new Pdf(printCladding, printRoofing);
-            pdf.generatePdf();
+            //Laver materiale listen om til en pdf fil
+            Pdf pdfList = new Pdf(printCladding, printRoofing);
+            pdfList.generatePdfList();
+            //Laver SVG-koden om til en PNG via Batik biblioteket
+            Pdf pdfSvg = new Pdf();
+            pdfSvg.makeSvgIntoPng();
+            //Sender emailen afsted til kunden
             Emailer emailer = new Emailer(user.getEmail());
             emailer.sendmail();
-            //Sends blueprint Image to client
-            //TODO: Kode til at lave SVG om til PDF
 
         } catch (Exception e)
         {
@@ -300,6 +302,7 @@ public class DesignController extends HttpServlet
         //Skriver SVG koden ind i en fil
         File file = new File("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg");
         FileWriter writer = new FileWriter(file);
+        writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         writer.write(drawCarport.getSvg().toString());
         writer.flush();
         writer.close();

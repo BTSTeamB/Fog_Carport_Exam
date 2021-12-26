@@ -2,6 +2,10 @@ package ServiceLayer.PageUtility;
 
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.List;
 import Entities.Material;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -10,6 +14,11 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import org.apache.batik.transcoder.Transcoder;
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
 
 
 public class Pdf
@@ -23,7 +32,13 @@ public class Pdf
         this.roofingMaterials = roofingMaterials;
     }
 
-    public void generatePdf() throws FileNotFoundException
+    public Pdf()
+    {
+
+    }
+
+
+    public void generatePdfList() throws FileNotFoundException
     {
         String path = "/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/MaterialList.pdf";
 
@@ -39,7 +54,7 @@ public class Pdf
         Table claddingTable = new Table(columnWidth);
         Table roofingTable = new Table(columnWidth);
 
-        String[] claddingTableHeader = {"Material ID", "Name", "Quantity", "Length", "Height/Depth", "Width", "Description"};
+        String[] claddingTableHeader = {"Material ID", "Name", "Quantity", "Length\n(cm)", "Height/Depth\n(cm)", "Width\n(cm)", "Description"};
 
 
         claddingTable.addCell(new Cell().add(claddingTableHeader[0]));
@@ -89,5 +104,41 @@ public class Pdf
         document.add(roofingTable);
         document.close();
 
+    }
+
+    public void makeSvgIntoPng() throws IOException, TranscoderException
+    {
+
+        int RESOLUTION_DPI = 400;
+        float SCALE_BY_RESOLUTION = RESOLUTION_DPI / 72f;
+        float scaledWidth = 252*SCALE_BY_RESOLUTION;
+        float scaledHeight = 144*SCALE_BY_RESOLUTION;
+        float pixelUnitToMM = new Float(25.4f/RESOLUTION_DPI);
+
+
+
+        // DEFINE INPUT
+        String svgUrlInputLocation = Paths.get("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg").toUri().toURL().toString();
+        TranscoderInput transcoderInput = new TranscoderInput(svgUrlInputLocation);
+
+        // DEFINE OUTPUT
+        OutputStream outputStream = new FileOutputStream("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/Customers-Carport.png");
+        TranscoderOutput transcoderOutput = new TranscoderOutput(outputStream);
+
+
+        // CONVERT SVG TO PNG AND SAVE TO FILE
+        PNGTranscoder pngTranscoder = new PNGTranscoder();
+
+        pngTranscoder.addTranscodingHint(PNGTranscoder.KEY_WIDTH, scaledWidth);
+        pngTranscoder.addTranscodingHint(PNGTranscoder.KEY_HEIGHT, scaledHeight);
+
+        pngTranscoder.addTranscodingHint(PNGTranscoder.KEY_PIXEL_UNIT_TO_MILLIMETER, pixelUnitToMM);
+
+        pngTranscoder.transcode(transcoderInput, transcoderOutput);
+
+
+        // CLEAN UP
+        outputStream.flush();
+        outputStream.close();
     }
 }
