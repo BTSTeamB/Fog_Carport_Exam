@@ -16,9 +16,14 @@ public class Emailer
     String host = "smtp.gmail.com";
     Properties properties = System.getProperties();
 
-    public Emailer(String toEmail)
+    String pdfPath;
+    String pngPath;
+
+    public Emailer(String toEmail, String pdfPath, String pngPath)
     {
         this.toEmail = toEmail;
+        this.pdfPath = pdfPath;
+        this.pngPath = pngPath;
     }
 
     public void sendmail()
@@ -61,8 +66,8 @@ public class Emailer
             //Attachment body part
             MimeBodyPart pdfAttachment = new MimeBodyPart();
             MimeBodyPart pngAttachment = new MimeBodyPart();
-            pdfAttachment.attachFile("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/MaterialList.pdf");
-            pngAttachment.attachFile("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/Customers-Carport.png");
+            pdfAttachment.attachFile(pdfPath);
+            pngAttachment.attachFile(pngPath);
 
             //Attach body parts
             emailContent.addBodyPart(textBodyPart);

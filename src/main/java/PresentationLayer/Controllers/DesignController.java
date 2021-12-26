@@ -151,13 +151,27 @@ public class DesignController extends HttpServlet
             //Afrunder handlen, smider ordren i databasen
             orderUtility.createOrder(designedOrder);
             //Laver materiale listen om til en pdf fil
-            Pdf pdfList = new Pdf(printCladding, printRoofing);
+            String pdfListPath = getServletContext().getRealPath("/");
+            pdfListPath = String.format("%s", pdfListPath.replace(".","."));
+            pdfListPath = pdfListPath + "Resources/invoice-pdf/MaterialList.pdf";
+
+            Pdf pdfList = new Pdf(printCladding, printRoofing, pdfListPath);
             pdfList.generatePdfList();
+
             //Laver SVG-koden om til en PNG via Batik biblioteket
-            Pdf pdfSvg = new Pdf();
-            pdfSvg.makeSvgIntoPng();
+            String svgPath = getServletContext().getRealPath("/");
+            svgPath = String.format("%s", svgPath.replace(".","."));
+            svgPath = svgPath + "Resources/invoice-svg/CustomersCarport.svg";
+
+            String pngPath = getServletContext().getRealPath("/");
+            pngPath = String.format("%s", pngPath.replace(".", "."));
+            pngPath = pngPath + "Resources/invoice-pdf/Customers-Carport.png";
+
+            Pdf pdfSvgToPng = new Pdf(svgPath, pngPath);
+            pdfSvgToPng.makeSvgIntoPng();
+
             //Sender emailen afsted til kunden
-            Emailer emailer = new Emailer(user.getEmail());
+            Emailer emailer = new Emailer(user.getEmail(), pdfListPath, pngPath);
             emailer.sendmail();
 
         } catch (Exception e)

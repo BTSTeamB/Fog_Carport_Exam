@@ -47,7 +47,7 @@
         <div class="header">
             Member login
         </div>
-        <form action="checkout-user.jsp" method="post">
+        <form action="LoginController" method="post">
             <div class="login-element">
                 <label for="LoginUsername">E-mail</label>
                 <label for="LoginUsername" style="display: none;">Wrong email address or password</label>

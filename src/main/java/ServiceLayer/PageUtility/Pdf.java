@@ -25,24 +25,28 @@ public class Pdf
 {
     List<Material> claddingMaterials;
     List<Material> roofingMaterials;
+    String pdfPath;
+    String svgPath;
+    String pngPath;
 
-    public Pdf(List<Material> claddingMaterials, List<Material> roofingMaterials)
+    public Pdf(List<Material> claddingMaterials, List<Material> roofingMaterials, String pdfPath)
     {
         this.claddingMaterials = claddingMaterials;
         this.roofingMaterials = roofingMaterials;
+        this.pdfPath = pdfPath;
     }
 
-    public Pdf()
+    public Pdf(String svgPath, String pngPath)
     {
-
+        this.svgPath = svgPath;
+        this.pngPath = pngPath;
     }
 
 
     public void generatePdfList() throws FileNotFoundException
     {
-        String path = "/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/MaterialList.pdf";
-
-        PdfWriter pdfWriter = new PdfWriter(path);
+        PdfWriter pdfWriter = new PdfWriter(this.pdfPath);
+        System.out.println("/Users/oliverrasoli/Documents/DevTools/apache-tomcat-9.0.54/webapps/Eksamen_FogCarport_war/Resources/invoice-pdf");
 
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         pdfDocument.addNewPage();
@@ -116,13 +120,12 @@ public class Pdf
         float pixelUnitToMM = new Float(25.4f/RESOLUTION_DPI);
 
 
-
         // DEFINE INPUT
-        String svgUrlInputLocation = Paths.get("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg").toUri().toURL().toString();
+        String svgUrlInputLocation = Paths.get(this.svgPath).toUri().toURL().toString();
         TranscoderInput transcoderInput = new TranscoderInput(svgUrlInputLocation);
 
         // DEFINE OUTPUT
-        OutputStream outputStream = new FileOutputStream("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-pdf/Customers-Carport.png");
+        OutputStream outputStream = new FileOutputStream(this.pngPath);
         TranscoderOutput transcoderOutput = new TranscoderOutput(outputStream);
 
 
