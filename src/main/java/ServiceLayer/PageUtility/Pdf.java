@@ -1,10 +1,7 @@
 package ServiceLayer.PageUtility;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.List;
 import Entities.Material;
@@ -48,6 +45,7 @@ public class Pdf
         PdfWriter pdfWriter = new PdfWriter(this.pdfPath);
 
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+
         pdfDocument.addNewPage();
 
         Document document = new Document(pdfDocument);
@@ -142,5 +140,6 @@ public class Pdf
         // CLEAN UP
         outputStream.flush();
         outputStream.close();
+
     }
 }

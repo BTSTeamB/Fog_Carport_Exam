@@ -174,7 +174,6 @@ public class DesignController extends HttpServlet
             Emailer emailer = new Emailer(user.getEmail(), pdfListPath, pngPath);
             emailer.sendmail();
 
-
             //Den gider simpelthen ikke sende en email hvis applikationen kører via Tomcat/Server
             //Lokalt vil den gerne virke...
             //Har prøvet at gøre alle paths dynamiske ud fra servletContext, med endda System.getProperty("user.dir")

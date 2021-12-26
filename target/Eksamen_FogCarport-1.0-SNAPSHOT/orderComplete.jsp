@@ -115,6 +115,8 @@
               Your Carport Order is Confirmed
         </h1>
         <p>Thank you for shopping at johannesfog.dk </p>
+        <p>PDF PATH? - ${requestScope.pdfPathWorks}</p>
+        <p>PNG PATH? - ${requestScope.pngPathWorks}</p>
         <br>
         <br>
         <img src="Resources/images/hedgehog.png" alt="">
