@@ -174,6 +174,13 @@ public class DesignController extends HttpServlet
             Emailer emailer = new Emailer(user.getEmail(), pdfListPath, pngPath);
             emailer.sendmail();
 
+
+            //Den gider simpelthen ikke sende en email hvis applikationen kører via Tomcat/Server
+            //Lokalt vil den gerne virke...
+            //Har prøvet at gøre alle paths dynamiske ud fra servletContext, med endda System.getProperty("user.dir")
+            //for at få det korrekte directory. Men intet virker:(
+
+
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -184,6 +191,8 @@ public class DesignController extends HttpServlet
         {
             session.invalidate();
         }
+
+
 
         view.forwardToJsp("orderComplete.jsp", request, response);
 
@@ -314,7 +323,11 @@ public class DesignController extends HttpServlet
 
         //Path : "/Users/oliverrasoli/IntellJWork/" skal ændres til hvad der passer til droplet
         //Skriver SVG koden ind i en fil
-        File file = new File("/Users/oliverrasoli/IntellJWork/Eksamen_FogCarport/src/main/webapp/Resources/invoice-svg/CustomersCarport.svg");
+        String svgPath = getServletContext().getRealPath("/");
+        svgPath = String.format("%s", svgPath.replace(".","."));
+        svgPath = svgPath + "Resources/invoice-svg/CustomersCarport.svg";
+
+        File file = new File(svgPath);
         FileWriter writer = new FileWriter(file);
         writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         writer.write(drawCarport.getSvg().toString());

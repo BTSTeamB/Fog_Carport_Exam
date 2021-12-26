@@ -46,7 +46,6 @@ public class Pdf
     public void generatePdfList() throws FileNotFoundException
     {
         PdfWriter pdfWriter = new PdfWriter(this.pdfPath);
-        System.out.println("/Users/oliverrasoli/Documents/DevTools/apache-tomcat-9.0.54/webapps/Eksamen_FogCarport_war/Resources/invoice-pdf");
 
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         pdfDocument.addNewPage();

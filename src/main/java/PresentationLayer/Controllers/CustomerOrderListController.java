@@ -34,7 +34,7 @@ public class CustomerOrderListController extends HttpServlet
 
         if(user == null)
         {
-            view.forwardToJsp("guestOrLogin.jsp", request, response);
+            view.forwardToJsp("orderGuest.jsp", request, response);
         }
         else
         {
