@@ -10,13 +10,11 @@ import java.util.List;
 
 public class PageUtility
 {
-    private Database database;
     private Facade facade;
 
     public PageUtility() throws ClassNotFoundException
     {
-        this.database = new Database();
-        this.facade = new Facade(database);
+        this.facade = new Facade();
     }
 
 

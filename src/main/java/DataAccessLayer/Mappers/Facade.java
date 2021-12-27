@@ -16,17 +16,18 @@ public class Facade {
     PredefinedCarportMapper predefinedCarportMapper;
     CML_Mapper cml_mapper;
     RML_Mapper rml_mapper;
+    Database database = new Database();
 
-    public Facade(Database database) throws ClassNotFoundException {
-        claddingMapper = new CladdingMapper(database);
-        roofingMapper = new RoofingMapper(database);
-        materialMapper = new MaterialMapper(database);
-        unitMapper = new UnitMapper(database);
-        orderMapper = new OrderMapper(database);
-        userMapper = new UserMapper(database);
-        predefinedCarportMapper = new PredefinedCarportMapper(database);
-        cml_mapper = new CML_Mapper(database);
-        rml_mapper = new RML_Mapper(database);
+    public Facade() throws ClassNotFoundException {
+        claddingMapper = new CladdingMapper(this.database);
+        roofingMapper = new RoofingMapper(this.database);
+        materialMapper = new MaterialMapper(this.database);
+        unitMapper = new UnitMapper(this.database);
+        orderMapper = new OrderMapper(this.database);
+        userMapper = new UserMapper(this.database);
+        predefinedCarportMapper = new PredefinedCarportMapper(this.database);
+        cml_mapper = new CML_Mapper(this.database);
+        rml_mapper = new RML_Mapper(this.database);
 
     }
 

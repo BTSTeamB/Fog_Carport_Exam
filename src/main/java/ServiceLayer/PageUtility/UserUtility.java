@@ -9,13 +9,11 @@ import javax.servlet.http.HttpSession;
 
 public class UserUtility
 {
-    private Database database;
     private Facade facade;
 
     public UserUtility() throws ClassNotFoundException
     {
-        this.database = new Database();
-        this.facade = new Facade(database);
+        this.facade = new Facade();
     }
 
     public void editUser(HttpServletRequest request, HttpSession httpSession) throws Exception

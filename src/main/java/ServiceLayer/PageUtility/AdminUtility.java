@@ -9,13 +9,11 @@ import java.util.List;
 
 public class AdminUtility
 {
-    private Database database;
     private Facade facade;
 
     public AdminUtility() throws ClassNotFoundException
     {
-        this.database = new Database();
-        this.facade = new Facade(database);
+        this.facade = new Facade();
     }
 
     public List<User> getAllUsers() throws Exception
