@@ -193,9 +193,7 @@ public class DesignController extends HttpServlet
         }
 
 
-
         view.forwardToJsp("orderComplete.jsp", request, response);
-
 
     }
 

@@ -135,7 +135,6 @@ public class Pdf
 
         pngTranscoder.transcode(transcoderInput, transcoderOutput);
 
-
         // CLEAN UP
         outputStream.flush();
         outputStream.close();
