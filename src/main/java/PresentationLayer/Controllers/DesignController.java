@@ -1,10 +1,11 @@
 package PresentationLayer.Controllers;
 
-import Entities.Material;
-import Entities.Order;
+import PresentationLayer.Entities.Material;
+import PresentationLayer.Entities.Order;
 import ServiceLayer.PageUtility.*;
-import Entities.User;
+import PresentationLayer.Entities.User;
 import PresentationLayer.View;
+import ServiceLayer.Pdf;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -315,7 +316,7 @@ public class DesignController extends HttpServlet
             e.printStackTrace();
         }
 
-        drawCarport drawCarport = new drawCarport(wantedWidth.intValue(), wantedLength.intValue(), wantedShedWidth.intValue(), wantedShedLength.intValue());
+        DrawCarport drawCarport = new DrawCarport(wantedWidth.intValue(), wantedLength.intValue(), wantedShedWidth.intValue(), wantedShedLength.intValue());
 
         drawCarport.drawCarportProduct();
 

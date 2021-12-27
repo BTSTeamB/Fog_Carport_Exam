@@ -1,8 +1,8 @@
 package PresentationLayer.Controllers;
 
-import Entities.Material;
+import PresentationLayer.Entities.Material;
 import ServiceLayer.PageUtility.carportAlgorithm;
-import Entities.Order;
+import PresentationLayer.Entities.Order;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
 

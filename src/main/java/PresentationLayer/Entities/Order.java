@@ -1,6 +1,4 @@
-package Entities;
-
-import java.sql.Timestamp;
+package PresentationLayer.Entities;
 
 public class Order {
     private int order_id;

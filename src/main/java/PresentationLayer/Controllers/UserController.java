@@ -1,8 +1,6 @@
 package PresentationLayer.Controllers;
 
 
-import DataAccessLayer.Mappers.Facade;
-import Entities.User;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.UserUtility;
 

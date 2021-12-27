@@ -1,8 +1,8 @@
 package ServiceLayer.PageUtility;
 
-import Entities.SVG;
+import ServiceLayer.SVG;
 
-public class drawCarport
+public class DrawCarport
 {
     int længde = 0;//brugernes valg
     int brede = 0;//brugerens valg
@@ -15,7 +15,7 @@ public class drawCarport
     boolean shed;
     SVG svg;
 
-    public drawCarport(int brede, int længde, int shedbrede, int shedLængde)
+    public DrawCarport(int brede, int længde, int shedbrede, int shedLængde)
     {
         this.længde = længde;
         this.brede = brede;

@@ -1,9 +1,7 @@
 package ServiceLayer.PageUtility;
 
-import Entities.Material;
-import ServiceLayer.PageUtility.OrderUtility;
+import PresentationLayer.Entities.Material;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class carportAlgorithm

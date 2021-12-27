@@ -1,4 +1,4 @@
-package Entities;
+package ServiceLayer;
 
 public class SVG {
 

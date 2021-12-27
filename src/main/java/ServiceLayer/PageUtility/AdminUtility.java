@@ -2,10 +2,9 @@ package ServiceLayer.PageUtility;
 
 import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facade;
-import Entities.Order;
-import Entities.User;
+import PresentationLayer.Entities.Order;
+import PresentationLayer.Entities.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUtility

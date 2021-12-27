@@ -1,6 +1,6 @@
 package PresentationLayer.Controllers;
 
-import Entities.*;
+import PresentationLayer.Entities.*;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
 import ServiceLayer.PageUtility.UserUtility;

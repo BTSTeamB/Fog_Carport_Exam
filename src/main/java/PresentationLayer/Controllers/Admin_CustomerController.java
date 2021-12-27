@@ -1,7 +1,6 @@
 package PresentationLayer.Controllers;
 
-import Entities.Order;
-import Entities.User;
+import PresentationLayer.Entities.User;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.AdminUtility;
 

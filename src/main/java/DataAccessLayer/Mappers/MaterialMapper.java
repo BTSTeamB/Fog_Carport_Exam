@@ -1,7 +1,7 @@
 package DataAccessLayer.Mappers;
 
 import DataAccessLayer.Database;
-import Entities.Material;
+import PresentationLayer.Entities.Material;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

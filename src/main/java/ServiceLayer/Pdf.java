@@ -1,17 +1,16 @@
-package ServiceLayer.PageUtility;
+package ServiceLayer;
 
 
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.List;
-import Entities.Material;
+import PresentationLayer.Entities.Material;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import org.apache.batik.transcoder.Transcoder;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;

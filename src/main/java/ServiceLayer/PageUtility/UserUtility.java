@@ -2,7 +2,7 @@ package ServiceLayer.PageUtility;
 
 import DataAccessLayer.Database;
 import DataAccessLayer.Mappers.Facade;
-import Entities.User;
+import PresentationLayer.Entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

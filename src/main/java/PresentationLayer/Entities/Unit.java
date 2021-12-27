@@ -1,4 +1,4 @@
-package Entities;
+package PresentationLayer.Entities;
 
 public class Unit {
     int unit_id;

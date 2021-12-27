@@ -1,11 +1,9 @@
 package ServiceLayer.PageUtility;
 
-import Entities.Material;
+import PresentationLayer.Entities.Material;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class carportAlgorithmTest
 {

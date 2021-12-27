@@ -1,6 +1,6 @@
 package PresentationLayer.Controllers;
 
-import Entities.PredefinedCarport;
+import PresentationLayer.Entities.PredefinedCarport;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.PageUtility;
 

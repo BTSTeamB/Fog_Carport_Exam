@@ -1,7 +1,7 @@
 package DataAccessLayer.Mappers;
 
 import DataAccessLayer.Database;
-import Entities.*;
+import PresentationLayer.Entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
