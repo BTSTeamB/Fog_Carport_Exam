@@ -48,6 +48,7 @@ public class CustomerOrderListController extends HttpServlet
                 e.printStackTrace();
             }
 
+            session.invalidate();
             request.setAttribute("usersOrders", usersOrders);
             view.forwardToJsp("orders.jsp", request, response);
         }
