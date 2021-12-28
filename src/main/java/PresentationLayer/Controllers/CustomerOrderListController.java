@@ -48,8 +48,13 @@ public class CustomerOrderListController extends HttpServlet
                 e.printStackTrace();
             }
 
-            session.invalidate();
+            if (user.getIs_guest() == 1)
+            {
+                session.invalidate();
+            }
+
             request.setAttribute("usersOrders", usersOrders);
+            request.setAttribute("customerName", user.getName());
             view.forwardToJsp("orders.jsp", request, response);
         }
 
@@ -88,7 +93,6 @@ public class CustomerOrderListController extends HttpServlet
         }
 
         session.setAttribute("user", orderGuest);
-
         response.sendRedirect("CustomerOrderListController");
 
     }

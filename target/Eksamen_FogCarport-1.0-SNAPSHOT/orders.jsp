@@ -112,7 +112,7 @@
 
       <div class="order-container">
           <h1 class="order-header">
-              ${sessionScope.user.name}'s Orders
+              ${requestScope.customerName}'s Orders
           </h1>
             <table>
                 <tr class="table-header">

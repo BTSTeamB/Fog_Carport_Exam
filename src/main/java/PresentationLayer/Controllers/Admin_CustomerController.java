@@ -14,12 +14,10 @@ import java.util.List;
 @WebServlet(name = "CustomerController", value = "/CustomerController")
 public class Admin_CustomerController extends HttpServlet
 {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        AdminUtility adminUtility = null;
-        View view = new View();
+    AdminUtility adminUtility;
+    View view = new View();
 
+    {
         try
         {
             adminUtility = new AdminUtility();
@@ -27,7 +25,11 @@ public class Admin_CustomerController extends HttpServlet
         {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         List<User> allUsers = new ArrayList<>();
         try
         {
