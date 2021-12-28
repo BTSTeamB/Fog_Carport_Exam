@@ -4,6 +4,7 @@ import PresentationLayer.Entities.Order;
 import PresentationLayer.Entities.User;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.OrderUtility;
+import ServiceLayer.PageUtility.PageUtility;
 import ServiceLayer.PageUtility.UserUtility;
 
 import javax.servlet.*;
@@ -15,20 +16,25 @@ import java.util.List;
 @WebServlet(name = "CustomerOrderListController", value = "/CustomerOrderListController")
 public class CustomerOrderListController extends HttpServlet
 {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        HttpSession session = request.getSession();
-        OrderUtility orderUtility = null;
-        View view = new View();
+    View view = new View();
+    OrderUtility orderUtility;
+    UserUtility userUtility;
 
+    {
         try
         {
-           orderUtility = new OrderUtility();
+            orderUtility = new OrderUtility();
+            userUtility = new UserUtility();
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
 
@@ -64,18 +70,6 @@ public class CustomerOrderListController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        View view = new View();
-        OrderUtility orderUtility = null;
-        UserUtility userUtility = null;
-
-        try
-        {
-            userUtility = new UserUtility();
-            orderUtility = new OrderUtility();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
 
         String guestName = request.getParameter("guestOrderName");
         String guestAddress = request.getParameter("guestOrderAddress");
