@@ -15,27 +15,28 @@ import java.util.List;
 @WebServlet(name = "CustomerOrderController", value = "/CustomerOrderController")
 public class Admin_CustomerOrderController extends HttpServlet
 {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        AdminUtility adminUtility = null;
-        PageUtility pageUtility = null;
-        View view = new View();
+    AdminUtility adminUtility;
+    PageUtility pageUtility;
+    View view = new View();
 
+    {
         try
         {
-            pageUtility = new PageUtility();
             adminUtility = new AdminUtility();
+            pageUtility = new PageUtility();
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
+    }
 
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         List<Order> allOrders = new ArrayList<>();
 
         allOrders = adminUtility.getAllOrders();
-
-
 
         //Set cladding / roofing types here
 

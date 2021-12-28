@@ -3,6 +3,7 @@ package PresentationLayer.Controllers;
 import PresentationLayer.Entities.*;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.PageUtility;
+import sun.jvm.hotspot.debugger.Page;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,24 +18,28 @@ import java.util.List;
 
 public class PD_CarportController extends HttpServlet
 {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    View view = new View();
+    PageUtility pageUtility;
+
     {
-        HttpSession session = request.getSession();
-        List<PredefinedCarport> pdCarportList = new ArrayList<>();
-        PageUtility pageUtility = null;
-
-
-        //Get'eren her, samler alt data'en og smider det i en produkt-oversigt side.
         try
         {
-           pageUtility = new PageUtility();
+            pageUtility = new PageUtility();
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
 
-        View view = new View();
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session = request.getSession();
+        List<PredefinedCarport> pdCarportList = new ArrayList<>();
+
+        //Get'eren her, samler alt data'en og smider det i en produkt-oversigt side.
 
         pdCarportList = (List<PredefinedCarport>) session.getAttribute("AllPDCarports");
 
@@ -72,16 +77,7 @@ public class PD_CarportController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        PageUtility pageUtility = null;
         User user = (User) session.getAttribute("user");
-        try
-        {
-             pageUtility = new PageUtility();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        View view = new View();
 
         //Værdier som indikere hvilken beklædning/tag brugeren har valgt
 

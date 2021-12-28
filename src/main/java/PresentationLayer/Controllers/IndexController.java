@@ -17,6 +17,16 @@ public class IndexController extends HttpServlet
     View view = new View();
     PageUtility pageUtility;
 
+    {
+        try
+        {
+            pageUtility = new PageUtility();
+        } catch(ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -28,9 +38,7 @@ public class IndexController extends HttpServlet
         // hvis session er invalidated og man trykker ind på hjemmesiden igen
         try
         {
-            pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
-
             //Makes sure to cap the list at 15
             if(pdCarports.size() > 15)
             {

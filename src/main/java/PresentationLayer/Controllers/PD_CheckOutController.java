@@ -13,15 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "CheckOutController", value = "/CheckOutController")
 public class PD_CheckOutController extends HttpServlet
 {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        OrderUtility orderUtility = null;
-        UserUtility userUtility = null;
-        View view = new View();
+    View view = new View();
+    OrderUtility orderUtility;
+    UserUtility userUtility;
 
+    {
         try
         {
             orderUtility = new OrderUtility();
@@ -30,6 +26,13 @@ public class PD_CheckOutController extends HttpServlet
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
         if (user == null)
         {

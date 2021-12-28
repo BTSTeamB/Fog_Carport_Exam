@@ -15,25 +15,34 @@ import java.util.List;
 @WebServlet(name = "LoginController", value = "/LoginController")
 public class LoginController extends HttpServlet
 {
+    View view = new View();
+    UserUtility userUtility;
+    PageUtility pageUtility;
+
+    {
+        try
+        {
+            userUtility = new UserUtility();
+            pageUtility = new PageUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession httpSession = request.getSession();
-        View view = new View();
-        UserUtility userUtility = null;
-        PageUtility pageUtility = null;
         List<PredefinedCarport> pdCarports = new ArrayList<>();
 
         try
         {
-            userUtility = new UserUtility();
-            pageUtility = new PageUtility();
             pdCarports = pageUtility.getAllPDCarports();
         } catch (Exception e)
         {
@@ -44,8 +53,8 @@ public class LoginController extends HttpServlet
         //Har sgu glemt hvorfor den her ligger her
         pageUtility.splitPredefinedCarportList(pdCarports, httpSession);
 
-       String logEmail = request.getParameter("LoginUsername");
-       String logPassword = request.getParameter("LoginPassword");
+        String logEmail = request.getParameter("LoginUsername");
+        String logPassword = request.getParameter("LoginPassword");
 
         try
         {
@@ -70,7 +79,6 @@ public class LoginController extends HttpServlet
         {
             e.printStackTrace();
         }
-
     }
 }
 

@@ -1,5 +1,6 @@
 package PresentationLayer.Controllers;
 
+import PresentationLayer.Entities.User;
 import PresentationLayer.View;
 import ServiceLayer.PageUtility.UserUtility;
 
@@ -11,6 +12,18 @@ import java.io.IOException;
 @WebServlet(name = "RegisterController", value = "/RegisterController")
 public class RegisterController extends HttpServlet
 {
+    View view;
+    UserUtility userUtility;
+
+    {
+        try
+        {
+            userUtility = new UserUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -22,15 +35,6 @@ public class RegisterController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession httpSession = request.getSession();
-        View view = new View();
-        UserUtility userUtility = null;
-        try
-        {
-            userUtility = new UserUtility();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
 
         //Henter data brugeren skriver i deres form
         String userName = request.getParameter("name");

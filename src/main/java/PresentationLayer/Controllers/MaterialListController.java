@@ -15,17 +15,27 @@ import java.util.List;
 @WebServlet(name = "MaterialListController", value = "/MaterialListController")
 public class MaterialListController extends HttpServlet
 {
+    View view = new View();
+    OrderUtility orderUtility;
+
+    {
+        try
+        {
+            orderUtility = new OrderUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        OrderUtility orderUtility = null;
-        View view = new View();
         carportAlgorithm materialAlgorithm = null;
         Order order = null;
 
         try
         {
-            orderUtility = new OrderUtility();
             //Henter ordrens detaljer ud fra den valgte ordres id
             order = orderUtility.getOrderByOrderId(Integer.parseInt(request.getParameter("selectedOrder")));
             System.out.println(order.getCladding_id());
@@ -48,7 +58,5 @@ public class MaterialListController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
-
     }
 }

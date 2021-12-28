@@ -18,39 +18,47 @@ import java.util.List;
 @WebServlet(name = "DesignController", value = "/DesignController")
 public class DesignController extends HttpServlet
 {
+    OrderUtility orderUtility;
+    UserUtility userUtility;
+    PageUtility pageUtility;
+    View view = new View();
+
+    {
+        try
+        {
+            orderUtility = new OrderUtility();
+            userUtility = new UserUtility();
+            pageUtility = new PageUtility();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        View view = new View();
-        OrderUtility orderUtility = null;
-        UserUtility userUtility = null;
 
         //Henter info fra JSP'en
         User user = (User) session.getAttribute("user");
         double totalPrice = (double) session.getAttribute("totalPrice");
         Double wantedWidth = 0.0;
         Double wantedLength = 0.0;
+        Double wantedShedWidth = 0.0;
+        Double wantedShedLength = 0.0;
         int wantedCladding_id = 0;
         int wantedRoofing_id = 0;
 
         wantedWidth = (Double) session.getAttribute("wantedWidth");
         wantedLength = (Double) session.getAttribute("wantedLength");
 
+        wantedShedWidth = (Double) session.getAttribute("wantedShedWidth");
+        wantedShedLength = (Double) session.getAttribute("wantedShedLength");
+
+
         wantedCladding_id = (int) session.getAttribute("wantedCladdingId");
         wantedRoofing_id = (int) session.getAttribute("wantedRoofingId");
-
-
-
-        //instantierer utility classes
-        try
-        {
-            orderUtility = new OrderUtility();
-            userUtility = new UserUtility();
-        } catch (ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
 
         if(user == null)
         {
@@ -142,7 +150,7 @@ public class DesignController extends HttpServlet
         }
 
         //Laver Designed Ordre
-        Order designedOrder = new Order(user.getUser_id(),totalPrice,wantedLength,wantedWidth, wantedCladding_id, wantedRoofing_id);
+        Order designedOrder = new Order(user.getUser_id(),totalPrice,wantedLength,wantedWidth, wantedCladding_id, wantedRoofing_id, wantedShedWidth.intValue(), wantedShedLength.intValue());
         //Henter styklisterne som har været igennem algoritmen
         List<Material> printCladding = (List<Material>) session.getAttribute("claddingMaterials_calculated");
         List<Material> printRoofing = (List<Material>) session.getAttribute("roofingMaterials_calculated");
@@ -201,11 +209,8 @@ public class DesignController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session = request.getSession();
-        View view = new View();
         User user = (User) session.getAttribute("user");
         carportAlgorithm materialAlgorithm = null;
-        OrderUtility orderUtility = null;
-        PageUtility pageUtility = null;
 
         // Brugerens beslutninger i DesignCarport
 
@@ -215,8 +220,6 @@ public class DesignController extends HttpServlet
         Double wantedShedLength = 0.0;
         int selectedCladding = 0;
         int selectedRoofing = 0;
-
-
 
         // Fejl håndtering
 
@@ -257,12 +260,12 @@ public class DesignController extends HttpServlet
 
         session.setAttribute("wantedWidth",wantedWidth);
         session.setAttribute("wantedLength",wantedLength);
+        session.setAttribute("wantedShedWidth", wantedShedWidth);
+        session.setAttribute("wantedShedLength", wantedShedLength);
 
         try
         {
             materialAlgorithm = new carportAlgorithm(wantedWidth, wantedLength);
-            orderUtility = new OrderUtility();
-            pageUtility = new PageUtility();
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
