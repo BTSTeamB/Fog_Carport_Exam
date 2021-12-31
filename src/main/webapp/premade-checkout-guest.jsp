@@ -76,7 +76,7 @@
         <div class="header">
             Member register
         </div>
-        <form action="orderComplete.jsp" method="post"></form>
+        <form action="CheckOutController" method="post"></form>
         <div class="register-element">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="&#xf007;  insert name">

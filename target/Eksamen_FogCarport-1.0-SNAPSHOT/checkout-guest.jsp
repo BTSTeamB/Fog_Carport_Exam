@@ -77,12 +77,12 @@
         <div class="header">
             Member register
         </div>
-        <form action="orderComplete.jsp" method="post"></form>
+        <form action="DesignController" method="post"></form>
         <div class="register-element">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="&#xf007;  insert name">
 
-            <label for="address">Adress</label>
+            <label for="address">Address</label>
             <input type="text" name="address" id="address" placeholder="&#xf015; insert address">
 
             <label for="zip-code">zip-code</label>

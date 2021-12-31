@@ -115,6 +115,7 @@ public class PD_CheckOutController extends HttpServlet
             {
                 userUtility.registerGuestUser(user);
                 user = userUtility.getUserByCredentials(name, address, zip, phone, email);
+                session.setAttribute("user", user);
             } catch (Exception e)
             {
                 e.printStackTrace();

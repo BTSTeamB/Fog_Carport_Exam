@@ -67,7 +67,8 @@ public class RegisterController extends HttpServlet
             {
                 //Logger den registreret bruger på
                 userUtility.loginUser(userEmail, userPassword, httpSession);
-                view.forwardToJsp("index.jsp", request, response);
+//                view.forwardToJsp("index.jsp", request, response);
+                response.sendRedirect("index");
             }
         } catch (Exception e)
         {
