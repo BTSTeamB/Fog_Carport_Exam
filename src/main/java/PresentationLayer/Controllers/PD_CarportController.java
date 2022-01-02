@@ -51,7 +51,14 @@ public class PD_CarportController extends HttpServlet
         claddingList = claddingList.subList(0,2);
 
         roofingList = pageUtility.getAllRoofings();
-        roofingList = roofingList.subList(0,2);
+        roofingList = roofingList.subList(0,3);
+
+        //To remove "Flat-roof," part of the option. That should only be relevant for designing your
+        roofingList.get(0).setType(roofingList.get(0).getType().substring(10));
+        //To remove "Gable-roof," part of the option. That should only be relevant for designing your
+        roofingList.get(2).setType(roofingList.get(2).getType().substring(11));
+
+        roofingList.remove(1);
 
 
         request.setAttribute("claddingList", claddingList);
