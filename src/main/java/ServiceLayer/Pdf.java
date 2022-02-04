@@ -19,6 +19,7 @@ import org.apache.batik.transcoder.image.PNGTranscoder;
 
 public class Pdf
 {
+
     List<Material> claddingMaterials;
     List<Material> roofingMaterials;
     String pdfPath;
